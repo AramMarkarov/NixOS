@@ -1,7 +1,5 @@
 { config, lib, pkgs, ... }:
 {
-  networking.hostName = "desktop"; # Ensure hostname matches your actual desktop hostname
-
   hardware.opengl = {
     enable = true;
     driSupport = true;

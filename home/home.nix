@@ -1,4 +1,16 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+
+{
+
+  imports = [
+      hyprland.homeManagerModules.default
+      ./programs
+    ];
+
+  home = {
+      username = "aramjonghu";
+      homeDirectory = "/home/aramjonghu";
+    };
 
   # User-specific development tools
   home.packages = with pkgs; [
