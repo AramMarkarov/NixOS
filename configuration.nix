@@ -74,5 +74,12 @@
   # Optionally, enable rootless Docker (for better security)
   virtualisation.docker.rootless.enable = true;
 
+  # Hyprland
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
+
   system.stateVersion = "24.05";
 }

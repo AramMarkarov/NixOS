@@ -1,164 +1,170 @@
 { config, pkgs, ... }:
-{
-imports = [
-
-    ./hypr-env.nix
-
-
-];
 
 let
-  hyprlandConfig = {
-    input = {
-      kb_layout = "us";  # Replace with your actual layout
-      kb_variant = "ffffff";
-      kb_model = "pc105";
-      kb_options = "ctrl:nocaps";
-      kb_rules = "evdev";
+  # Define the Hyprland configuration as a string, with necessary Nix formatting
+  hyprlandConfig = ''
+    input {
+        kb_layout = "us"  # Your preferred layout
+        kb_variant = "ffffff"  # Adjust the variant as needed
+        kb_model = "pc105"  # Adjust based on your keyboard model
+        kb_options = ""  # Optional: e.g., ctrl:nocaps
+        kb_rules = ""  # Optional: Any additional rules
 
-      follow_mouse = true;
-
-      touchpad = {
-        natural_scroll = "no";
-      };
-    };
-
-    general = {
-      sensitivity = 1.0;
-      gaps_in = 8;
-      gaps_out = 15;
-      border_size = 5;
-      col.active_border = "0xfff5c2e7";
-      col.inactive_border = "0xff45475a";
-      apply_sens_to_raw = 0;
-    };
-
-    decoration = {
-      drop_shadow = true;
-      shadow_range = 100;
-      shadow_render_power = 5;
-      col.shadow = "0x33000000";
-      col.shadow_inactive = "0x22000000";
-      rounding = 15;
-    };
-
-    animations = {
-      enabled = true;
-      bezier = "overshot,0.13,0.99,0.29,1.1";
-      animation = [
-        "windows,1,4,overshot,slide"
-        "border,1,10,default"
-        "fade,1,10,default"
-        "workspaces,1,6,overshot,slidevert"
-      ];
-    };
-
-    gestures = {
-      workspace_swipe = "yes";
-      workspace_swipe_fingers = 4;
-    };
-
-    # Keybindings (simplified)
-    binds = {
-      "SUPER,RETURN" = "exec,alacritty";
-      "SUPER,Q" = "killactive";
-      "SUPER,M" = "exit";
-      "SUPER,E" = "exec,dolphin";
-      "SUPER,S" = "togglefloating";
-      "SUPER,space" = "exec,wofi --show drun -o DP-3";
-      "SUPER,P" = "pseudo";
-      "SUPER,L" = "exec,~/.config/hypr/scripts/lock";
-      "SUPER,left" = "movefocus,l";
-      "SUPER,right" = "movefocus,r";
-      "SUPER,up" = "movefocus,u";
-      "SUPER,down" = "movefocus,d";
-      # Add more binds as needed
-    };
-
-    # Monitor configuration
-    monitor = [
-      "DP-2,3840x2160@60,0x0,1,bitdepth,10"
-      "DP-1,2560x1440@165,3840x0,1,bitdepth,10"
-    ];
-
-    execOnce = [
-      "arrpc"
-      "dunst"
-      "agsv1"
-      "teams-for-linux"
-      "vesktop"
-      "spotify"
-      "steam"
-      "$HOME/.config/hypr/autostart"
-      "hyprpaper"
-      "fcitx5"
-    ];
-  };
-
-in {
-  # Include hyprland settings in NixOS or Home Manager module
-  environment.systemPackages = with pkgs; [
-    hyprland
-  ];
-
-  # Apply custom Hyprland configuration
-  programs.hyprland = {
-    enable = true;
-    configFile = pkgs.writeText "hyprland.conf" ''
-      input {
-        kb_layout = "${hyprlandConfig.input.kb_layout}";
-        kb_variant = "${hyprlandConfig.input.kb_variant}";
-        kb_model = "${hyprlandConfig.input.kb_model}";
-        kb_options = "${hyprlandConfig.input.kb_options}";
-        kb_rules = "${hyprlandConfig.input.kb_rules}";
-
-        follow_mouse = ${toString hyprlandConfig.input.follow_mouse};
+        follow_mouse = 1
 
         touchpad {
-          natural_scroll = "${hyprlandConfig.input.touchpad.natural_scroll}";
+            natural_scroll = "no"
         }
-      }
-
-      general {
-        sensitivity = ${hyprlandConfig.general.sensitivity};
-        gaps_in = ${hyprlandConfig.general.gaps_in};
-        gaps_out = ${hyprlandConfig.general.gaps_out};
-        border_size = ${hyprlandConfig.general.border_size};
-        col.active_border = "${hyprlandConfig.general.col.active_border}";
-        col.inactive_border = "${hyprlandConfig.general.col.inactive_border}";
-        apply_sens_to_raw = ${toString hyprlandConfig.general.apply_sens_to_raw};
-      }
-
-      decoration {
-        drop_shadow = ${toString hyprlandConfig.decoration.drop_shadow};
-        shadow_range = ${hyprlandConfig.decoration.shadow_range};
-        shadow_render_power = ${hyprlandConfig.decoration.shadow_render_power};
-        col.shadow = "${hyprlandConfig.decoration.col.shadow}";
-        col.shadow_inactive = "${hyprlandConfig.decoration.col.shadow_inactive}";
-        rounding = ${hyprlandConfig.decoration.rounding};
-      }
-
-      animations {
-        enabled = ${toString hyprlandConfig.animations.enabled};
-        bezier = "${hyprlandConfig.animations.bezier}";
-        animation = ${lib.concatStringsSep " " hyprlandConfig.animations.animation};
-      }
-
-      windowrule = ${lib.concatStringsSep " " hyprlandConfig.windowrule};
-
-      gestures {
-        workspace_swipe = "${hyprlandConfig.gestures.workspace_swipe}";
-        workspace_swipe_fingers = ${toString hyprlandConfig.gestures.workspace_swipe_fingers};
-      }
-
-      binds {
-        ${lib.concatStringsSep "\n" (map (bind: "bind=${bind}") (attrValues hyprlandConfig.binds))}
-      }
-
-      monitor = ${lib.concatStringsSep " " hyprlandConfig.monitor};
-
-      exec-once = ${lib.concatStringsSep " " hyprlandConfig.execOnce};
-    '';
-        };
     }
+
+    misc { }
+
+    general {
+        sensitivity = 1.0  # Mouse cursor sensitivity
+        gaps_in = 8
+        gaps_out = 15
+        border_size = 5
+        col.active_border = 0xfff5c2e7
+        col.inactive_border = 0xff45475a
+        apply_sens_to_raw = 0
+    }
+
+    decoration {
+        drop_shadow = true
+        shadow_range = 100
+        shadow_render_power = 5
+        col.shadow = 0x33000000
+        col.shadow_inactive = 0x22000000
+        rounding = 15
+    }
+
+    animations {
+        enabled = 1
+        bezier = "overshot,0.13,0.99,0.29,1.1"
+        animation = "windows,1,4,overshot,slide"
+        animation = "border,1,10,default"
+        animation = "fade,1,10,default"
+        animation = "workspaces,1,6,overshot,slidevert"
+    }
+
+    dwindle {
+        pseudotile = 1
+        force_split = 0
+        preserve_split = true
+    }
+
+    gestures {
+        workspace_swipe = "yes"
+        workspace_swipe_fingers = 4
+    }
+
+    # Window rules
+    windowrule = "move center,title:^(fly_is_kitty)$"
+    windowrule = "size 800 500,title:^(fly_is_kitty)$"
+    windowrule = "animation slide,title:^(all_is_kitty)$"
+    windowrule = "float,title:^(all_is_kitty)$"
+    windowrule = "tile,title:^(kitty)$"
+    windowrule = "float,title:^(fly_is_kitty)$"
+    windowrule = "float,title:^(clock_is_kitty)$"
+    windowrule = "size 418 234,title:^(clock_is_kitty)$"
+
+    # Keybinds
+    bindm = "SUPER,mouse:272,movewindow"
+    bindm = "SUPER,mouse:273,resizewindow"
+
+    bind = "SUPER,RETURN,exec,alacritty"
+    bind = "SUPER,Q,killactive"
+    bind = "SUPER,M,exit"
+    bind = "SUPER,E,exec,dolphin"
+    bind = "SUPER,S,togglefloating"
+    bind = "SUPER,space,exec,wofi --show drun -o DP-3"
+    bind = "SUPER,P,pseudo"
+
+    bind = "SUPER,L,exec,~/.config/hypr/scripts/lock"
+
+    bind = "SUPER,left,movefocus,l"
+    bind = "SUPER,right,movefocus,r"
+    bind = "SUPER,up,movefocus,u"
+    bind = "SUPER,down,movefocus,d"
+
+    bind = "SUPER,1,workspace,1"
+    bind = "SUPER,2,workspace,2"
+    bind = "SUPER,3,workspace,3"
+    bind = "SUPER,4,workspace,4"
+    bind = "SUPER,5,workspace,5"
+    bind = "SUPER,6,workspace,6"
+    bind = "SUPER,7,workspace,7"
+    bind = "SUPER,8,workspace,8"
+    bind = "SUPER,9,workspace,9"
+    bind = "SUPER,0,workspace,10"
+
+    bind = "ALT,1,movetoworkspace,1"
+    bind = "ALT,2,movetoworkspace,2"
+    bind = "ALT,3,movetoworkspace,3"
+    bind = "ALT,4,movetoworkspace,4"
+    bind = "ALT,5,movetoworkspace,5"
+    bind = "ALT,6,movetoworkspace,6"
+    bind = "ALT,7,movetoworkspace,7"
+    bind = "ALT,8,movetoworkspace,8"
+    bind = "ALT,9,movetoworkspace,9"
+    bind = "ALT,0,movetoworkspace,10"
+
+    bind = "SUPER,mouse_down,workspace,e+1"
+    bind = "SUPER,mouse_up,workspace,e-1"
+
+    bind = "SUPER,g,togglegroup"
+    bind = "SUPER,tab,changegroupactive"
+
+    # Application bindings
+    bind = "CTRL,1,exec,kitty --title fly_is_kitty --hold cava"
+    bind = "CTRL,2,exec,code-insiders"
+    bind = "CTRL,3,exec,kitty --single-instance --hold donut.c"
+    bind = "CTRL,4,exec,kitty --title clock_is_kitty --hold tty-clock -C5"
+
+    # Manual bindings
+    bind = "ALT,TAB,cyclenext"
+    bind = "SUPER,F,fullscreen"
+    bind = "SUPER,D,exec,wofi --show drun"
+    bind = "$shiftMod, PRINT, exec, hyprshot -m region"
+    bindel = ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+    bindel = ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+
+    # Input options for function keys
+    input {
+        kb_options = "fkeys:basic_13-24"
+    }
+
+    # Requires playerctl for media controls
+    bindl = ", XF86AudioPlay, exec, playerctl play-pause"
+    bindl = ", XF86AudioPrev, exec, playerctl previous"
+    bindl = ", XF86AudioNext, exec, playerctl next"
+
+    # Screenshot bind
+    bind = ", PRINT, exec, hyprshot -m region"
+
+    # Monitor setup (adjust as needed)
+    monitor = "DP-2, 3840x2160@60, 0x0, 1, bitdepth, 10"
+    monitor = "DP-1, 2560x1440@165, 3840x0, 1, bitdepth, 10"
+
+    # Exec-once for startup programs
+    exec-once = "arrpc"
+    exec-once = "dunst"
+    exec-once = "waybar"
+    exec-once = "teams-for-linux"
+    exec-once = "vesktop"
+    exec-once = "spotify"
+    exec-once = "steam"
+    exec-once = "$HOME/.config/hypr/autostart"
+    exec-once = "hyprpaper"
+    exec-once = "fcitx5"
+    exec-once = "ags"
+  '';
+in
+{
+  # Apply the configuration to NixOS using the appropriate windowManager setting
+  wayland.windowManager.hyprland = {
+    enable = true;
+    systemdIntegration = true;
+    extraConfig = hyprlandConfig;
+  };
 }

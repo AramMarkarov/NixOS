@@ -1,22 +1,16 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   hyprpaperConfig = {
-    preload = "/wallpapers/DSC00301.JPG";
-    wallpaper = "/wallpapers/DSC00301.JPG";
+    preload = "/wallpapers/DSC00301.JPG";  # Path to the wallpaper image
+    wallpaper = "/wallpapers/DSC00301.JPG";  # Path to the wallpaper image
     splash = false;
   };
-
 in {
-  # Hyprland settings and other configurations...
-
-  # Hyprpaper configuration
-  programs.hyprpaper = {
-    enable = true;
-    configFile = pkgs.writeText "hyprpaper.conf" ''
-      preload = "${hyprpaperConfig.preload}";
-      wallpaper = "${hyprpaperConfig.wallpaper}";
-      splash = ${toString hyprpaperConfig.splash};
-    '';
-  };
+  # Create the hyprpaper configuration file at the desired location
+  home.file.".config/hypr/hyprpaper.conf".text = ''
+    preload = "${hyprpaperConfig.preload}";
+    wallpaper = "${hyprpaperConfig.wallpaper}";
+    splash = ${toString hyprpaperConfig.splash};
+  '';
 }

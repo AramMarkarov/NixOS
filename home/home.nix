@@ -3,7 +3,6 @@
 {
 
   imports = [
-      hyprland.homeManagerModules.default
       ./programs
     ];
 
@@ -11,6 +10,8 @@
       username = "aramjonghu";
       homeDirectory = "/home/aramjonghu";
     };
+
+  programs.home-manager.enable = true;
 
   # User-specific development tools
   home.packages = with pkgs; [
@@ -68,7 +69,7 @@
     kdePackages.dolphin
     hyprlock
     kdePackages.systemsettings # Remove if virtual keyboard is fixed (fcitx)
-    hyrpanel
+    hyprpanel
 
     # DE requirements
     libnotify
@@ -80,6 +81,12 @@
     kdePackages.kio-extras
     libgtkflow4
     kdePackages.ark
+    brightnessctl
+    bluez
+    libgtop
+    networkmanager
+    gnomeExtensions.aylurs-widgets
+    gnomeExtensions.bluetooth-battery
     ];
 
   # Home Manager state version

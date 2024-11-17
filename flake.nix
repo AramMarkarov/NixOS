@@ -1,41 +1,41 @@
 {
-  description = "Nixos config flake with Home-Manager, Hyprland and HyprPanel";
+  description = "Nixos config flake with Home-Manager, Hyprland, and HyprPanel";
 
   inputs = {
-    nixpkgs.url = "github:Nixos/nixpkgs/nixos-unstable";  # Nixpkgs version
+    nixpkgs.url = "github:Nixos/nixpkgs/nixos-24.05";  # Nixpkgs version
     home-manager.url = "github:nix-community/home-manager";
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";  # HyprPanel input
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";  # HyprPanel input (without `/nix`)
     hyprland.url = "github:hyprwm/Hyprland";  # Hyprland input
   };
 
   outputs = { self, nixpkgs, home-manager, hyprpanel, hyprland, ... }@inputs: let
     system = "x86_64-linux";  # Define the system architecture
-  in {
-    # Home Manager configuration (for user-specific setup)
-    homeConfigurations."aramjonghu@nixos" = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [
-          inputs.hyprpanel.overlay  # Include HyprPanel overlay
-          inputs.hyprland.overlay   # Include Hyprland overlay
-        ];
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {
+        allowUnfree = true;
+        allowBroken = true;
+        allowUnsupportedSystem = true;
       };
-      extraSpecialArgs = { inherit system; inherit inputs; };
+      overlays = [
+        inputs.hyprpanel.overlay
+      ];
+    };
+  in {
+    # Nixos configuration for the host system
+    nixosConfigurations."aramjonghu" = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
       modules = [
-        # Example user configuration for Hyprland
-        {
-          wayland.windowManager.hyprland = {
-            enable = true;
-            package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-          };
-        }
-        # Optionally add HyprPanel package to the user's environment
-        {
-          home.packages = [
-            pkgs.hyprpanel  # Install HyprPanel for the user
-          ];
-        }
-        # Include any other modules or user configurations here
+        ./configuration.nix  # Include the main NixOS configuration for Hyprland
+      ];
+    };
+
+    # Home Manager configuration for user-specific setup
+    homeConfigurations."aramjonghu@nixos" = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;  # Pass pkgs to Home Manager
+      extraSpecialArgs = { inherit system inputs; };
+      modules = [
+        ./home/home.nix  # Include the home.nix file for user-specific configurations
       ];
     };
   };
