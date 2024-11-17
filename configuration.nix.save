@@ -1,0 +1,341 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ config, lib, pkgs, ... }:
+
+{ 
+  nixpkgs.config.allowUnsupportedSystem = true; 
+  nixpkgs.config.allowBroken = true;
+   
+  # pkgs
+  environment.systemPackages = with pkgs; [
+	libsForQt5.qt5.qtquickcontrols2
+	libsForQt5.qt5.qtgraphicaleffects
+	libsForQt5.systemsettings
+	croc
+	cava
+	rustup
+	tty-clock
+	hyprlock	
+	killall
+	discord
+	libsForQt5.kdenlive
+	protonup
+	pwvucontrol
+	wayland-scanner
+	wayland-utils
+	gnumake
+	cryptsetup
+	udisks
+	steam-run
+	wine-staging
+	nodejs_22
+	pipewire
+	obs-studio-plugins.obs-pipewire-audio-capture
+	polkit
+	upower
+	libcamera
+	bluez
+	obs-studio
+	vlc
+	kdePackages.qtwayland
+	kdePackages.qtsvg
+	kdePackages.kio-fuse
+	kdePackages.kio-extras
+	libGL
+	libcxx
+	xorg.libXi
+	xorg.libX11
+	xorg.libXrandr
+	cacert
+	openssl
+	xdg-user-dirs
+	gtkmm3
+	jsoncpp
+	libsigcxx30
+	fmt
+	htop
+	spdlog
+	libgtkflow4
+	gtk-layer-shell
+	libpulseaudio
+	libnl
+	libappindicator-gtk3
+	libmpdclient
+	sndio
+	libevdev
+	gnome.zenity
+	wayland
+	pkg-config
+	gcc
+	cmake
+	scdoc
+	meson
+	ninja
+	kio-admin
+	davfs2
+	playerctl
+	wev
+	breeze-qt5
+	kde-cli-tools
+	kdePackages.kdegraphics-thumbnailers
+	kdePackages.kiconthemes
+	breeze-icons
+	kdePackages.oxygen-icons
+	vscode
+	arrpc
+	hyprshot
+	hyprpaper
+	firefox
+	thunderbird
+	jetbrains.jdk
+	brave
+	fastfetch
+	teams-for-linux
+	processing
+	arduino-ide
+	kdePackages.ark
+	libsForQt5.dolphin
+	filezilla
+	firewalld
+	kdePackages.dolphin-plugins
+	htop
+	ncdu
+	wofi
+	openssh
+	waybar
+	kate
+	alacritty
+	vesktop
+	wget
+	git
+	curl
+	kitty
+	mullvad-browser
+	dunst
+	libnotify
+	steam
+	spotify
+	lutris
+	jetbrains.idea-ultimate
+	libreoffice
+	mendeley
+	wine
+	jetbrains.datagrip
+	docker
+	docker-compose
+	gamescope
+	minecraft
+	dolphin
+	jdk8
+	jdk
+	python3
+	
+	
+
+
+	];	
+
+
+  imports = [
+	./hardware-configuration.nix
+	   
+  # mozc
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [ fcitx5-mozc ];
+  };
+
+  # Udisk
+  services.udisks2.enable = true;
+
+  # bluetooth
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
+  hardware.bluetooth.enable = true;
+  
+  # flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes"];  
+
+  # evn
+  environment.variables = {
+  NIXPKGS_ALLOW_UNFREE = "1";
+  SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
+ 	};
+
+  # NextDNS allowance
+  systemd.services.resolved = {
+    environment = {
+      DNSOverTLS = "yes";
+    };
+  };
+
+  # Audio
+  sound.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+	enable = true;
+	alsa.enable = true;
+	alsa.support32Bit = true;
+	pulse.enable = true;
+	jack.enable = true;
+     extraConfig.pipewire."92-low-latency" = {
+      "context.properties" = {
+      "default.clock.rate" = 384000;  
+      "default.clock.quantum" = 1024;   # Buffer size for lower latency
+      "default.clock.min-quantum" = 512;  # Minimum quantum size
+      "default.clock.max-quantum" = 512;  # Maximum quantum size
+  	  };
+         };
+	};
+
+  # upower
+  services.upower = {
+  enable = true;
+	};
+ 
+  # xserver
+  services.xserver = {
+	enable = true;
+	displayManager = {
+  	sddm.enable = true;
+	sddm.theme= "$import ./sddm-theme.nix {inherit pkgs;}}";
+		};
+	};
+  services.xserver.desktopManager.runXdgAutostartIfNone = true;
+  #keepConfigs
+  # system.autoUpgrade.keepBootConfigurations = 5;
+ 
+  # XDG
+  xdg.portal = {
+	enable = true;
+	extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+	};
+
+  # Polkit
+  security.polkit.enable = true;
+ 
+  # AMD drivers
+  hardware.opengl = {
+	enable = true;
+	driSupport = true;
+	driSupport32Bit = true;
+    };
+  services.xserver.videoDrivers = ["amdgpu"];
+    
+  # Hyprland
+  programs.hyprland = {
+	enable = true;
+	xwayland.enable = true;
+    };
+  
+  # Fonts
+  fonts.packages = with pkgs; [
+	noto-fonts
+	noto-fonts-cjk
+	noto-fonts-emoji
+	liberation_ttf
+	fira-code
+	fira-code-symbols
+	mplus-outline-fonts.githubRelease
+	dina-font
+	proggyfonts
+	];
+
+  #Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  networking.hostName = "nixos"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Enable networking
+  networking.networkmanager.enable = true;
+
+  # Set your time zone.
+  time.timeZone = "Europe/Amsterdam";
+
+   # Locale
+   # Internationalisation properties
+   # Locale Generation
+  
+   i18n = {
+   # Default language (interface and system messages)
+   defaultLocale = "en_US.UTF-8";
+	
+   # Supported languages (add en_US, nl_NL, and ja_JP)
+   supportedLocales = [
+     "en_US.UTF-8/UTF-8"
+     "nl_NL.UTF-8/UTF-8"
+     "ja_JP.UTF-8/UTF-8"
+   ];
+
+   # Additional locale settings
+   extraLocaleSettings = {
+     LC_ADDRESS = "nl_NL.UTF-8";
+     LC_IDENTIFICATION = "nl_NL.UTF-8";
+     LC_MEASUREMENT = "nl_NL.UTF-8";
+     LC_MONETARY = "nl_NL.UTF-8";
+     LC_NAME = "nl_NL.UTF-8";
+     LC_NUMERIC = "nl_NL.UTF-8";
+     LC_PAPER = "nl_NL.UTF-8";
+     LC_TELEPHONE = "nl_NL.UTF-8";
+    
+     # Set LC_TIME to en_US for English day/month names but Dutch time format
+     LC_TIME = "en_US.UTF-8";
+   };
+ };
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.aramjonghu = {
+    isNormalUser = true;
+    description = "Aram";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [];
+  };
+
+  # Enable automatic login for the user.
+  services.getty.autologinUser = "aramjonghu";
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  # services.openssh.enable = true;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "24.05"; # Did you read the comment?
+
+}
