@@ -5,7 +5,6 @@
     ./hardware-configuration.nix
     ./modules
     ./hosts/desktop.nix # Change to correct host
-    inputs.home-manager.nixosModules.default
   ];
 
   environment.systemPackages = with pkgs; [
@@ -39,8 +38,9 @@
       openssh
       firewalld
       pkg-config
+      home-manager
+      #appimage-run
   ];
-
 
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
@@ -73,7 +73,7 @@
   networking.hostName = "nixos";
 
   # Virtualization
-  virtualisation.docker.enable = true;
+  #virtualisation.docker.enable = true;
 
   # Set Docker's storage driver to Btrfs (if using Btrfs filesystem)
   #virtualisation.docker.storageDriver = "btrfs";
@@ -81,5 +81,5 @@
   # Optionally, enable rootless Docker (for better security)
   #virtualisation.docker.rootless.enable = true;
 
-  system.stateVersion = "unstable";
+  system.stateVersion = "24.05";
 }

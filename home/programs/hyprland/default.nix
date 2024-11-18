@@ -117,7 +117,7 @@ let
         # Requires playerctl for media controls
         bindl = , XF86AudioPlay, exec, playerctl play-pause
         bindl = , XF86AudioPrev, exec, playerctl previous
-        bindl = , XF86AudioNext, exec, playerctl next"
+        bindl = , XF86AudioNext, exec, playerctl next
 
         # Screenshot bind
         bind = , PRINT, exec, hyprshot -m region
@@ -128,8 +128,6 @@ let
 
         # Exec-once for startup programs
         exec-once = arrpc
-        exec-once = dunst
-        exec-once = waybar
         exec-once = teams-for-linux
         exec-once = vesktop
         exec-once = spotify
