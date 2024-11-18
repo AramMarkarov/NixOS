@@ -1,3 +1,5 @@
+{ config, lib, pkgs, ... }:
+
 {
   # bluetooth
   hardware.bluetooth.powerOnBoot = true;

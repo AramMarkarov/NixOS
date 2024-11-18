@@ -5,16 +5,6 @@
     settings = {
       # Import external configuration (if any)
       import = [];
-
-      # Configure Alacritty font
-      font = {
-        normal = {
-          family = "Hack";
-          style = "Medium";
-        };
-        size = 12;
-      };
-
       # Window settings
       window = {
         opacity = 0.9;
@@ -23,7 +13,7 @@
           y = 10;
         };
         decorations = "Full";
-        decorations_theme_variant = "Light"; # Options: "Light" or "Dark"
+        decorations_theme_variant = "Dark"; # Options: "Light" or "Dark"
       };
     };
   };

@@ -1,8 +1,11 @@
+{ config, pkgs, lib, inputs, ... }:
+
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/
-    ./host/desktop.nix # Change to correct host
+    ./modules
+    ./hosts/desktop.nix # Change to correct host
+    inputs.home-manager.nixosModules.default
   ];
 
   environment.systemPackages = with pkgs; [
@@ -26,17 +29,21 @@
       # Debugging and monitoring
       htop
       ncdu
-      exa
+      eza
       killall
       fastfetch
 
       # Misc
       openssl
-      cacart #(ca certs for...)
+      cacert #(ca certs for...)
       openssh
       firewalld
       pkg-config
   ];
+
+
+  services.xserver.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
 
   nixpkgs.config.allowUnsupportedSystem = true;
   nixpkgs.config.allowBroken = true;
@@ -69,17 +76,10 @@
   virtualisation.docker.enable = true;
 
   # Set Docker's storage driver to Btrfs (if using Btrfs filesystem)
-  virtualisation.docker.storageDriver = "btrfs";
+  #virtualisation.docker.storageDriver = "btrfs";
 
   # Optionally, enable rootless Docker (for better security)
-  virtualisation.docker.rootless.enable = true;
+  #virtualisation.docker.rootless.enable = true;
 
-  # Hyprland
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
-
-  system.stateVersion = "24.05";
+  system.stateVersion = "unstable";
 }

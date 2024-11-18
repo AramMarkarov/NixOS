@@ -5,5 +5,6 @@
     ./hyprpaper
     ./wofi
     ./alacritty
+    ./osu
   ];
   }

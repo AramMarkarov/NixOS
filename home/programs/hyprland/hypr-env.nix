@@ -19,13 +19,18 @@
       XDG_SESSION_TYPE = "wayland";
     };
 
+  home-manager.users.aramjonghu = {
     xdg = {
       mimeApps = {
-        "defaultApplications" = {
+        enable = true;
+        defaultApplications = {
           "video/*" = [ "vlc.desktop" ];
           "audio/*" = [ "vlc.desktop" ];
+          "image/*" = [ "mullvad-browser" ];
+          "text/html" = [ "mullvad-browser" ];
         };
       };
     };
   };
+ };
 }

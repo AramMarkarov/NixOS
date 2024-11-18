@@ -1,3 +1,5 @@
+{ config, lib, pkgs, ... }:
+
 {
   # Japanese input via mozc (currently enabled via kde settings => virtual keyboard = fcitx5)
   i18n.inputMethod = {

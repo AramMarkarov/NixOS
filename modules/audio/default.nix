@@ -1,4 +1,3 @@
-# modules/default.nix
 { config, lib, pkgs, ... }:
 
 {

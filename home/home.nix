@@ -11,10 +11,19 @@
       homeDirectory = "/home/aramjonghu";
     };
 
-  programs.home-manager.enable = true;
+  programs.home-manager.enable = false;
 
   # User-specific development tools
   home.packages = with pkgs; [
+    # Desktop only
+    steam-run
+    dxvk
+    protonup
+    gamescope
+    minecraft
+    steam
+    lutris
+
     # Networking and communication
     wget
     filezilla
@@ -90,5 +99,5 @@
     ];
 
   # Home Manager state version
-  home.stateVersion = "24.05";
+  home.stateVersion = "unstable";
 }
