@@ -5,7 +5,13 @@
     ./hardware-configuration.nix
     ./modules
     ./hosts/desktop.nix # Change to correct host
+    ./home/home.nix
   ];
+
+  home-manager = {
+      extraSpecialArgs = { inherit inputs; };
+      users = { aramjonghu = import ./home/home.nix; };
+      };
 
   programs.hyprland.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -42,6 +48,7 @@
       firewalld
       pkg-config
       appimage-run
+      home-manager
   ];
 
   # Use of file system and video sharing

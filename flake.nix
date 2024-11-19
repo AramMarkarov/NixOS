@@ -16,6 +16,9 @@
   let
     system = "x86_64-linux";  # Define the system architecture
     pkgs = import nixpkgs {
+                config = { allowUnfree = true;
+                           allowBroken = true;
+                           };
            inherit system;
     };
   in {

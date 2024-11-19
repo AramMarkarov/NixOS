@@ -3,7 +3,7 @@
 {
 
   imports = [
-      ./programs
+      #./programs
     ];
 
   programs.home-manager.enable = true;
@@ -85,7 +85,6 @@
     kdePackages.dolphin
     hyprlock
     kdePackages.systemsettings # Remove if virtual keyboard is fixed (fcitx)
-    hyprpanel
 
     # DE requirements
     libnotify
