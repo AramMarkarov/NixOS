@@ -3,26 +3,22 @@
 {
 
   imports = [
-      hyprland.homeManagerModules.default
       ./programs
     ];
 
-  home = {
-      username = "aramjonghu";
-      homeDirectory = "/home/aramjonghu";
-      stateVersion = "24.05";
-    };
-
   programs.home-manager.enable = true;
+
+  home = {
+        username = "aramjonghu";
+        homeDirectory = "/home/aramjonghu";
+        stateVersion = "24.05";
+      };
 
   programs.git = {
       enable = true;
       userName  = "arammarkarov";
       userEmail = "a.markarov@outlook.com";
     };
-
-  nixpkgs.allowUnfree = true;
-  nixpkgs.allowBroken = true;
 
   # User-specific development tools
   home.packages = with pkgs; [
@@ -107,6 +103,5 @@
     networkmanager
     gnomeExtensions.aylurs-widgets
     gnomeExtensions.bluetooth-battery
-    #ags
     ];
 }

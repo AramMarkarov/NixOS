@@ -16,15 +16,22 @@
   let
     system = "x86_64-linux";  # Define the system architecture
     pkgs = import nixpkgs {
-      inherit system;
-        config = {
-          allowUnfree = true;
-          allowBroken = true;
-          };
+           inherit system;
     };
   in {
+    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+	inherit system;
+	modules = [
+		./configuration.nix
+		];
+		specialArgs = {inherit inputs pkgs;};
+	};
+
     homeConfigurations."aramjonghu" = home-manager.lib.homeManagerConfiguration {
         pkgs =  import nixpkgs {
+                config = { allowUnfree = true;
+                           allowBroken = true;
+                           };
                 inherit system;
                 overlays = [
                     inputs.hyprpanel.overlay

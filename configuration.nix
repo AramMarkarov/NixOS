@@ -7,6 +7,9 @@
     ./hosts/desktop.nix # Change to correct host
   ];
 
+  programs.hyprland.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   environment.systemPackages = with pkgs; [
   # Build tools
       gcc
@@ -38,9 +41,12 @@
       openssh
       firewalld
       pkg-config
-      home-manager
-      #appimage-run
+      appimage-run
   ];
+
+  # Use of file system and video sharing
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde ];
 
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
