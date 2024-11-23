@@ -6,6 +6,6 @@
     ./wofi
     ./alacritty
     ./osu
-    ./sddm
+    #./sddm
   ];
   }

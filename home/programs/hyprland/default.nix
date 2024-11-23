@@ -9,13 +9,12 @@ let
             kb_model =
             kb_options =
             kb_rules =
-
+            sensitivity = 0
+            accel_profile = flat
             follow_mouse = 1
-
         }
 
         general {
-            sensitivity = 1.0  # Mouse cursor sensitivity
             gaps_in = 8
             gaps_out = 15
             border_size = 5
@@ -95,12 +94,6 @@ let
         bind = SUPER,mouse_up,workspace,e-1
         bind = SUPER,g,togglegroup
         bind = SUPER,tab,changegroupactive
-
-        # Application bindings
-        bind = CTRL,1,exec,kitty --title fly_is_kitty --hold cava
-        bind = CTRL,2,exec,code-insiders
-        bind = CTRL,3,exec,kitty --single-instance --hold donut.c
-        bind = CTRL,4,exec,kitty --title clock_is_kitty --hold tty-clock -C5
 
         # Manual bindings
         bind = ALT,TAB,cyclenext

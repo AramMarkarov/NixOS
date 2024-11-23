@@ -1,12 +1,17 @@
-{ config, pkgs, ... }:
+{config, pkgs, ... }:
 
 {
 
   imports = [
-      #./programs
+      ./programs
     ];
 
   programs.home-manager.enable = true;
+  wayland.windowManager.hyprland.enable = true;
+  home.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  nixpkgs.config.allowBroken = true;
+  nixpkgs.config.allowUnfree = true;
 
   home = {
         username = "aramjonghu";
@@ -85,6 +90,7 @@
     kdePackages.dolphin
     hyprlock
     kdePackages.systemsettings # Remove if virtual keyboard is fixed (fcitx)
+    #hyprpanel
 
     # DE requirements
     libnotify
