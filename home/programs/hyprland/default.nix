@@ -126,13 +126,15 @@ let
         exec-once = spotify
         exec-once = steam
         exec-once = $HOME/.config/hypr/autostart
-        exec-once = hyprpaper
+        exec-once = swww-daemon
         exec-once = fcitx5
-        #exec-once = ags
+        exec-once = waybar
+        exec-once = dunst
+        env = XDG_MENU_PREFIX,plasma-
+
   '';
 in
 {
-  # Apply the configuration to NixOS using the appropriate windowManager setting
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;

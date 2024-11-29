@@ -22,19 +22,31 @@
     htop ncdu eza killall fastfetch
 
     # Misc
-    openssl cacert openssh firewalld pkg-config appimage-run home-manager
+    openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg libavif
   ];
+
+  programs.hyprland.enable = true;
 
   # Use of file system and video sharing
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde ];
 
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
+  security.polkit.enable = true;
 
-  nixpkgs.config.allowUnsupportedSystem = true;
-  nixpkgs.config.allowBroken = true;
-  nixpkgs.config.allowUnfree = true;
+  services = {
+    udisks2.enable = true;
+    fwupd.enable = true;
+    tailscale.enable = true;
+    xserver.enable = true;
+    displayManager.sddm.enable = true;
+  };
+
+  nixpkgs = {
+    config.allowBroken = true;
+    config.allowUnfree = true;
+    config.allowUnsupportedSystem = true;
+  };
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader

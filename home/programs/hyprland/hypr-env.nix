@@ -28,6 +28,16 @@
           "audio/*" = [ "vlc.desktop" ];
           "image/*" = [ "mullvad-browser" ];
           "text/html" = [ "mullvad-browser" ];
+          "application/pdf" = [ "mullvad-browser" ];
+          "application/vnd.oasis.opendocument.text" = [ "libreoffice-writer.desktop" ]; # ODT
+          "application/msword" = [ "libreoffice-writer.desktop" ]; # DOC
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "libreoffice-writer.desktop" ]; # DOCX
+          "application/vnd.oasis.opendocument.spreadsheet" = [ "libreoffice-calc.desktop" ]; # ODS
+          "application/vnd.ms-excel" = [ "libreoffice-calc.desktop" ]; # XLS
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = [ "libreoffice-calc.desktop" ]; # XLSX
+          "application/vnd.oasis.opendocument.presentation" = [ "libreoffice-impress.desktop" ]; # ODP
+          "application/vnd.ms-powerpoint" = [ "libreoffice-impress.desktop" ]; # PPT
+          "application/vnd.openxmlformats-officedocument.presentationml.presentation" = [ "libreoffice-impress.desktop" ]; # PPTX
         };
       };
     };

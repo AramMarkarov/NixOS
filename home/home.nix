@@ -8,6 +8,7 @@
 
   programs.home-manager.enable = true;
   wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland.systemd.variables = ["--all"];
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 
   nixpkgs.config.allowBroken = true;
@@ -67,7 +68,7 @@
     spotify
     mendeley
     libreoffice
-
+    
     # IDE's & txteditors
     jetbrains.datagrip
     jetbrains.idea-ultimate
@@ -85,19 +86,22 @@
 
     # Desktop Environment requirements (hyprland)
     wofi
-    hyprpaper
+    swww
     hyprshot
     kdePackages.dolphin
     hyprlock
     kdePackages.systemsettings # Remove if virtual keyboard is fixed (fcitx)
-    #hyprpanel
+    waybar
 
     # DE requirements
     libnotify
+    dunst
     upower
     kdePackages.dolphin-plugins
     kdePackages.qtwayland
     kdePackages.qtsvg
+    kdePackages.kio
+    kdePackages.kio-admin
     kdePackages.kio-fuse
     kdePackages.kio-extras
     libgtkflow4
@@ -106,7 +110,9 @@
     bluez
     libgtop
     networkmanager
-    gnomeExtensions.aylurs-widgets
-    gnomeExtensions.bluetooth-battery
+    wlroots
+    kitty
+    playerctl
+    kdePackages.plasma-workspace
     ];
 }
