@@ -9,13 +9,12 @@ let
             kb_model =
             kb_options =
             kb_rules =
-
+            sensitivity = 0
+            accel_profile = flat
             follow_mouse = 1
-
         }
 
         general {
-            sensitivity = 1.0  # Mouse cursor sensitivity
             gaps_in = 8
             gaps_out = 15
             border_size = 5
@@ -96,12 +95,6 @@ let
         bind = SUPER,g,togglegroup
         bind = SUPER,tab,changegroupactive
 
-        # Application bindings
-        bind = CTRL,1,exec,kitty --title fly_is_kitty --hold cava
-        bind = CTRL,2,exec,code-insiders
-        bind = CTRL,3,exec,kitty --single-instance --hold donut.c
-        bind = CTRL,4,exec,kitty --title clock_is_kitty --hold tty-clock -C5
-
         # Manual bindings
         bind = ALT,TAB,cyclenext
         bind = SUPER,F,fullscreen
@@ -117,31 +110,30 @@ let
         # Requires playerctl for media controls
         bindl = , XF86AudioPlay, exec, playerctl play-pause
         bindl = , XF86AudioPrev, exec, playerctl previous
-        bindl = , XF86AudioNext, exec, playerctl next"
+        bindl = , XF86AudioNext, exec, playerctl next
 
         # Screenshot bind
         bind = , PRINT, exec, hyprshot -m region
 
         # Monitor setup (adjust as needed)
-        monitor = DP-2, 3840x2160@60, 0x0, 1, bitdepth, 10
-        monitor = DP-1, 2560x1440@165, 3840x0, 1, bitdepth, 10
+        monitor = DP-1, 2560x1600@60, 1, bitdepth, 10
 
         # Exec-once for startup programs
         exec-once = arrpc
-        exec-once = dunst
-        exec-once = waybar
         exec-once = teams-for-linux
         exec-once = vesktop
         exec-once = spotify
         exec-once = steam
         exec-once = $HOME/.config/hypr/autostart
-        exec-once = hyprpaper
+        exec-once = swww-daemon
         exec-once = fcitx5
-        #exec-once = ags
+        exec-once = waybar
+        exec-once = dunst
+        env = XDG_MENU_PREFIX,plasma-
+
   '';
 in
 {
-  # Apply the configuration to NixOS using the appropriate windowManager setting
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;

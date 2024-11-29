@@ -4,50 +4,49 @@
   imports = [
     ./hardware-configuration.nix
     ./modules
-    ./hosts/desktop.nix # Change to correct host
-    inputs.home-manager.nixosModules.default
+    ./hosts/laptop.nix # Change to correct host
+    inputs.home-manager.nixosModules.home-manager
   ];
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users.aramjonghu = import ./home/home.nix;
+    backupFileExtension = "backup";
+  };
 
   environment.systemPackages = with pkgs; [
-  # Build tools
-      gcc
-      cmake
-      meson
-      ninja
-      pkg-config
-      scdoc
-      git
-      nix-prefetch-git
-      curl
-      wget
-      python3
-      rustup
-      jdk
-      jdk8
-      gnumake
+    # Build tools
+    gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git curl wget python3 rustup jdk jdk8 gnumake
 
-      # Debugging and monitoring
-      htop
-      ncdu
-      eza
-      killall
-      fastfetch
+    # Debugging and monitoring
+    htop ncdu eza killall fastfetch
 
-      # Misc
-      openssl
-      cacert #(ca certs for...)
-      openssh
-      firewalld
-      pkg-config
+    # Misc
+    openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg libavif
   ];
 
+  programs.hyprland.enable = true;
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
+  # Use of file system and video sharing
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde ];
 
-  nixpkgs.config.allowUnsupportedSystem = true;
-  nixpkgs.config.allowBroken = true;
-  nixpkgs.config.allowUnfree = true;
+  security.polkit.enable = true;
+
+  services = {
+    udisks2.enable = true;
+    fwupd.enable = true;
+    tailscale.enable = true;
+    xserver.enable = true;
+    displayManager.sddm.enable = true;
+  };
+
+  nixpkgs = {
+    config.allowBroken = true;
+    config.allowUnfree = true;
+    config.allowUnsupportedSystem = true;
+  };
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader
@@ -63,23 +62,14 @@
     description = "Aram";
     extraGroups = [ "networkmanager" "wheel" ];
   };
+
   # Env variables
   environment.variables = {
-      NIXPKGS_ALLOW_UNFREE = "1";
-      SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
-        };
+    SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
+  };
 
   # Hostname (Change if needed)
   networking.hostName = "nixos";
 
-  # Virtualization
-  virtualisation.docker.enable = true;
-
-  # Set Docker's storage driver to Btrfs (if using Btrfs filesystem)
-  #virtualisation.docker.storageDriver = "btrfs";
-
-  # Optionally, enable rootless Docker (for better security)
-  #virtualisation.docker.rootless.enable = true;
-
-  system.stateVersion = "unstable";
+  system.stateVersion = "24.05";
 }

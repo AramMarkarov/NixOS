@@ -1,10 +1,10 @@
 {
   imports = [
     ./hyprland
-    ./hyprpanel
-    ./hyprpaper
+    ./waybar
+    ./swww
     ./wofi
     ./alacritty
-    ./osu
+    #./osu
   ];
   }

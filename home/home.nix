@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{config, pkgs, ... }:
 
 {
 
@@ -6,12 +6,25 @@
       ./programs
     ];
 
-  home = {
-      username = "aramjonghu";
-      homeDirectory = "/home/aramjonghu";
-    };
+  programs.home-manager.enable = true;
+  wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland.systemd.variables = ["--all"];
+  home.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  programs.home-manager.enable = false;
+  nixpkgs.config.allowBroken = true;
+  nixpkgs.config.allowUnfree = true;
+
+  home = {
+        username = "aramjonghu";
+        homeDirectory = "/home/aramjonghu";
+        stateVersion = "24.05";
+      };
+
+  programs.git = {
+      enable = true;
+      userName  = "arammarkarov";
+      userEmail = "a.markarov@outlook.com";
+    };
 
   # User-specific development tools
   home.packages = with pkgs; [
@@ -20,9 +33,9 @@
     dxvk
     protonup
     gamescope
-    minecraft
-    steam
-    lutris
+    #minecraft
+    #steam
+    #lutris
 
     # Networking and communication
     wget
@@ -55,7 +68,7 @@
     spotify
     mendeley
     libreoffice
-
+    
     # IDE's & txteditors
     jetbrains.datagrip
     jetbrains.idea-ultimate
@@ -73,19 +86,22 @@
 
     # Desktop Environment requirements (hyprland)
     wofi
-    hyprpaper
+    swww
     hyprshot
     kdePackages.dolphin
     hyprlock
     kdePackages.systemsettings # Remove if virtual keyboard is fixed (fcitx)
-    hyprpanel
+    waybar
 
     # DE requirements
     libnotify
+    dunst
     upower
     kdePackages.dolphin-plugins
     kdePackages.qtwayland
     kdePackages.qtsvg
+    kdePackages.kio
+    kdePackages.kio-admin
     kdePackages.kio-fuse
     kdePackages.kio-extras
     libgtkflow4
@@ -94,10 +110,9 @@
     bluez
     libgtop
     networkmanager
-    gnomeExtensions.aylurs-widgets
-    gnomeExtensions.bluetooth-battery
+    wlroots
+    kitty
+    playerctl
+    kdePackages.plasma-workspace
     ];
-
-  # Home Manager state version
-  home.stateVersion = "unstable";
 }

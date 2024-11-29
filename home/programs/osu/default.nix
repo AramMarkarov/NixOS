@@ -16,7 +16,7 @@
       [Desktop Entry]
       Name=osu!
       Comment=Play osu!
-      Exec=nix-shell -p steam-run --run "${config.home.homeDirectory}/.config/osu-winello/osu-wine"
+      Exec=steam-run"${config.home.homeDirectory}/.config/osu-winello/osu-wine"
       Icon=${config.home.homeDirectory}/.config/osu-winello/stuff/osu-wine.png
       Terminal=false
       Type=Application

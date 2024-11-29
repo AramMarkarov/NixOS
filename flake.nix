@@ -1,44 +1,21 @@
 {
-  description = "Nixos config flake with Home-Manager, Hyprland, and HyprPanel";
-
   inputs = {
-    nixpkgs.url = "github:Nixos/nixpkgs/nixos-unstable";  # Nixpkgs version
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     home-manager = {
-        url = "github:nix-community/home-manager";
-        inputs.nixpkgs.follows = "nixpkgs";
-        };
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";  # HyprPanel input (without `/nix`)
-    hyprland.url = "github:hyprwm/Hyprland";  # Hyprland input
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ {self, nixpkgs, home-manager, hyprpanel, hyprland, ... }:
-
-  let
-    system = "x86_64-linux";  # Define the system architecture
-    pkgs = import nixpkgs {
-      inherit system;
-    };
+  outputs = inputs @ { home-manager, nixpkgs, ... }: let
+    system = "x86_64-linux";
+    pkgs = import nixpkgs { inherit system; };
   in {
-    # Home Manager configuration for user-specific setup
-    homeConfigurations."aramjonghu@nixos" = home-manager.lib.homeManagerConfiguration {
-        pkgs =  nixpkgs.legacyPackages.x86_64-linux
-                import nixpkgs {
-                inherit system;
-                overlays = [
-                    inputs.hyprpanel.overlay
-                    ];
-                };
-        extraSpecialArgs = { inherit system inputs; };
-      modules = [
-        ./home/home.nix  # Include the home.nix file for user-specific configurations
-                  {
-                  wayland.windowManager.hyprland = {
-                    enable = true;
-                    # set the flake package
-                    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-                        };
-                    }
-                ];
-            };
-      };
+    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs system; };
+        modules = [
+        ./configuration.nix
+      ];
+    };
+  };
 }
