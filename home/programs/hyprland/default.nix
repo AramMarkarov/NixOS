@@ -11,15 +11,13 @@ let
             kb_rules =
             sensitivity = 0
             accel_profile = flat
-            follow_mouse =
-        }
 
     touchpad {
             natural_scroll = true
             disable_while_typing = true
             middle_button_emulation = true
     }
-
+    }
         general {
             gaps_in = 8
             gaps_out = 15
@@ -122,7 +120,7 @@ let
         bind = , PRINT, exec, hyprshot -m region
 
         # Monitor setup (adjust as needed)
-        monitor = , preffered, auto, 1
+        monitor = , preffered, auto, 1.25
 
         # Exec-once for startup programs
         exec-once = arrpc
