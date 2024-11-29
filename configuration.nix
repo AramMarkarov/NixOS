@@ -4,7 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules
-    ./hosts/desktop.nix # Change to correct host
+    ./hosts/laptop.nix # Change to correct host
     inputs.home-manager.nixosModules.home-manager
   ];
 

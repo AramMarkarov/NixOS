@@ -116,8 +116,7 @@ let
         bind = , PRINT, exec, hyprshot -m region
 
         # Monitor setup (adjust as needed)
-        monitor = DP-2, 3840x2160@60, 0x0, 1, bitdepth, 10
-        monitor = DP-1, 2560x1440@165, 3840x0, 1, bitdepth, 10
+        monitor = DP-1, 2560x1600@60, 1, bitdepth, 10
 
         # Exec-once for startup programs
         exec-once = arrpc

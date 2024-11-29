@@ -5,6 +5,6 @@
     ./swww
     ./wofi
     ./alacritty
-    ./osu
+    #./osu
   ];
   }
