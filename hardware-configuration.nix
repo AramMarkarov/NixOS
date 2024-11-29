@@ -26,10 +26,6 @@
 
   swapDevices =
     [
-    {
-        file = "/swap";
-        priority = 10;
-    }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
