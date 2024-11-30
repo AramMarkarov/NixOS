@@ -17,7 +17,7 @@
   home = {
         username = "aramjonghu";
         homeDirectory = "/home/aramjonghu";
-        stateVersion = "24.05";
+        stateVersion = "25.05";
       };
 
   programs.git = {
