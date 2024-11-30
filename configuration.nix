@@ -71,5 +71,5 @@
   # Hostname (Change if needed)
   networking.hostName = "nixos";
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "unstable";
 }
