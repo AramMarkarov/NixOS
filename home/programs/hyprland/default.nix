@@ -24,16 +24,16 @@ let
             border_size = 5
             col.active_border = 0xfff5c2e7
             col.inactive_border = 0xff45475a
-            apply_sens_to_raw = 0
         }
 
         decoration {
-            drop_shadow = true
-            shadow_range = 100
-            shadow_render_power = 5
-            col.shadow = 0x33000000
-            col.shadow_inactive = 0x22000000
-            rounding = 15
+            shadow {
+                enabled = true
+                range = 100
+                render_power = 5
+                color = 0x33000000
+                color_inactive = 0x22000000
+            }
         }
 
         animations {
