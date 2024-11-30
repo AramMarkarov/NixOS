@@ -11,6 +11,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users.aramjonghu = import ./home/home.nix;
+    useGlobalPkgs = true;
     backupFileExtension = "backup";
   };
 

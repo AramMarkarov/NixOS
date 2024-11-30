@@ -11,3 +11,4 @@ Things that need fixing:
 * Mullvad browser extensions autoadd using nix
   * Mullvad browser login redirect not functioning, using firefox/brave instead.
 * Cursor is not set correctly
+* Alacritty config is depreciated, find solution
