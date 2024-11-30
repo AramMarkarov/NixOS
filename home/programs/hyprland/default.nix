@@ -120,7 +120,7 @@ let
         bind = , PRINT, exec, hyprshot -m region
 
         # Monitor setup (adjust as needed)
-        monitor = , preffered, auto, 1.25
+        monitor = , preffered, auto, 1
 
         # Exec-once for startup programs
         exec-once = arrpc
