@@ -131,8 +131,21 @@ let
         exec-once = fcitx5
         exec-once = hyprpanel
         exec-once = wl-clip-persist --clipboard both
-        env = XDG_MENU_PREFIX,plasma-
+        exec-once = xwaylandvideobridge
 
+        # Environment variables
+        env = XDG_MENU_PREFIX,plasma-
+        env = HYPRCURSOR_THEME,rose-pine-hyprcursor
+        env = HYPRCURSOR_SIZE,24
+        env = XCURSOR.THEME,rose-pine-hyprcursor
+        env = XCURSOR.SIZE,24
+
+        windowrulev2 = opacity 0.0 override, class:^(xwaylandvideobridge)$
+        windowrulev2 = noanim, class:^(xwaylandvideobridge)$
+        windowrulev2 = noinitialfocus, class:^(xwaylandvideobridge)$
+        windowrulev2 = maxsize 1 1, class:^(xwaylandvideobridge)$
+        windowrulev2 = noblur, class:^(xwaylandvideobridge)$
+        windowrulev2 = nofocus, class:^(xwaylandvideobridge)$
   '';
 in
 {

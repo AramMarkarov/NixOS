@@ -24,9 +24,13 @@
 
     # Misc
     openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg libavif
+
+    # Cursor
+    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 
   programs.hyprland.enable = true;
+
 
   # Use of file system and video sharing
   xdg.portal.enable = true;

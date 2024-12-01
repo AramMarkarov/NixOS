@@ -96,6 +96,7 @@
 
     # DE requirements
     libnotify
+    xdg-desktop-portal-hyprland
     hyprcursor
     upower
     kdePackages.dolphin-plugins
@@ -105,6 +106,7 @@
     kdePackages.kio-admin
     kdePackages.kio-fuse
     kdePackages.kio-extras
+    kdePackages.xwaylandvideobridge
     libgtkflow4
     kdePackages.ark
     brightnessctl
