@@ -1,14 +1,13 @@
 { config, lib, pkgs, ... }:
 {
-  hardware.opengl = {
+
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   services.xserver.videoDrivers = ["amdgpu"]; # Change for Nvidia/Intel
 
-  sound.enable = true;
   services.pipewire.extraConfig.pipewire."92-low-latency" = {
     "context.properties" = {
       "default.clock.rate" = 96000;
