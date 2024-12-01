@@ -19,6 +19,7 @@
 
         #workspaces{
             background-color: transparent;
+            border-radius: 15px;
             margin-top: 10px;
             margin-bottom: 10px;
             margin-right: 10px;
@@ -61,25 +62,16 @@
         	}
         }
 
-
+        #window,
+        #bluetooth,
         #clock,
         #battery,
         #cpu,
         #memory,
-        #disk,
         #temperature,
-        #backlight,
         #network,
-        #pulseaudio,
-        #custom-media,
-        #tray,
-        #mode,
-        #idle_inhibitor,
-        #custom-expand,
-        #custom-cycle_wall,
-        #custom-ss,
-        #custom-dynamic_pill,
-        #mpd {
+        #wireplumber,
+        #custom-media {
             padding: 0 10px;
             border-radius: 15px;
             background-color: #cdd6f4;
@@ -88,60 +80,6 @@
             margin-top: 10px;
             margin-bottom: 10px;
             margin-right: 10px;
-        }
-
-        #custom-dynamic_pill.low{
-            background: rgb(148,226,213);
-            background: linear-gradient(52deg, rgba(148,226,213,1) 0%, rgba(137,220,235,1) 19%, rgba(116,199,236,1) 43%, rgba(137,180,250,1) 56%, rgba(180,190,254,1) 80%, rgba(186,187,241,1) 100%);
-            background-size: 300% 300%;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
-            animation: gradient 15s ease infinite;
-            font-weight: bolder;
-            color: #fff;
-        }
-        #custom-dynamic_pill.normal{
-            background: rgb(166,209,137);
-            background: linear-gradient(52deg, rgba(166,209,137,1) 0%, rgba(166,227,161,1) 26%, rgba(148,226,213,1) 65%, rgba(129,200,190,1) 100%);
-            background-size: 300% 300%;
-            animation: gradient 15s ease infinite;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
-            font-weight: bolder;
-            color: #fff;
-        }
-        #custom-dynamic_pill.critical{
-            background: rgb(235,160,172);
-            background: linear-gradient(52deg, rgba(235,160,172,1) 0%, rgba(243,139,168,1) 30%, rgba(231,130,132,1) 48%, rgba(250,179,135,1) 77%, rgba(249,226,175,1) 100%);
-            background-size: 300% 300%;
-            animation: gradient 15s ease infinite;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
-            font-weight: bolder;
-            color: #fff;
-        }
-
-
-        #custom-dynamic_pill.playing{
-            background: rgb(249,226,175);
-            background: linear-gradient(45deg, rgba(249,226,175,1) 0%, rgba(245,194,231,1) 20%, rgba(180,190,254,1) 100%);
-            background-size: 300% 300%;
-            animation: gradient 15s ease infinite;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
-            font-weight: 900;
-            color: #fff ;
-        }
-        #custom-dynamic_pill.paused{
-            background: #fff ;
-            font-weight: bolder;
-            color: #b4befe;
-        }
-
-        #custom-ss{
-            background: #fff;
-            color: rgba(203,166,247,1);
-            font-weight:  bolder;
-            padding: 5px;
-            padding-left: 20px;
-            padding-right: 20px;
-            border-radius: 15px;
         }
 
         #custom-cycle_wall{
@@ -154,7 +92,6 @@
             padding: 5px;
             border-radius: 15px;
         }
-
 
         #clock {
             background: rgb(245,194,231);
@@ -254,13 +191,13 @@
             background-color:#f9e2af ;
         }
 
-        #pulseaudio {
+        #wireplumber {
             background-color:  	#fab387;
             color: #bf7d54;
             font-weight: bolder;
         }
 
-        #pulseaudio.muted {
+        #wireplumber.muted {
             background-color: #90b1b1;
         }
 
@@ -349,5 +286,104 @@
             background: rgba(0, 0, 0, 0.2);
         }
         '';
-       };
+
+        settings =[{
+            "layer"= "bottom";
+            "position"= "top";
+            "height"= 50;
+            "spacing"= 5;
+            "margin-bottom"=-11;
+            "modules-left" = ["hyprland/workspaces"];
+            "modules-right" = ["network" "temperature" "wireplumber" "bluetooth" "memory" "clock"];
+            "modules-center" = ["hyprland/window"];
+
+            "hyprland/window" = {
+                "separate-outputs"= true;
+
+            };
+
+            "custom/cycle_wall" = {
+                "format" = "{}";
+                "exec" = "~/.config/hypr/scripts/tools/expand wall";
+                "on-click" = "~/.config/hypr/scripts/tools/expand cycle";
+            };
+            "custom/expand" = {
+                "on-click" = "~/.config/hypr/scripts/expand_toolbar";
+                "format" = "{}";
+                "exec" = "~/.config/hypr/scripts/tools/expand arrow-icon";
+            };
+
+            "bluetooth" = {
+            	"format" = " {status}";
+            	"format-connected" = " {device_alias}";
+            	"format-connected-battery" = " {device_alias} {device_battery_percentage}%";
+            	"format-device-preference"= [ "device1" "device2" ];
+            	"tooltip-format"= "{controller_alias}\t{controller_address}\n\n{num_connections} connected";
+            	"tooltip-format-connected"= "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+            	"tooltip-format-enumerate-connected"= "{device_alias}\t{device_address}";
+            	"tooltip-format-enumerate-connected-battery"= "{device_alias}\t{device_address}\t{device_battery_percentage}%";
+            };
+
+            "hyprland/workspaces" = {
+                "format" = "{icon}";
+                "format-active" = " {icon} ";
+                "on-click" = "activate";
+            };
+
+            "clock"= {
+                "tooltip-format"= "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+                "interval"= 60;
+                "format"= "{:%I:%M}";
+                "max-length"= 25;
+            };
+            "cpu"= {
+                "interval"=1;
+                "format"="{icon0} {icon1} {icon2} {icon3}";
+                "format-icons"= ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
+            };
+            "memory"= {
+                "format"= "{}% ";
+            };
+            "temperature"= {
+                "critical-threshold"= 80;
+                "format-critical"= "{temperatureC}°C";
+                "format"= "{temperatureC}°C ";
+            };
+            "backlight"= {
+                "format"= "{percent}% {icon}";
+                "format-icons"= ["" "" "" "" "" "" "" "" ""];
+            };
+
+            "network" = {
+                "interface" = "wlp2s0";
+                "format" = "{ifname}";
+                "format-wifi" = "{essid} ({signalStrength}%) ";
+                "format-ethernet" = "{ipaddr}/{cidr} 󰊗";
+                "format-disconnected" = "";
+                "tooltip-format" = "{ifname} via {gwaddr} 󰊗";
+                "tooltip-format-wifi" = "{essid} ({signalStrength}%) ";
+                "tooltip-format-ethernet" = "{ifname} ";
+                "tooltip-format-disconnected" = "Disconnected";
+                "max-length" = 50;
+            };
+
+            "wireplumber" = {
+                "format" = "{volume}% {icon}";
+                "format-muted" = "";
+                "on-click" = "helvum";
+                "format-icons" = ["" "" ""];
+            };
+            "custom/media"= {
+                "format"= "{icon} {}";
+                "return-type"= "json";
+                "max-length"= 40;
+                "format-icons"= {
+                    "spotify"= "";
+                    "default"= "🎜";
+                };
+                "escape"= true;
+                "exec"= "$HOME/.config/waybar/mediaplayer.py 2> /dev/null";
+            };
+       }];
+ };
 }

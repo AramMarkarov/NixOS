@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 {
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-
+    enable32Bit = true;
   };
 
   services.xserver.videoDrivers = ["amdgpu"]; # Change for Nvidia/Intel

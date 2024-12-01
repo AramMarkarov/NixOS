@@ -33,6 +33,7 @@
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde ];
 
   security.polkit.enable = true;
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   services = {
     udisks2.enable = true;

@@ -23,6 +23,7 @@ let
         }
 
         decoration {
+            rounding = 15
             shadow {
                 enabled = true
                 range = 100
