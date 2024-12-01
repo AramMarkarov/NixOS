@@ -91,12 +91,12 @@
     kdePackages.dolphin
     hyprlock
     kdePackages.systemsettings # Remove if virtual keyboard is fixed (fcitx)
-    waybar
+    hyprpanel
+    ags
 
     # DE requirements
     libnotify
     hyprcursor
-    dunst
     upower
     kdePackages.dolphin-plugins
     kdePackages.qtwayland
@@ -110,6 +110,8 @@
     brightnessctl
     bluez
     libgtop
+    dart-sass
+    gnome-bluetooth
     networkmanager
     wlroots
     kitty

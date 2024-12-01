@@ -11,5 +11,6 @@
     mplus-outline-fonts.githubRelease
     dina-font
     proggyfonts
+    jetbrains-mono
   ];
 }

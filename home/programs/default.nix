@@ -1,7 +1,7 @@
 {
   imports = [
     ./hyprland
-    ./waybar
+    #./hyprpanel
     ./swww
     ./wofi
     ./alacritty

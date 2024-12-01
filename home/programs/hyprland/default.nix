@@ -123,14 +123,13 @@ let
         # Exec-once for startup programs
         exec-once = arrpc
         exec-once = teams-for-linux
-        exec-once = vesktop
+        exec-once = discord-canary
         exec-once = spotify
         exec-once = steam
         exec-once = $HOME/.config/hypr/autostart
         exec-once = swww-daemon
         exec-once = fcitx5
-        exec-once = waybar
-        exec-once = dunst
+        exec-once = hyprpanel
         exec-once = wl-clip-persist --clipboard both
         env = XDG_MENU_PREFIX,plasma-
 
