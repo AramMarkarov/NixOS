@@ -54,7 +54,7 @@
     pwvucontrol
 
     # Common applications
-    discord
+    discord-canary
     vesktop
     mullvad-browser
     brave
@@ -95,6 +95,7 @@
 
     # DE requirements
     libnotify
+    hyprcursor
     dunst
     upower
     kdePackages.dolphin-plugins
@@ -114,5 +115,7 @@
     kitty
     playerctl
     kdePackages.plasma-workspace
+    wl-clipboard
+    wl-clip-persist
     ];
 }

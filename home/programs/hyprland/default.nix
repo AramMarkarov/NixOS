@@ -131,6 +131,7 @@ let
         exec-once = fcitx5
         exec-once = waybar
         exec-once = dunst
+        exec-once = wl-clip-persist --clipboard both
         env = XDG_MENU_PREFIX,plasma-
 
   '';
