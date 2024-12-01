@@ -123,7 +123,7 @@ let
         # Exec-once for startup programs
         exec-once = arrpc
         exec-once = teams-for-linux
-        exec-once = discord-canary
+        exec-once = discordcanary
         exec-once = spotify
         exec-once = steam
         exec-once = $HOME/.config/hypr/autostart
