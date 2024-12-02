@@ -137,8 +137,8 @@ let
         env = XDG_MENU_PREFIX,plasma-
         env = HYPRCURSOR_THEME,rose-pine-hyprcursor
         env = HYPRCURSOR_SIZE,24
-        env = XCURSOR.THEME,rose-pine-hyprcursor
-        env = XCURSOR.SIZE,24
+        env = XCURSOR_THEME,BreezeX-RosePine-Linux
+        env = XCURSOR_SIZE,24
 
         windowrulev2 = opacity 0.0 override, class:^(xwaylandvideobridge)$
         windowrulev2 = noanim, class:^(xwaylandvideobridge)$

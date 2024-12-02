@@ -57,7 +57,6 @@
     discord-canary
     vesktop
     mullvad-browser
-    brave
     firefox
     teams-for-linux
     thunderbird
@@ -90,6 +89,7 @@
     hyprshot
     kdePackages.dolphin
     hyprlock
+    hyprpicker
     kdePackages.systemsettings # Remove if virtual keyboard is fixed (fcitx)
     hyprpanel
     ags
@@ -97,6 +97,9 @@
     # DE requirements
     libnotify
     xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gtk
+    kdePackages.xdg-desktop-portal-kde
+    xdg-desktop-portal
     hyprcursor
     upower
     kdePackages.dolphin-plugins

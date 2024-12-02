@@ -31,6 +31,8 @@
 
   programs.hyprland.enable = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Use of file system and video sharing
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde ];
