@@ -91,12 +91,20 @@
     kdePackages.dolphin
     hyprlock
     kdePackages.systemsettings # Remove if virtual keyboard is fixed (fcitx)
-    waybar
+    hyprpanel
+    ags
 
     # DE requirements
     libnotify
-    dunst
+    hyprcursor
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+    kdePackages.xdg-desktop-portal-kde
     upower
+    power-profiles-daemon
+    hypridle
+    matugen
     kdePackages.dolphin-plugins
     kdePackages.qtwayland
     kdePackages.qtsvg
@@ -104,6 +112,7 @@
     kdePackages.kio-admin
     kdePackages.kio-fuse
     kdePackages.kio-extras
+    kdePackages.xwaylandvideobridge
     libgtkflow4
     kdePackages.ark
     brightnessctl
@@ -114,5 +123,7 @@
     kitty
     playerctl
     kdePackages.plasma-workspace
+    wl-clipboard
+    wl-clip-persist
     ];
 }

@@ -11,5 +11,9 @@
     mplus-outline-fonts.githubRelease
     dina-font
     proggyfonts
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.hack
   ];
 }

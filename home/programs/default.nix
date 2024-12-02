@@ -1,10 +1,8 @@
 {
   imports = [
     ./hyprland
-    ./waybar
-    ./swww
+    #./hyprpanel
     ./wofi
     ./alacritty
-    #./osu
   ];
   }

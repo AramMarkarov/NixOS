@@ -24,9 +24,17 @@
 
     # Misc
     openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg libavif
+
+    # Cursor
+    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+
+    # Audio
+    alsa-utils pipewire wireplumber
   ];
 
   programs.hyprland.enable = true;
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Use of file system and video sharing
   xdg.portal.enable = true;
@@ -40,6 +48,8 @@
     tailscale.enable = true;
     xserver.enable = true;
     displayManager.sddm.enable = true;
+    power-profiles-daemon.enable = true;
+    hypridle.enable = true;
   };
 
   nixpkgs = {

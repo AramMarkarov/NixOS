@@ -131,10 +131,23 @@ let
         exec-once = $HOME/.config/hypr/autostart
         exec-once = swww-daemon
         exec-once = fcitx5
-        exec-once = waybar
-        exec-once = dunst
-        env = XDG_MENU_PREFIX,plasma-
+        exec-once = hyprpanel
+        exec-once = wl-clip-persist --clipboard both
+        exec-once = xwaylandvideobridge
 
+        # Environment variable
+        env = XDG_MENU_PREFIX,plasma-
+        env = HYPRCURSOR_THEME,rose-pine-hyprcursor
+        env = HYPRCURSOR_SIZE,24
+        env = XCURSOR_THEME,rose-pine-hyprcursor
+        env = XCURSOR_SIZE,24
+
+        windowrulev2 = opacity 0.0 override, class:^(xwaylandvideobridge)$
+        windowrulev2 = noanim, class:^(xwaylandvideobridge)$
+        windowrulev2 = noinitialfocus, class:^(xwaylandvideobridge)$
+        windowrulev2 = maxsize 1 1, class:^(xwaylandvideobridge)$
+        windowrulev2 = noblur, class:^(xwaylandvideobridge)$
+        windowrulev2 = nofocus, class:^(xwaylandvideobridge)$
   '';
 in
 {
