@@ -39,15 +39,9 @@
 
   security.polkit.enable = true;
   systemd.services.lactd.wantedBy = ["multi-user.target"];
-
-  services = {
-    udisks2.enable = true;
-    fwupd.enable = true;
-    tailscale.enable = true;
-    xserver.enable = true;
-    displayManager.sddm.enable = true;
-  };
-
+  programs.appimage.binfmt = true;
+  programs.appimage.enable = true;
+  
   nixpkgs = {
     config.allowBroken = true;
     config.allowUnfree = true;

@@ -6,6 +6,15 @@
   services.blueman.enable = true;
   hardware.bluetooth.enable = true;
 
+  services = {
+    upower.enable = true;
+    udisks2.enable = true;
+    fwupd.enable = true;
+    tailscale.enable = true;
+    xserver.enable = true;
+    displayManager.sddm.enable = true;
+  };
+
   # Garbage collection
   nix.gc = {
     automatic = true;

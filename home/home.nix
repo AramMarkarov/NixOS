@@ -90,7 +90,6 @@
     kdePackages.dolphin
     hyprlock
     hyprpicker
-    kdePackages.systemsettings # Remove if virtual keyboard is fixed (fcitx)
     hyprpanel
     ags
 
@@ -101,7 +100,6 @@
     kdePackages.xdg-desktop-portal-kde
     xdg-desktop-portal
     hyprcursor
-    upower
     kdePackages.dolphin-plugins
     kdePackages.qtwayland
     kdePackages.qtsvg
