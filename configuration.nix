@@ -23,7 +23,7 @@
     htop ncdu eza killall fastfetch
 
     # Misc
-    openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg libavif
+    zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg libavif
 
     # Cursor
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default

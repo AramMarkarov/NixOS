@@ -4,6 +4,6 @@
     #./hyprpanel
     ./wofi
     ./alacritty
-    ./osu
+    #./osu
   ];
   }
