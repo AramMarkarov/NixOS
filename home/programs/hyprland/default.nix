@@ -27,6 +27,7 @@ let
         }
 
         decoration {
+            rounding = 15
             shadow {
                 enabled = true
                 range = 100
@@ -133,7 +134,6 @@ let
         exec-once = fcitx5
         exec-once = hyprpanel
         exec-once = wl-clip-persist --clipboard both
-        exec-once = xwaylandvideobridge
 
         # Environment variable
         env = XDG_MENU_PREFIX,plasma-

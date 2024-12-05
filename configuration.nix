@@ -23,7 +23,7 @@
     htop ncdu eza killall fastfetch
 
     # Misc
-    openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg libavif
+    zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg libavif
 
     # Cursor
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
@@ -37,20 +37,23 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Use of file system and video sharing
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde ];
+  xdg.portal ={
+    enable = true;
+    extraPortals = with pkgs; [
+        xdg-desktop-portal
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-kde
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-hyprland
+    ];
+    wlr.enable = true;
+  };
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   security.polkit.enable = true;
-
-  services = {
-    udisks2.enable = true;
-    fwupd.enable = true;
-    tailscale.enable = true;
-    xserver.enable = true;
-    displayManager.sddm.enable = true;
-    power-profiles-daemon.enable = true;
-    hypridle.enable = true;
-  };
+  programs.appimage.binfmt = true;
+  programs.appimage.enable = true;
 
   nixpkgs = {
     config.allowBroken = true;

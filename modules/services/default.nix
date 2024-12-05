@@ -13,6 +13,14 @@
     options = "--delete-older-than 7d";
   };
 
+  services = {
+    upower.enable = true;
+    udisks2.enable = true;
+    fwupd.enable = true;
+    tailscale.enable = true;
+    xserver.enable = true;
+    displayManager.sddm.enable = true;
+  };
   # Network
   networking.networkmanager.enable = true;
   systemd.services.resolved = {
