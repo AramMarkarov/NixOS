@@ -34,9 +34,10 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Use of file system and video sharing
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde ];
-
+  xdg.portal ={
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gnome ];
+    };
   security.polkit.enable = true;
   systemd.services.lactd.wantedBy = ["multi-user.target"];
   programs.appimage.binfmt = true;

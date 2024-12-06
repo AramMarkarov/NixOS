@@ -9,10 +9,11 @@
 
   services.pipewire.extraConfig.pipewire."92-low-latency" = {
     "context.properties" = {
-      "default.clock.rate" = 384000; # Change depending on hardware
-      "default.clock.quantum" = 1024; # Increase by doubling if you encounter audio stutters
-      "default.clock.min-quantum" = 512;
-      "default.clock.max-quantum" = 512;
+      "default.clock.rate" = 48000; # Change depending on hardware
+      "default.clock.quantum" = 32; # Increase by doubling if you encounter audio stutters
+      "default.clock.min-quantum" = 32;
+      "default.clock.max-quantum" = 32;
     };
   };
+
 }

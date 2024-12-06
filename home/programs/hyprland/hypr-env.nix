@@ -4,7 +4,7 @@
   home = {
     sessionVariables = {
       EDITOR = "kate";
-      BROWSER = "mullvad-browser";
+      BROWSER = "firefox";
       TERMINAL = "alacritty";
       GBM_BACKEND = "amdgpu";
       __GLX_VENDOR_LIBRARY_NAME = "amdgpu";
@@ -26,9 +26,9 @@
         defaultApplications = {
           "video/*" = [ "vlc.desktop" ];
           "audio/*" = [ "vlc.desktop" ];
-          "image/*" = [ "mullvad-browser" ];
-          "text/html" = [ "mullvad-browser" ];
-          "application/pdf" = [ "mullvad-browser" ];
+          "image/*" = [ "firefox" ];
+          "text/html" = [ "firefox" ];
+          "application/pdf" = [ "firefox" ];
           "application/vnd.oasis.opendocument.text" = [ "libreoffice-writer.desktop" ]; # ODT
           "application/msword" = [ "libreoffice-writer.desktop" ]; # DOC
           "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "libreoffice-writer.desktop" ]; # DOCX

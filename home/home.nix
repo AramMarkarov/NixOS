@@ -95,10 +95,6 @@
 
     # DE requirements
     libnotify
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal-gtk
-    kdePackages.xdg-desktop-portal-kde
-    xdg-desktop-portal
     hyprcursor
     kdePackages.dolphin-plugins
     kdePackages.qtwayland
@@ -107,7 +103,11 @@
     kdePackages.kio-admin
     kdePackages.kio-fuse
     kdePackages.kio-extras
-    kdePackages.xwaylandvideobridge
+    kdePackages.xdg-desktop-portal-kde
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-gnome
     libgtkflow4
     kdePackages.ark
     brightnessctl
@@ -122,5 +122,6 @@
     kdePackages.plasma-workspace
     wl-clipboard
     wl-clip-persist
+    clipman
     ];
 }
