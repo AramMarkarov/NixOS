@@ -23,7 +23,10 @@
     htop ncdu eza killall fastfetch
 
     # Misc
-    zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg libavif
+    efibootmgr zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg
+
+    # Libraries
+    libavif
 
     # Cursor
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
@@ -52,8 +55,13 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev";
+    useOSProber = true;
+    efiSupport = true;
+    version = 2;
+  };
 
   # Time zone
   time.timeZone = "Europe/Amsterdam";

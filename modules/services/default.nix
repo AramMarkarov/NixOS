@@ -13,6 +13,7 @@
     tailscale.enable = true;
     xserver.enable = true;
     displayManager.sddm.enable = true;
+    flatpak.enable = true;
   };
 
   # Garbage collection
