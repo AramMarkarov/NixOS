@@ -56,13 +56,12 @@
 
   # Bootloader
   boot.loader = {
+    efi.canTouchEfiVariables = true;
     grub = {
-        efiInstallAsRemovable = true;
         enable = true;
         device = "nodev";
         useOSProber = true;
         efiSupport = true;
-        version = 2;
         };
     };
   # Time zone
