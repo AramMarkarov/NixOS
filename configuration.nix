@@ -55,14 +55,16 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader
-  boot.loader.grub = {
-    enable = true;
-    device = "nodev";
-    useOSProber = true;
-    efiSupport = true;
-    version = 2;
-  };
-
+  boot.loader = {
+    grub = {
+        efiInstallAsRemovable = true;
+        enable = true;
+        device = "nodev";
+        useOSProber = true;
+        efiSupport = true;
+        version = 2;
+        };
+    };
   # Time zone
   time.timeZone = "Europe/Amsterdam";
 
