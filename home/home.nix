@@ -33,9 +33,6 @@
     dxvk
     protonup
     gamescope
-    #minecraft
-    #steam
-    #lutris
 
     # Networking and communication
     wget
@@ -54,10 +51,8 @@
     pwvucontrol
 
     # Common applications
-    discord
+    discord-canary
     vesktop
-    mullvad-browser
-    brave
     firefox
     teams-for-linux
     thunderbird
@@ -95,6 +90,7 @@
 
     # DE requirements
     libnotify
+
     hyprcursor
     hypridle
     matugen
@@ -105,6 +101,12 @@
     kdePackages.kio-admin
     kdePackages.kio-fuse
     kdePackages.kio-extras
+    xdg-desktop-portal
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gnome
+    xdg-desktop-portal-gtk
+    kdePackages.xdg-desktop-portal-kde
     libgtkflow4
     kdePackages.ark
     brightnessctl
