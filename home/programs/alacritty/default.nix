@@ -39,6 +39,25 @@
             foreground = "#19b1d6";
         };
       };
+      font = {
+        size = 12.0;
+        bold = {
+            family = "0xProto Nerd Font Mono";
+            style = "Bold";
+        };
+        bold_italic = {
+            family = "0xProto Nerd Font Mono";
+            style = "Bold Italic";
+        };
+        italic = {
+            family = "0xProto Nerd Font Mono";
+            style = "Italic";
+        };
+        normal = {
+            family = "0xProto Nerd Font Mono";
+            style = "Regular";
+        };
+      };
     };
   };
 }
