@@ -1,0 +1,28 @@
+{ config, pkgs, ... }:
+
+{
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    shellAliases = {
+        ll = "ls -l";
+        update = "cd ~/NixOS && nix flake update && sudo nixos-rebuild switch --flake .#nixos && cd";
+    };
+    history = {
+        size = 10000;
+        path = "${config.xdg.dataHome}/zsh/history";
+    };
+    initExtra = ''
+        fastfetch
+
+        # (always bottom) zellij
+        if [ "$(ps -o comm= -p $(ps -o ppid= -p $$))" = "alacritty" ]; then
+            if command -v zellij &> /dev/null && [ -z "$ZELLIJ" ]; then
+                zellij attach default || zellij --session default
+            fi
+        fi
+        '';
+};
+}

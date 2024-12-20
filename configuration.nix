@@ -15,6 +15,8 @@
     backupFileExtension = "backup";
   };
 
+  environment.shells = with pkgs; [ zsh ];
+
   environment.systemPackages = with pkgs; [
     # Build tools
     gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git curl wget python3 rustup jdk jdk8 gnumake
@@ -23,28 +25,31 @@
     htop ncdu eza killall fastfetch
 
     # Misc
-    efibootmgr zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg
+    efibootmgr mutagen zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg
 
     # Libraries
-    libavif
+    libavif dotnet-sdk dotnet-runtime icu glibc glib fuse fuseiso
 
     # Cursor
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 
-  programs.hyprland.enable = true;
+  programs = {
+    hyprland.enable = true;
+    zsh.enable = true;
+    appimage.binfmt = true;
+    appimage.enable = true;
+  };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Use of file system and video sharing
   xdg.portal ={
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gnome ];
+    extraPortals = [ pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gnome ];
     };
   security.polkit.enable = true;
   systemd.services.lactd.wantedBy = ["multi-user.target"];
-  programs.appimage.binfmt = true;
-  programs.appimage.enable = true;
   
   nixpkgs = {
     config.allowBroken = true;
@@ -64,6 +69,7 @@
         efiSupport = true;
         };
     };
+
   # Time zone
   time.timeZone = "Europe/Amsterdam";
 
@@ -72,6 +78,7 @@
     isNormalUser = true;
     description = "Aram";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
   };
 
   # Env variables

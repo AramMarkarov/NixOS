@@ -1,14 +1,11 @@
 {config, pkgs, ... }:
 
 {
-
   imports = [
       ./programs
     ];
 
   programs.home-manager.enable = true;
-  wayland.windowManager.hyprland.enable = true;
-  wayland.windowManager.hyprland.systemd.variables = ["--all"];
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 
   nixpkgs.config.allowBroken = true;
@@ -54,9 +51,9 @@
     pwvucontrol
 
     # Common applications
+    tor-browser
     discord-canary
     vesktop
-    mullvad-browser
     firefox
     teams-for-linux
     thunderbird
@@ -64,6 +61,7 @@
     obs-studio
     vlc
     alacritty
+    zellij
     spotify
     mendeley
     libreoffice
@@ -71,6 +69,7 @@
     # IDE's & txteditors
     jetbrains.datagrip
     jetbrains.idea-ultimate
+    jetbrains.jdk
     vscode
     kate
     nano
@@ -92,6 +91,9 @@
     hyprpicker
     hyprpanel
     ags
+    libsForQt5.qt5ct
+    kdePackages.qt6ct
+    kdePackages.breeze
 
     # DE requirements
     libnotify
@@ -122,6 +124,6 @@
     kdePackages.plasma-workspace
     wl-clipboard
     wl-clip-persist
-    clipman
+    cliphist
     ];
 }
