@@ -3,8 +3,6 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      # Import external configuration (if any)
-      import = [];
       # Window settings
       window = {
         opacity = 0.9;

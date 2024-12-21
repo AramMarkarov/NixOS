@@ -117,13 +117,15 @@ let
         bindl = , XF86AudioPlay, exec, playerctl play-pause
         bindl = , XF86AudioPrev, exec, playerctl previous
         bindl = , XF86AudioNext, exec, playerctl next
+        bindl = , XF86MonBrightnessUp, exec, brightnessctl set +5%
+        bindl = , XF86MonBrightnessDown, exec, brightnessctl set 5%-
 
         # Screenshot and copy binds
         bind = , PRINT, exec, hyprshot -m region
         bind = SUPER, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy
 
         # Monitor setup (adjust as needed)
-        monitor = DP-1, 2560x1600@60, 0x0, 1, bitdepth, 10
+        monitor = eDP-1, 2560x1600@60, 0x0, 1.25
 
         # Exec-once for startup programs
         exec-once = arrpc
