@@ -16,5 +16,10 @@
     nerd-fonts.droid-sans-mono
     nerd-fonts.hack
     nerd-fonts._0xproto
+    nerd-fonts.symbols-only
+    nerd-fonts.fira-mono
+    nerd-fonts.zed-mono
+    nerd-fonts.tinos
+
   ];
 }

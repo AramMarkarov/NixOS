@@ -16,9 +16,10 @@ let
             natural_scroll = true
             disable_while_typing = true
             middle_button_emulation = true
+            }
     }
-    }
-        general {
+
+  general {
             gaps_in = 8
             gaps_out = 15
             border_size = 5
@@ -26,7 +27,7 @@ let
             col.inactive_border = 0xff45475a
         }
 
-        decoration {
+  decoration {
             rounding = 15
             shadow {
                 enabled = true
@@ -68,6 +69,7 @@ let
         bind = SUPER,S,togglefloating
         bind = SUPER,space,exec,wofi --show drun -o DP-3
         bind = SUPER,P,pseudo
+        bind = SUPER,O,exec,spotify
 
         bind = SUPER,L,exec,~/.config/hypr/scripts/lock
         bind = SUPER,left,movefocus,l
@@ -104,7 +106,6 @@ let
         bind = ALT,TAB,cyclenext
         bind = SUPER,F,fullscreen
         bind = SUPER,D,exec,wofi --show drun
-        bind = $shiftMod, PRINT, exec, hyprshot -m region
         bindel = , XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
         bindel = , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
         # Input options for function keys
@@ -117,30 +118,47 @@ let
         bindl = , XF86AudioPrev, exec, playerctl previous
         bindl = , XF86AudioNext, exec, playerctl next
 
-        # Screenshot bind
+        # Screenshot and copy binds
         bind = , PRINT, exec, hyprshot -m region
+        bind = SUPER, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy
 
         # Monitor setup (adjust as needed)
-        monitor = , preffered, auto, 1
+        monitor = DP-1, 2560x1600@60, 0x0, 1, bitdepth, 10
 
         # Exec-once for startup programs
         exec-once = arrpc
         exec-once = teams-for-linux
-        exec-once = vesktop
+        exec-once = discordcanary
         exec-once = spotify
         exec-once = steam
         exec-once = $HOME/.config/hypr/autostart
         exec-once = swww-daemon
         exec-once = fcitx5
         exec-once = hyprpanel
-        exec-once = wl-clip-persist --clipboard both
+        exec-once = wl-paste --type text --watch cliphist store
+        exec-once = wl-paste --type image --watch cliphist store
 
-        # Environment variable
+
+        # Environment variables
         env = XDG_MENU_PREFIX,plasma-
         env = HYPRCURSOR_THEME,rose-pine-hyprcursor
         env = HYPRCURSOR_SIZE,24
-        env = XCURSOR_THEME,rose-pine-hyprcursor
+        env = XCURSOR_THEME,BreezeX-RosePine-Linux
         env = XCURSOR_SIZE,24
+        env = ELECTRON_OZONE_PLATFORM_HINT,auto
+        env = QT_QPA_PLATFORMTHEME,qt5ct
+        env = QT_STYLE_OVERRIDE,breeze
+        env = QT_AUTO_SCREEN_SCALE_FACTOR,1
+        env = QT_QPA_PLATFORM,wayland;xcb
+        env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
+        env = XDG_SESSION_DESKTOP,Hyprland
+        env = XDG_SESSION_DESKTOP,Hyprland
+        env = XDG_SESSION_TYPE,wayland
+        env = CLUTTER_BACKEND,wayland
+        env = GDK_BACKEND,wayland,x11,*
+        env = QT_QPA_PLATFORM,wayland;xcb
+        env = SDL_VIDEODRIVER,wayland
+        env = HYPRSHOT_DIR,~/Pictures/Screenshots
 
         windowrulev2 = opacity 0.0 override, class:^(xwaylandvideobridge)$
         windowrulev2 = noanim, class:^(xwaylandvideobridge)$
@@ -148,12 +166,16 @@ let
         windowrulev2 = maxsize 1 1, class:^(xwaylandvideobridge)$
         windowrulev2 = noblur, class:^(xwaylandvideobridge)$
         windowrulev2 = nofocus, class:^(xwaylandvideobridge)$
+
   '';
 in
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    systemdIntegration = true;
+    package = pkgs.hyprland;
+    xwayland.enable = true;
+    systemd.enable = true;
+    systemd.variables = ["--all"];
     extraConfig = hyprlandConfig;
   };
 }

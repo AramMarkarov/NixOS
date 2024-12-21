@@ -1,14 +1,12 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Japanese input via mozc (currently enabled via kde settings => virtual keyboard = fcitx5)
   i18n.inputMethod = {
     enabled = "fcitx5";
     fcitx5.addons = with pkgs; [ fcitx5-mozc ];
     fcitx5.waylandFrontend = true;
   };
 
-  # Locales include JP for fcitx and add local locale
   i18n = {
     defaultLocale = "en_US.UTF-8";
     supportedLocales = [

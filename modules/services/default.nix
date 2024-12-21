@@ -15,14 +15,18 @@
 
   services = {
     upower.enable = true;
-    udisks2.enable = true;
     fwupd.enable = true;
     tailscale.enable = true;
-    xserver.enable = true;
+    printing.enable = true;
+    xserver = {
+        enable = true;
+        };
     displayManager.sddm.enable = true;
   };
   # Network
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.powersave = true;
+
   systemd.services.resolved = {
     environment = {
       DNSOverTLS = "yes";

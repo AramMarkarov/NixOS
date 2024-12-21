@@ -7,8 +7,6 @@
     ];
 
   programs.home-manager.enable = true;
-  wayland.windowManager.hyprland.enable = true;
-  wayland.windowManager.hyprland.systemd.variables = ["--all"];
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 
   nixpkgs.config.allowBroken = true;
@@ -38,6 +36,7 @@
     wget
     filezilla
     croc
+    networkmanagerapplet
 
     # Wine and Wine tools
     wine
@@ -51,6 +50,7 @@
     pwvucontrol
 
     # Common applications
+    tor-browser
     discord-canary
     vesktop
     firefox
@@ -63,10 +63,12 @@
     spotify
     mendeley
     libreoffice
+    zellij
     
     # IDE's & txteditors
     jetbrains.datagrip
     jetbrains.idea-ultimate
+    jetbrains.jdk
     vscode
     kate
     nano
@@ -75,7 +77,6 @@
     arduino-ide
 
     # Plugins & stuff
-    obs-studio-plugins.obs-pipewire-audio-capture
     arrpc
     nodejs_22
 
@@ -87,16 +88,19 @@
     hyprlock
     hyprpanel
     ags
+    udiskie
+    libsForQt5.qt5ct
+    kdePackages.qt6ct
+    kdePackages.breeze
 
     # DE requirements
+    btop
     libnotify
-
+    cameractrls
     hyprcursor
     hypridle
     matugen
     kdePackages.dolphin-plugins
-    kdePackages.qtwayland
-    kdePackages.qtsvg
     kdePackages.kio
     kdePackages.kio-admin
     kdePackages.kio-fuse
@@ -112,7 +116,6 @@
     brightnessctl
     bluez
     libgtop
-    networkmanager
     wlroots
     kitty
     playerctl
@@ -120,6 +123,6 @@
     wl-clipboard
     wl-clipboard-x11
     wl-clip-persist
-    clipman
+    cliphist
     ];
 }

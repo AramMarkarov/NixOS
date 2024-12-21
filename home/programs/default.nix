@@ -1,7 +1,7 @@
 {
   imports = [
     ./hyprland
-    #./hyprpanel
+    ./zsh
     ./wofi
     ./alacritty
   ];

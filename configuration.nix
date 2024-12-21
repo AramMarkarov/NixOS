@@ -15,6 +15,8 @@
     backupFileExtension = "backup";
   };
 
+  environment.shells = with pkgs; [ zsh ];
+
   environment.systemPackages = with pkgs; [
     # Build tools
     gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git curl wget python3 rustup jdk jdk8 gnumake
@@ -25,6 +27,9 @@
     # Misc
     efibootmgr mutagen zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg libavif
 
+    # Libraries
+    libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib fuse fuseiso
+
     # Cursor
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
 
@@ -33,7 +38,7 @@
   ];
 
   programs.hyprland.enable = true;
-
+  programs.zsh.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Use of file system and video sharing
@@ -82,6 +87,7 @@
     isNormalUser = true;
     description = "Aram";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
   };
 
   # Env variables
