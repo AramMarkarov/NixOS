@@ -71,9 +71,13 @@
 
     # Audio/video tools
     calf
+    cava
     easyeffects
     ffmpeg_7-full
     pwvucontrol
+
+    # Spotify tools
+    spicetify-cli
 
     # Common applications
     tor-browser

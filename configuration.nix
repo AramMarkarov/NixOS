@@ -19,7 +19,7 @@
 
   environment.systemPackages = with pkgs; [
     # Build tools
-    gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git curl wget python3 rustup jdk jdk8 gnumake
+    stdenvNoCC gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git curl wget python3 rustup jdk jdk8 gnumake
 
     # Debugging and monitoring
     htop ncdu eza killall fastfetch
@@ -35,10 +35,22 @@
 
     # Audio
     alsa-utils pipewire wireplumber
+
+    # SDDM
+    (callPackage ./modules/sddm/sddm-rose-pine.nix {})
   ];
 
-  programs.hyprland.enable = true;
-  programs.zsh.enable = true;
+  # SDDM Theme
+  services.xserver.displayManager.sddm.theme = "rose-pine";
+
+  programs = {
+      hyprland.enable = true;
+      hyprland.withUWSM  = true;
+      zsh.enable = true;
+      appimage.binfmt = true;
+      appimage.enable = true;
+    };
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Use of file system and video sharing
@@ -57,8 +69,6 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   security.polkit.enable = true;
-  programs.appimage.binfmt = true;
-  programs.appimage.enable = true;
 
   nixpkgs = {
     config.allowBroken = true;

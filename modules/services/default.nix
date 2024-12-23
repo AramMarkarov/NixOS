@@ -15,6 +15,7 @@
 
   services = {
     upower.enable = true;
+    udisks2.enable = true;
     fwupd.enable = true;
     tailscale.enable = true;
     printing.enable = true;
@@ -22,6 +23,7 @@
         enable = true;
         };
     displayManager.sddm.enable = true;
+    flatpak.enable = true;
   };
   # Network
   networking.networkmanager.enable = true;
