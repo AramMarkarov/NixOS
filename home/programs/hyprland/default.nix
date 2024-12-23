@@ -149,8 +149,6 @@ let
         env = XCURSOR_SIZE,24
         env = ELECTRON_OZONE_PLATFORM_HINT,auto
         env = QT_QPA_PLATFORMTHEME,qt5ct
-        env = QT_STYLE_OVERRIDE,breeze
-        env = QT_AUTO_SCREEN_SCALE_FACTOR,1
         env = QT_QPA_PLATFORM,wayland;xcb
         env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
         env = XDG_SESSION_DESKTOP,Hyprland
@@ -160,7 +158,7 @@ let
         env = GDK_BACKEND,wayland,x11,*
         env = QT_QPA_PLATFORM,wayland;xcb
         env = SDL_VIDEODRIVER,wayland
-        env = HYPRSHOT_DIR,~/Pictures/Screenshots
+        env = HYPRSHOT_DIR,Pictures/Screenshots
 
         windowrulev2 = opacity 0.0 override, class:^(xwaylandvideobridge)$
         windowrulev2 = noanim, class:^(xwaylandvideobridge)$
@@ -176,8 +174,6 @@ in
     enable = true;
     package = pkgs.hyprland;
     xwayland.enable = true;
-    systemd.enable = true;
-    systemd.variables = ["--all"];
     extraConfig = hyprlandConfig;
   };
 }
