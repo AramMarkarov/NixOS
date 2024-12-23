@@ -11,7 +11,7 @@
       defaultApplications = {
         "inode/directory" = [ "org.kde.dolphin.desktop" ];
         "application/pdf" = [ "firefox.desktop" ];
-        "text/plain" = [ "code.desktop" ];
+        "text/plain" = [ "idea-ultimate.desktop" ];
         "text/html" = [ "idea-ultimate.desktop" ];
         "image/jpeg" = [ "firefox.desktop" ];
         "image/png" = [ "firefox.desktop" ];
