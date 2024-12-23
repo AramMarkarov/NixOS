@@ -75,11 +75,11 @@
 
   # User
   users.users.aramjonghu = {
-    isNormalUser = true;
-    description = "Aram";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
-  };
+      isNormalUser = true;
+      description = "Aram";
+      extraGroups = [ "networkmanager" "wheel" ];
+      shell = pkgs.zsh;
+    };
 
   # Env variables
   environment.variables = {

@@ -6,7 +6,7 @@ let
             kb_layout = us
             kb_variant =
             kb_model =
-            kb_options =
+            kb_options = fkeys:basic_13-24
             kb_rules =
             sensitivity = 0
             accel_profile = flat
@@ -102,10 +102,6 @@ let
         bind = SUPER,D,exec,wofi --show drun
         bindel = , XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
         bindel = , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-        # Input options for function keys
-        input {
-            kb_options = fkeys:basic_13-24
-        }
 
         # Requires playerctl for media controls
         bindl = , XF86AudioPlay, exec, playerctl play-pause

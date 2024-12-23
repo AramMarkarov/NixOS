@@ -78,7 +78,6 @@
     arduino-ide
 
     # Plugins & stuff
-    obs-studio-plugins.obs-pipewire-audio-capture
     arrpc
     nodejs_22
 
