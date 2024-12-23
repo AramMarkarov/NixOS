@@ -19,7 +19,7 @@
 
   environment.systemPackages = with pkgs; [
     # Build tools
-    gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git curl wget python3 rustup jdk jdk8 gnumake
+    stdenvNoCC gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git curl wget python3 rustup jdk jdk8 gnumake
 
     # Debugging and monitoring
     htop ncdu eza killall fastfetch
@@ -32,10 +32,17 @@
 
     # Cursor
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+
+    # SDDM
+    (callPackage ./modules/sddm/sddm-rose-pine.nix {})
   ];
+
+  # SDDM Theme
+  services.xserver.displayManager.sddm.theme = "rose-pine";
 
   programs = {
     hyprland.enable = true;
+    hyprland.withUWSM  = true;
     zsh.enable = true;
     appimage.binfmt = true;
     appimage.enable = true;

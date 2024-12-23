@@ -17,8 +17,8 @@ let
             gaps_in = 8
             gaps_out = 15
             border_size = 5
-            col.active_border = 0xfff5c2e7
-            col.inactive_border = 0xff45475a
+            col.active_border = 0xffea9a97
+            col.inactive_border = 0xff908caa
         }
 
         decoration {
@@ -51,6 +51,22 @@ let
             workspace_swipe = yes
             workspace_swipe_fingers = 4
         }
+
+        $base	        = 0xff232136
+        $surface        = 0xff2a273f
+        $overlay        = 0xff393552
+        $muted          = 0xff6e6a86
+        $subtle         = 0xff908caa
+        $text           = 0xffe0def4
+        $love           = 0xffeb6f92
+        $gold           = 0xfff6c177
+        $rose           = 0xffea9a97
+        $pine           = 0xff3e8fb0
+        $foam           = 0xff9ccfd8
+        $iris           = 0xffc4a7e7
+        $highlightLow   = 0xff2a283e
+        $highlightMed   = 0xff44415a
+        $highlightHigh  = 0xff56526e
 
         # Keybinds
         bindm = SUPER,mouse:272,movewindow
@@ -163,10 +179,9 @@ in
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    systemd.enable = false;
     package = pkgs.hyprland;
     xwayland.enable = true;
-    systemd.enable = true;
-    systemd.variables = ["--all"];
     extraConfig = hyprlandConfig;
   };
 }

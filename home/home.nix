@@ -46,9 +46,14 @@
 
     # Audio/video tools
     calf
+    cava
     easyeffects
     ffmpeg_7-full
     pwvucontrol
+
+    # Spotify tools
+    spicetify-cli
+
 
     # Common applications
     tor-browser
@@ -90,11 +95,12 @@
     hyprpicker
     hyprpanel
     ags
+
+    # DE requirements
+    rose-pine-cursor
     libsForQt5.qt5ct
     kdePackages.qt6ct
     kdePackages.breeze
-
-    # DE requirements
     libnotify
     hyprcursor
     kdePackages.dolphin-plugins
