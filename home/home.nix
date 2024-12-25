@@ -38,6 +38,7 @@
     wget
     filezilla
     croc
+    networkmanagerapplet
 
     # Wine and Wine tools
     wine
@@ -51,9 +52,12 @@
     ffmpeg_7-full
     pwvucontrol
 
-    # Spotify tools
+    # Spotify tools/rosepine themes
+    vimPlugins.rose-pine
+    fcitx5-rose-pine
     spicetify-cli
-
+    rose-pine-cursor
+    rose-pine-icon-theme
 
     # Common applications
     tor-browser
@@ -63,6 +67,7 @@
     teams-for-linux
     thunderbird
     libsForQt5.kdenlive
+    kdePackages.systemsettings
     obs-studio
     vlc
     alacritty
@@ -78,7 +83,6 @@
     vscode
     kate
     nano
-    neovim
     processing
     arduino-ide
 
@@ -97,14 +101,21 @@
     ags
 
     # DE requirements
-    rose-pine-cursor
+    kdePackages.xwaylandvideobridge
     libsForQt5.qt5ct
+    nwg-look
     kdePackages.qt6ct
     kdePackages.breeze
     libnotify
     hyprcursor
+    hypridle
     kdePackages.dolphin-plugins
     kdePackages.qtwayland
+    libsForQt5.qt5.qtwayland
+    hyprutils
+    hyprsunset
+    hyprlang
+    hyprgraphics
     kdePackages.qtsvg
     kdePackages.kio
     kdePackages.kio-admin

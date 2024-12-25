@@ -4,6 +4,7 @@
     ./zsh
     ./wofi
     ./alacritty
+    ./neovim
   ];
 
   xdg.mimeApps = {

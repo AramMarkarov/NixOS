@@ -2,6 +2,23 @@
 
 let
   hyprlandConfig = ''
+    # Rose Pine Colors
+    $base	        = 0xff232136
+    $surface        = 0xff2a273f
+    $overlay        = 0xff393552
+    $muted          = 0xff6e6a86
+    $subtle         = 0xff908caa
+    $text           = 0xffe0def4
+    $love           = 0xffeb6f92
+    $gold           = 0xfff6c177
+    $rose           = 0xffea9a97
+    $pine           = 0xff3e8fb0
+    $foam           = 0xff9ccfd8
+    $iris           = 0xffc4a7e7
+    $highlightLow   = 0xff2a283e
+    $highlightMed   = 0xff44415a
+    $highlightHigh  = 0xff56526e
+
     input {
             kb_layout = us
             kb_variant =
@@ -13,60 +30,44 @@ let
             follow_mouse = 1
         }
 
-        general {
-            gaps_in = 8
-            gaps_out = 15
-            border_size = 5
-            col.active_border = 0xffea9a97
-            col.inactive_border = 0xff908caa
+    general {
+        gaps_in = 8
+        gaps_out = 15
+        border_size = 3
+        col.active_border = $rose $pine $love $iris 90deg
+        col.inactive_border = $muted
         }
 
-        decoration {
-            rounding = 15
-            shadow {
-                enabled = true
-                range = 100
-                render_power = 5
-                color = 0x33000000
-                color_inactive = 0x22000000
+    decoration {
+        rounding = 15
+        shadow {
+            enabled = true
+            range = 25
+            render_power = 5
+            color = $highlightHigh
+            color_inactive = $highlightLow
             }
         }
 
-        animations {
-            enabled = 1
-            bezier = overshot,0.13,0.99,0.29,1.1
-            animation = windows,1,4,overshot,slide
-            animation = border,1,10,default
-            animation = fade,1,10,default
-            animation = workspaces,1,6,overshot,slidevert
+    animations {
+        enabled = 1
+        bezier = overshot,0.13,0.99,0.29,1.1
+        animation = windows,1,4,overshot,slide
+        animation = border,1,10,default
+        animation = fade,1,10,default
+        animation = workspaces,1,6,overshot,slidevert
         }
 
-        dwindle {
-            pseudotile = 1
-            force_split = 0
-            preserve_split = true
+    dwindle {
+        pseudotile = 1
+        force_split = 0
+        preserve_split = true
         }
 
-        gestures {
-            workspace_swipe = yes
-            workspace_swipe_fingers = 4
+    gestures {
+        workspace_swipe = yes
+        workspace_swipe_fingers = 4
         }
-
-        $base	        = 0xff232136
-        $surface        = 0xff2a273f
-        $overlay        = 0xff393552
-        $muted          = 0xff6e6a86
-        $subtle         = 0xff908caa
-        $text           = 0xffe0def4
-        $love           = 0xffeb6f92
-        $gold           = 0xfff6c177
-        $rose           = 0xffea9a97
-        $pine           = 0xff3e8fb0
-        $foam           = 0xff9ccfd8
-        $iris           = 0xffc4a7e7
-        $highlightLow   = 0xff2a283e
-        $highlightMed   = 0xff44415a
-        $highlightHigh  = 0xff56526e
 
         # Keybinds
         bindm = SUPER,mouse:272,movewindow
@@ -118,6 +119,11 @@ let
         bind = SUPER,D,exec,wofi --show drun
         bindel = , XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
         bindel = , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+        bindel = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+        bindel = , F14, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+        bindel = , F15, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+        bindel = , F17, exec, wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+
+        bindel = , F16, exec, wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-
 
         # Requires playerctl for media controls
         bindl = , XF86AudioPlay, exec, playerctl play-pause
@@ -133,18 +139,17 @@ let
         monitor = DP-1, 2560x1440@165, 3840x0, 1, bitdepth, 10
 
         # Exec-once for startup programs
+        exec-once = hyprpanel
         exec-once = arrpc
         exec-once = teams-for-linux
-        exec-once = discordcanary
+        exec-once = vesktop
         exec-once = spotify
         exec-once = steam
         exec-once = $HOME/.config/hypr/autostart
         exec-once = swww-daemon
         exec-once = fcitx5
-        exec-once = hyprpanel
         exec-once = wl-paste --type text --watch cliphist store
         exec-once = wl-paste --type image --watch cliphist store
-
 
         # Environment variables
         env = XDG_MENU_PREFIX,plasma-
@@ -152,13 +157,13 @@ let
         env = HYPRCURSOR_SIZE,24
         env = XCURSOR_THEME,BreezeX-RosePine-Linux
         env = XCURSOR_SIZE,24
-        env = ELECTRON_OZONE_PLATFORM_HINT,auto
+
+        env = ELECTRON_OZONE_PLATFORM_HINT,wayland
         env = QT_QPA_PLATFORMTHEME,qt5ct
-        env = QT_STYLE_OVERRIDE,breeze
         env = QT_AUTO_SCREEN_SCALE_FACTOR,1
         env = QT_QPA_PLATFORM,wayland;xcb
+
         env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
-        env = XDG_SESSION_DESKTOP,Hyprland
         env = XDG_SESSION_DESKTOP,Hyprland
         env = XDG_SESSION_TYPE,wayland
         env = CLUTTER_BACKEND,wayland

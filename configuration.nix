@@ -28,7 +28,7 @@
     efibootmgr mutagen zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg
 
     # Libraries
-    libavif dotnet-sdk dotnet-runtime icu glibc glib fuse fuseiso
+    libavif dotnet-sdk dotnet-runtime icu glibc glib fuse fuseiso opentabletdriver libwacom
 
     # Cursor
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
@@ -55,6 +55,7 @@
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gnome ];
     };
+
   security.polkit.enable = true;
   systemd.services.lactd.wantedBy = ["multi-user.target"];
   
