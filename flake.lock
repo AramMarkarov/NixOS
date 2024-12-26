@@ -108,11 +108,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1735118307,
-        "narHash": "sha256-y/m5iFvHZvqulZaN22uxl3ipRf04HfQp55yTMOrwaS8=",
+        "lastModified": 1735207839,
+        "narHash": "sha256-4PlQB9nan29e5Kl0U9Eyl5mKz8GmR1NEChBmfBhWOp0=",
         "owner": "Jas-SinghFSU",
         "repo": "HyprPanel",
-        "rev": "99b173bc581e7a4409b3931726cf8e775c7264b9",
+        "rev": "0c9b72708e02388c35e1524929982412165189c7",
         "type": "github"
       },
       "original": {

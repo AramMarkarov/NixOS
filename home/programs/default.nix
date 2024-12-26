@@ -11,7 +11,7 @@
       enable = true;
       defaultApplications = {
         "inode/directory" = [ "org.kde.dolphin.desktop" ];
-        "application/pdf" = [ "firefox.desktop" ];
+        "application/pdf" = [ "draw.desktop" ];
         "text/plain" = [ "idea-ultimate.desktop" ];
         "text/html" = [ "idea-ultimate.desktop" ];
         "image/jpeg" = [ "firefox.desktop" ];
@@ -19,6 +19,7 @@
         "video/mp4" = [ "vlc.desktop" ];
         "audio/mpeg" = [ "vlc.desktop" ];
         "application/zip" = [ "org.kde.ark.desktop" ];
+        "application/x-osu-skin-archive" = ["org.kde.ark.desktop"];
         "application/x-tar" = [ "org.kde.ark.desktop" ];
         "application/x-7z-compressed" = [ "org.kde.ark.desktop" ];
         "application/x-rar" = [ "org.kde.ark.desktop" ];

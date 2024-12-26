@@ -28,7 +28,7 @@
     efibootmgr mutagen zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg
 
     # Libraries
-    libavif dotnet-sdk dotnet-runtime icu glibc glib fuse fuseiso opentabletdriver libwacom
+    libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib fuse fuseiso opentabletdriver libwacom
 
     # Cursor
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
@@ -38,7 +38,7 @@
   ];
 
   # SDDM Theme
-  services.xserver.displayManager.sddm.theme = "rose-pine";
+  services.displayManager.sddm.theme = "rose-pine";
 
   programs = {
     hyprland.enable = true;

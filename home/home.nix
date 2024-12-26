@@ -101,7 +101,6 @@
     ags
 
     # DE requirements
-    kdePackages.xwaylandvideobridge
     libsForQt5.qt5ct
     nwg-look
     kdePackages.qt6ct
