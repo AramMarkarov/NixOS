@@ -22,7 +22,7 @@
     stdenvNoCC gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git curl wget python3 rustup jdk jdk8 gnumake
 
     # Debugging and monitoring
-    htop ncdu eza killall fastfetch
+    ncdu eza killall fastfetch
 
     # Misc
     ntfs3g efibootmgr mutagen zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg
@@ -36,9 +36,6 @@
     # SDDM
     (callPackage ./modules/sddm/sddm-rose-pine.nix {})
   ];
-
-  # SDDM Theme
-  services.displayManager.sddm.theme = "rose-pine";
 
   programs = {
     hyprland.enable = true;
@@ -71,13 +68,12 @@
   boot.loader = {
       efi.canTouchEfiVariables = true;
       grub = {
-        version = 2;
         enable = true;
         devices = [ "nodev" ];
         efiSupport = true;
         useOSProber = false; # currently broken and not building dmraid
-      };
     };
+  };
 
   # Time zone
   time.timeZone = "Europe/Amsterdam";

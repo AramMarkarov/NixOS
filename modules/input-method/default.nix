@@ -3,7 +3,8 @@
 {
   # Japanese input via mozc (currently enabled via kde settings => virtual keyboard = fcitx5)
   i18n.inputMethod = {
-    enabled = "fcitx5";
+    type = "fcitx5";
+    enable = true;
     fcitx5.addons = with pkgs; [ fcitx5-mozc ];
     fcitx5.waylandFrontend = true;
   };

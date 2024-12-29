@@ -14,6 +14,10 @@
         "application/pdf" = [ "draw.desktop" ];
         "text/plain" = [ "idea-ultimate.desktop" ];
         "text/html" = [ "idea-ultimate.desktop" ];
+        "x-scheme-handler/http" = [ "firefox.desktop" ];
+        "x-scheme-handler/https" = [ "firefox.desktop" ];
+        "x-scheme-handler/about" = [ "firefox.desktop" ];
+        "x-scheme-handler/unknown" = [ "firefox.desktop" ];
         "image/jpeg" = [ "firefox.desktop" ];
         "image/png" = [ "firefox.desktop" ];
         "video/mp4" = [ "vlc.desktop" ];

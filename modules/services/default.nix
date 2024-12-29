@@ -18,6 +18,7 @@
     tailscale.enable = false; # only enable when streaming or viewing stream
     xserver.enable = true;
     displayManager.sddm.enable = true;
+    displayManager.sddm.theme = "rose-pine";
     flatpak.enable = true;
   };
 
