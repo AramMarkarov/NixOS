@@ -4,7 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules
-    ./hosts/desktop.nix # Change to correct host
+    ./hosts/desktop.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -25,7 +25,7 @@
     htop ncdu eza killall fastfetch
 
     # Misc
-    efibootmgr mutagen zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg
+    ntfs3g efibootmgr mutagen zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg
 
     # Libraries
     libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib fuse fuseiso opentabletdriver libwacom
@@ -69,17 +69,19 @@
 
   # Bootloader
   boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        version = 2;
         enable = true;
-        device = "nodev";
-        useOSProber = true;
+        devices = [ "nodev" ];
         efiSupport = true;
-        };
+        useOSProber = false; # currently broken and not building dmraid
+      };
     };
 
   # Time zone
   time.timeZone = "Europe/Amsterdam";
+  time.hardwareClockInLocalTime = true;
 
   # User
   users.users.aramjonghu = {

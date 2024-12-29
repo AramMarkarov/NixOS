@@ -20,5 +20,8 @@
     nerd-fonts.fira-mono
     nerd-fonts.zed-mono
     nerd-fonts.tinos
+    nerd-fonts.ubuntu
+    nerd-fonts.ubuntu-sans
+    nerd-fonts.ubuntu-mono
   ];
 }

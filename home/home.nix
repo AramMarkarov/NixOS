@@ -62,6 +62,7 @@
     # Common applications
     tor-browser
     discord-canary
+    ungoogled-chromium
     vesktop
     firefox
     teams-for-linux
@@ -97,10 +98,12 @@
     kdePackages.dolphin
     hyprlock
     hyprpicker
-    hyprpanel
-    ags
+    #hyprpanel #Temporarily broken due to ags -> agsv2 via astal migration
+
 
     # DE requirements
+    btop
+    hyprland-qtutils
     libsForQt5.qt5ct
     nwg-look
     kdePackages.qt6ct
