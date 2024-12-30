@@ -53,7 +53,6 @@
     ffmpeg_7-full
     pwvucontrol
     argyllcms
-    colord
 
     # Spotify tools/rosepine themes
     vimPlugins.rose-pine
@@ -100,7 +99,7 @@
     kdePackages.dolphin
     hyprlock
     hyprpicker
-    hyprpanel #Temporarily broken due to ags -> agsv2 via astal migration
+    hyprpanel
 
 
     # DE requirements
