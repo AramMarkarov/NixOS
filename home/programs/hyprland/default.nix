@@ -146,12 +146,11 @@ let
         exec-once = spotify
         exec-once = steam
         exec-once = $HOME/.config/hypr/autostart
-        exec-once = swww-daemon
         exec-once = fcitx5
         exec-once = wl-paste --type text --watch cliphist store
         exec-once = wl-paste --type image --watch cliphist store
-        exec-once = dispwin -d 2 ~/.color/icc/LG\ 4K.icm
-        exec-once = dispwin -d 1 ~/.color/icc/Xiaomi\ 165HZ.icm
+        exec-once = dispwin -d 2 ~/.color/icc/2160.icm
+        exec-once = dispwin -d 1 ~/.color/icc/1440.icm
 
         # Environment variables
         env = XDG_MENU_PREFIX,plasma-

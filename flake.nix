@@ -13,7 +13,7 @@
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
   };
 
-  outputs = inputs @ { home-manager, nixpkgs, self, ags, ... }: let
+  outputs = inputs @ { home-manager, nixpkgs, self, ... }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
   in {
