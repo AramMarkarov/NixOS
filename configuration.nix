@@ -38,6 +38,7 @@
   ];
 
   programs = {
+    steam.gamescopeSession.enable = true;
     hyprland.enable = true;
     hyprland.withUWSM  = true;
     zsh.enable = true;

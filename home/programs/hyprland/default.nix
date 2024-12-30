@@ -150,6 +150,8 @@ let
         exec-once = fcitx5
         exec-once = wl-paste --type text --watch cliphist store
         exec-once = wl-paste --type image --watch cliphist store
+        exec-once = dispwin -d 2 ~/.color/icc/LG\ 4K.icm
+        exec-once = dispwin -d 1 ~/.color/icc/Xiaomi\ 165HZ.icm
 
         # Environment variables
         env = XDG_MENU_PREFIX,plasma-

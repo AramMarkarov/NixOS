@@ -5,6 +5,7 @@
     ./wofi
     ./alacritty
     ./neovim
+    #./hyprpanel #work in progress + it is currently not great
   ];
 
   xdg.mimeApps = {
