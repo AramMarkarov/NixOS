@@ -72,7 +72,7 @@
         enable = true;
         devices = [ "nodev" ];
         efiSupport = true;
-        useOSProber = false; # currently broken and not building dmraid
+        useOSProber = true; # currently broken and not building dmraid
     };
   };
 
