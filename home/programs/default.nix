@@ -13,6 +13,10 @@
           "application/pdf" = [ "firefox.desktop" ];
           "text/plain" = [ "idea-ultimate.desktop" ];
           "text/html" = [ "idea-ultimate.desktop" ];
+          "x-scheme-handler/http" = [ "firefox.desktop" ];
+          "x-scheme-handler/https" = [ "firefox.desktop" ];
+          "x-scheme-handler/about" = [ "firefox.desktop" ];
+          "x-scheme-handler/unknown" = [ "firefox.desktop" ];
           "image/jpeg" = [ "firefox.desktop" ];
           "image/png" = [ "firefox.desktop" ];
           "video/mp4" = [ "vlc.desktop" ];
@@ -21,6 +25,7 @@
           "application/x-tar" = [ "org.kde.ark.desktop" ];
           "application/x-7z-compressed" = [ "org.kde.ark.desktop" ];
           "application/x-rar" = [ "org.kde.ark.desktop" ];
+          "application/x-xz-compressed-tar" = ["org.kde.ark.desktop"];
           "application/vnd.ms-excel" = [ "calc.desktop" ];
           "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = [ "calc.desktop" ];
           "application/vnd.ms-powerpoint" = [ "impress.desktop" ];

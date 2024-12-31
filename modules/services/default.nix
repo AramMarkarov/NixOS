@@ -14,14 +14,20 @@
   };
 
   services = {
+    btrfs.autoScrub = {
+        enable = true;
+        interval = "weekly";
+        fileSystems = [ "/" ];
+    };
     upower.enable = true;
     udisks2.enable = true;
     fwupd.enable = true;
-    tailscale.enable = true;
+    tailscale.enable = false;
     printing.enable = true;
     xserver = {
         enable = true;
         };
+    displayManager.sddm.theme = "rose-pine";
     displayManager.sddm.enable = true;
     flatpak.enable = true;
   };

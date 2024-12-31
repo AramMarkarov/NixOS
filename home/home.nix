@@ -24,32 +24,6 @@
       userEmail = "a.markarov@outlook.com";
     };
 
-  programs.zsh = {
-      enable = true;
-      enableCompletion = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-      shellAliases = {
-          ll = "ls -l";
-          update = "cd ~/NixOS && nix flake update && sudo nixos-rebuild switch --flake .#nixos && cd";
-      };
-      history = {
-          size = 10000;
-          path = "${config.xdg.dataHome}/zsh/history";
-      };
-      initExtra = ''
-          fastfetch
-
-          # (always bottom) zellij
-          if [ "$(ps -o comm= -p $(ps -o ppid= -p $$))" = "alacritty" ]; then
-              if command -v zellij &> /dev/null && [ -z "$ZELLIJ" ]; then
-                  zellij attach default || zellij --session default
-              fi
-          fi
-          '';
-  };
-
-
   # User-specific development tools
   home.packages = with pkgs; [
     # Desktop only
@@ -81,6 +55,7 @@
 
     # Common applications
     tor-browser
+    ungoogled-chromium
     discord-canary
     vesktop
     firefox
@@ -123,8 +98,12 @@
     kdePackages.qt6ct
     kdePackages.breeze
 
+    # Rose Pine
+    vimPlugins.rose-pine
+    rose-pine-cursor
+    fcitx5-rose-pine
+
     # DE requirements
-    btop
     libnotify
     cameractrls
     hyprcursor
@@ -156,5 +135,7 @@
     wl-clipboard-x11
     wl-clip-persist
     cliphist
+    nwg-look
+    dart-sass
     ];
 }

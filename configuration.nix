@@ -25,7 +25,7 @@
     htop ncdu eza killall fastfetch
 
     # Misc
-    efibootmgr mutagen zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg libavif
+    efibootmgr mutagen zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg
 
     # Libraries
     libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib fuse fuseiso
@@ -39,9 +39,6 @@
     # SDDM
     (callPackage ./modules/sddm/sddm-rose-pine.nix {})
   ];
-
-  # SDDM Theme
-  services.xserver.displayManager.sddm.theme = "rose-pine";
 
   programs = {
       hyprland.enable = true;
@@ -84,7 +81,7 @@
     grub = {
         enable = true;
         device = "nodev";
-        useOSProber = true;
+        useOSProber = true; # Currently broken
         efiSupport = true;
     };
   };

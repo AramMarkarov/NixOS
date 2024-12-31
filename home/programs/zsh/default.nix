@@ -15,8 +15,6 @@
         path = "${config.xdg.dataHome}/zsh/history";
     };
     initExtra = ''
-        fastfetch
-
         # Rose Pine Moon
         if [ "$TERM" = "linux" ]; then
         	/bin/echo -e "
@@ -40,6 +38,8 @@
         	# get rid of artifacts
         	clear
         fi
+
+        fastfetch
 
         # (always bottom) zellij
         if [ "$(ps -o comm= -p $(ps -o ppid= -p $$))" = "alacritty" ]; then

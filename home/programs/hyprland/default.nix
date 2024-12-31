@@ -3,6 +3,23 @@
 let
   # Define the Hyprland configuration as a string, with necessary Nix formatting
   hyprlandConfig = ''
+
+          $base	        = 0xff232136
+          $surface        = 0xff2a273f
+          $overlay        = 0xff393552
+          $muted          = 0xff6e6a86
+          $subtle         = 0xff908caa
+          $text           = 0xffe0def4
+          $love           = 0xffeb6f92
+          $gold           = 0xfff6c177
+          $rose           = 0xffea9a97
+          $pine           = 0xff3e8fb0
+          $foam           = 0xff9ccfd8
+          $iris           = 0xffc4a7e7
+          $highlightLow   = 0xff2a283e
+          $highlightMed   = 0xff44415a
+          $highlightHigh  = 0xff56526e
+
     input {
             kb_layout = us
             kb_variant =
@@ -22,19 +39,19 @@ let
   general {
             gaps_in = 8
             gaps_out = 15
-            border_size = 5
-            col.active_border = 0xffea9a97
-            col.inactive_border = 0xff908caa
+            border_size = 3
+            col.active_border = $rose $pine $love $iris 90deg
+            col.inactive_border = $muted
         }
 
   decoration {
             rounding = 15
             shadow {
                 enabled = true
-                range = 100
+                range = 25
                 render_power = 5
-                color = 0x33000000
-                color_inactive = 0x22000000
+                color = $highlightHigh
+                color_inactive = $highlightLow
             }
         }
 
@@ -102,28 +119,13 @@ let
         bind = SUPER,g,togglegroup
         bind = SUPER,tab,changegroupactive
 
-        $base	        = 0xff232136
-        $surface        = 0xff2a273f
-        $overlay        = 0xff393552
-        $muted          = 0xff6e6a86
-        $subtle         = 0xff908caa
-        $text           = 0xffe0def4
-        $love           = 0xffeb6f92
-        $gold           = 0xfff6c177
-        $rose           = 0xffea9a97
-        $pine           = 0xff3e8fb0
-        $foam           = 0xff9ccfd8
-        $iris           = 0xffc4a7e7
-        $highlightLow   = 0xff2a283e
-        $highlightMed   = 0xff44415a
-        $highlightHigh  = 0xff56526e
-
         # Manual bindings
         bind = ALT,TAB,cyclenext
         bind = SUPER,F,fullscreen
         bind = SUPER,D,exec,wofi --show drun
         bindel = , XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
         bindel = , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+        bindel = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
         # Requires playerctl for media controls
         bindl = , XF86AudioPlay, exec, playerctl play-pause
@@ -137,18 +139,18 @@ let
         bind = SUPER, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy
 
         # Monitor setup (adjust as needed)
-        monitor = eDP-1, 2560x1600@60, 0x0, 1.25
+        monitor = eDP-1, 2560x1600@60, 0x0, 1
 
         # Exec-once for startup programs
+        exec-once = hyprpanel
         exec-once = arrpc
         exec-once = teams-for-linux
-        exec-once = discordcanary
+        exec-once = vesktop
         exec-once = spotify
         exec-once = steam
         exec-once = $HOME/.config/hypr/autostart
         exec-once = swww-daemon
         exec-once = fcitx5
-        exec-once = hyprpanel
         exec-once = wl-paste --type text --watch cliphist store
         exec-once = wl-paste --type image --watch cliphist store
 
@@ -156,14 +158,13 @@ let
         # Environment variables
         env = XDG_MENU_PREFIX,plasma-
         env = HYPRCURSOR_THEME,rose-pine-hyprcursor
-        env = HYPRCURSOR_SIZE,24
+        env = HYPRCURSOR_SIZE,28
         env = XCURSOR_THEME,BreezeX-RosePine-Linux
-        env = XCURSOR_SIZE,24
+        env = XCURSOR_SIZE,28
         env = ELECTRON_OZONE_PLATFORM_HINT,auto
         env = QT_QPA_PLATFORMTHEME,qt5ct
         env = QT_QPA_PLATFORM,wayland;xcb
         env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
-        env = XDG_SESSION_DESKTOP,Hyprland
         env = XDG_SESSION_DESKTOP,Hyprland
         env = XDG_SESSION_TYPE,wayland
         env = CLUTTER_BACKEND,wayland
