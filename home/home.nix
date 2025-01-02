@@ -3,6 +3,7 @@
 {
   imports = [
       ./programs
+      inputs.nixvim.homeManagerModules.nixvim
     ];
 
   programs.home-manager.enable = true;
@@ -100,7 +101,7 @@
     hyprlock
     hyprpicker
     hyprpanel
-
+    hyprsunset
 
     # DE requirements
     btop
