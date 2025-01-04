@@ -2,6 +2,13 @@
 
 {
   programs.zsh = {
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "git" "extract" "dirhistory" "sudo"
+      ];
+      theme = "philips";
+    };
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
@@ -49,4 +56,10 @@
         fi
         '';
 };
+
+  programs.oh-my-posh = {
+    enable = true;
+    enableZshIntegration = true;
+    useTheme = "night-owl";
+  };
 }

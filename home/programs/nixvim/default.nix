@@ -16,6 +16,9 @@
             shiftwidth = 4;
           }; 
           plugins = {
+              web-devicons = {
+                enable = true;
+              };
               neogit = {
                 enable = true;
               };
@@ -45,9 +48,7 @@
               vim-css-color = {
                 enable = true;
               };
-              zellij = {
-                enable = true;
-              }; neoscroll = {
+              neoscroll = {
                 enable = true;
               };
               git-worktree = {
@@ -70,7 +71,8 @@
               };
               nvim-tree = {
                 enable = true;
-                view.width = 50;
+                view.width = 35;
+                openOnSetup = true;
               };
               treesitter = {
                 enable = true;

@@ -78,7 +78,8 @@
     spotify
     mendeley
     libreoffice
-    
+    telegram-desktop
+
     # IDE's & txteditors
     jetbrains.datagrip
     jetbrains.idea-ultimate
