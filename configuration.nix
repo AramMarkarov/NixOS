@@ -39,8 +39,12 @@
 
   programs = {
     steam.gamescopeSession.enable = true;
-    hyprland.enable = true;
-    hyprland.withUWSM  = true;
+    hyprland = {
+      enable = true;
+      withUWSM  = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    };
     zsh.enable = true;
     appimage.binfmt = true;
     appimage.enable = true;
@@ -51,7 +55,7 @@
   # Use of file system and video sharing
   xdg.portal ={
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-hyprland pkgs.xdg-desktop-portal-gnome ];
+    extraPortals = [ pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome ];
     };
 
   security.polkit.enable = true;

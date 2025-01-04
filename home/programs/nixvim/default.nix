@@ -1,35 +1,33 @@
 {config, pkgs, inputs, ... }:
 {
     programs.nixvim = {
-        enable = true;
-        viAlias = true;
-        vimAlias = true;
-        defaultEditor = true;
-        extraPlugins = with pkgs.vimPlugins; [
-
-            ];
-        colorschemes.rose-pine = {
-            enable = true;
+        enable = true; viAlias = true; vimAlias = true; defaultEditor = true; extraPlugins = with pkgs.vimPlugins; [
+            ]; colorschemes.rose-pine = {
+          enable = true;
+          settings = {
+            styles.transparency = true;
+            varient = "dawn";
+            extend_background_behind_borders = true; };
         };
         opts = {
             number = true;
             relativenumber = true;
             cursorline = true;
             shiftwidth = 4;
-            };
-            plugins = {
+          }; 
+          plugins = {
               neogit = {
                 enable = true;
               };
               git-conflict = {
                 enable = true;
-              };
+              }; 
               gitblame = {
                 enable = true;
               };
-              gitgutter = {
+              gitgutter = { 
                 enable = true;
-              };
+              }; 
               headlines = {
                 enable = true;
               };
@@ -49,8 +47,7 @@
               };
               zellij = {
                 enable = true;
-              };
-              neoscroll = {
+              }; neoscroll = {
                 enable = true;
               };
               git-worktree = {
@@ -82,7 +79,13 @@
                   ensure_installed = "all";
                   highlight.enable = true;
                 };
-            };
+              };
+              telescope = {
+                enable = true;
+              };
+              harpoon = {
+                enable = true;
+              };
           };
       };
 }
