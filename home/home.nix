@@ -66,7 +66,7 @@
     discord-canary
     ungoogled-chromium
     vesktop
-    firefox
+    firefox #remove when home-manager is functional
     teams-for-linux
     thunderbird
     libsForQt5.kdenlive
@@ -79,6 +79,8 @@
     mendeley
     libreoffice
     telegram-desktop
+    virtualbox
+    davinci-resolve
 
     # IDE's & txteditors
     jetbrains.datagrip
@@ -111,7 +113,6 @@
     libsForQt5.qt5.qtquickcontrols
     libsForQt5.qt5.qtsvg
     libsForQt5.qt5.qtgraphicaleffects
-    libsForQt5.knotes
     nwg-look
     kdePackages.qt6ct
     kdePackages.breeze

@@ -25,7 +25,7 @@
     ncdu eza killall fastfetch
 
     # Misc
-    ntfs3g efibootmgr mutagen zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg
+    ntfs3g efibootmgr mutagen zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg nvtopPackages.amd
 
     # Libraries
     libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib fuse fuseiso opentabletdriver libwacom
@@ -59,6 +59,7 @@
     };
 
   security.polkit.enable = true;
+  systemd.packages = with pkgs; [ lact ];
   systemd.services.lactd.wantedBy = ["multi-user.target"];
   
   nixpkgs = {

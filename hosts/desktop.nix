@@ -4,7 +4,10 @@
       graphics = {
           enable = true;
           enable32Bit = true;
-      };
+          extraPackages = with pkgs; [
+            amdvlk clinfo mesa libdrm rocmPackages.clr.icd
+          ];
+        };
   };
 
   services.xserver.videoDrivers = ["amdgpu"]; # Change for Nvidia/Intel
