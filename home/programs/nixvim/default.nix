@@ -1,10 +1,12 @@
 {config, pkgs, inputs, ... }:
 {
     programs.nixvim = {
-        enable = true; viAlias = true; vimAlias = true; defaultEditor = true; extraPlugins = with pkgs.vimPlugins; [
-            ]; colorschemes.rose-pine = {
+      enable = true; viAlias = true; vimAlias = true; defaultEditor = true; 
+      extraPlugins = with pkgs.vimPlugins; [ ]; 
+      colorschemes.rose-pine = {
           enable = true;
           settings = {
+            code_font_family = "0_xProto Nerd Font";
             styles.transparency = true;
             varient = "dawn";
             extend_background_behind_borders = true; };

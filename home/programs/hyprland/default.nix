@@ -170,7 +170,7 @@ let
         env = GDK_BACKEND,wayland,x11,*
         env = QT_QPA_PLATFORM,wayland;xcb
         env = SDL_VIDEODRIVER,wayland
-        env = HYPRSHOT_DIR,~/Pictures/Screenshots
+        env = HYPRSHOT_DIR,~/Pictures/Screenshots/
 
         windowrulev2 = opacity 0.0 override, class:^(xwaylandvideobridge)$
         windowrulev2 = noanim, class:^(xwaylandvideobridge)$

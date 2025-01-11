@@ -41,6 +41,7 @@
     filezilla
     croc
     networkmanagerapplet
+    ventoy-full
 
     # Wine and Wine tools
     wine
@@ -56,7 +57,6 @@
     argyllcms
 
     # Spotify tools/rosepine themes
-    vimPlugins.rose-pine
     fcitx5-rose-pine
     rose-pine-cursor
     rose-pine-icon-theme
@@ -78,7 +78,6 @@
     spotify
     mendeley
     libreoffice
-    telegram-desktop
     virtualbox
     davinci-resolve
 
@@ -86,8 +85,6 @@
     jetbrains.datagrip
     jetbrains.idea-ultimate
     jetbrains.jdk
-    vscode
-    kate
     nano
     processing
     arduino-ide
