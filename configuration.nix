@@ -96,6 +96,28 @@
   # Env variables
   environment.variables = {
     SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
+    EDITOR = "nvim";
+    BROWSER = "firefox";
+    TERMINAL = "alacrity";
+    XDG_MENU_PREFIX = "plasma-";
+    HYPRCURSOR_THEME = "rose-pine-hyprcursor";
+    HYPRCURSOR_SIZE = "24";
+    XCURSOR_THEME = "BreezeX-RosePine-Linux";
+    XCURSOR_SIZE = "24";
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    QT_QPA_PLATFORMTHEME = "qt6ct";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    QT_QPA_PLATFORM = "wayland";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    XDG_SESSION_TYPE = "wayland";
+    CLUTTER_BACKEND = "wayland";
+    GDK_BACKEND = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_CACHE_HOME = "$HOME/.cache";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    HYPRSHOT_DIR = "/home/aramjonghu/Pictures/Screenshots";
   };
 
   # Hostname (Change if needed)

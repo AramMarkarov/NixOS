@@ -69,7 +69,7 @@
     firefox #remove when home-manager is functional
     teams-for-linux
     thunderbird
-    libsForQt5.kdenlive
+    kdePackages.kdenlive
     kdePackages.systemsettings
     obs-studio
     vlc
@@ -97,8 +97,9 @@
     wofi
     swww
     hyprshot
-    kdePackages.dolphin
     hyprlock
+    kdePackages.dolphin
+    kdePackages.kmime
     hyprpicker
     hyprpanel
     hyprsunset
@@ -106,19 +107,18 @@
     # DE requirements
     btop
     hyprland-qtutils
-    libsForQt5.qt5ct
-    libsForQt5.qt5.qtquickcontrols
-    libsForQt5.qt5.qtsvg
-    libsForQt5.qt5.qtgraphicaleffects
     nwg-look
     kdePackages.qt6ct
+    kdePackages.qt6gtk2
+    kdePackages.qtsvg
+    kdePackages.plasma-workspace
     kdePackages.breeze
+    kdePackages.kservice
     libnotify
     hyprcursor
     hypridle
     kdePackages.dolphin-plugins
     kdePackages.qtwayland
-    libsForQt5.qt5.qtwayland
     hyprutils
     hyprsunset
     hyprlang
@@ -143,7 +143,6 @@
     wlroots
     kitty
     playerctl
-    kdePackages.plasma-workspace
     wl-clipboard
     wl-clip-persist
     cliphist
