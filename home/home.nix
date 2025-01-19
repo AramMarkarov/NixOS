@@ -9,10 +9,13 @@
   programs.home-manager.enable = true;
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  nixpkgs.config.allowBroken = true;
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnsupportedSystem = true;
-
+  nixpkgs.config = {
+    allowBroken = true;
+    allowUnfree = true;
+    allowUnsupportedSystem = true;    
+    allowUnfreePredicate = _: true;
+  };
+  
   home = {
         username = "aramjonghu";
         homeDirectory = "/home/aramjonghu";
@@ -62,6 +65,7 @@
     rose-pine-icon-theme
 
     # Common applications
+    gimp-with-plugins
     tor-browser
     discord-canary
     ungoogled-chromium

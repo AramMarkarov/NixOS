@@ -135,7 +135,7 @@ let
         bind = SUPER, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy
 
         # Monitor setup (adjust as needed)
-        monitor = DP-1, 2560x1440@144, 2160x0, 1, bitdepth, 10
+        monitor = DP-1, 2560x1440@165, 2160x0, 1, bitdepth, 10
         monitor = DP-2, 3840x2160@60, 0x0, 1, bitdepth, 10, transform, 1
         
 
@@ -146,6 +146,7 @@ let
         exec-once = vesktop
         exec-once = spotify
         exec-once = steam
+        exec-once = thunderbird
         exec-once = dispwin -d1 /home/aramjonghu/.color/icc/1440p.icm
         exec-once = dispwin -d2 /home/aramjonghu/.color/icc/2160p.icm
         exec-once = fcitx5

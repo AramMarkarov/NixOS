@@ -18,8 +18,8 @@
   environment.shells = with pkgs; [ zsh ];
 
   environment.systemPackages = with pkgs; [
-    # Build tools
-    stdenvNoCC gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git curl wget python3 rustup jdk jdk8 gnumake
+    # Build tools or languages
+    stdenvNoCC gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git curl wget python3 rustup jdk jdk8 gnumake zig
 
     # Debugging and monitoring
     ncdu eza killall fastfetch
@@ -62,10 +62,11 @@
   systemd.packages = with pkgs; [ lact ];
   systemd.services.lactd.wantedBy = ["multi-user.target"];
   
-  nixpkgs = {
-    config.allowBroken = true;
-    config.allowUnfree = true;
-    config.allowUnsupportedSystem = true;
+  nixpkgs.config = {
+    allowBroken = true;
+    allowUnfree = true;
+    allowUnsupportedSystem = true;    
+    allowUnfreePredicate = _: true;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
