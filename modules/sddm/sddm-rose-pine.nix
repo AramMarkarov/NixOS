@@ -10,6 +10,9 @@ stdenvNoCC.mkDerivation rec {
 
   propagatedUserEnvPkgs = [
     libsForQt5.qt5.qtgraphicaleffects
+    libsForQt5.qt5.qtsvg
+    libsForQt5.sddm
+    libsForQt5.qt5.qtquickcontrols2
   ];
 
   src = fetchFromGitHub {

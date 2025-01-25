@@ -19,16 +19,20 @@
 
   environment.systemPackages = with pkgs; [
     # Build tools or languages
-    stdenvNoCC gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git curl wget python3 rustup jdk jdk8 gnumake zig
+    stdenvNoCC gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git 
+    curl wget python3 rustup jdk jdk8 gnumake zig
 
     # Debugging and monitoring
     ncdu eza killall fastfetch
 
     # Misc
-    ntfs3g efibootmgr mutagen zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg nvtopPackages.amd
+    ntfs3g efibootmgr mutagen zenity cryptsetup openssl cacert openssh 
+    firewalld pkg-config appimage-run home-manager fwupd lact polkit 
+    ffmpeg nvtopPackages.amd
 
     # Libraries
-    libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib fuse fuseiso opentabletdriver libwacom
+    libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib fuse fuseiso 
+    opentabletdriver libwacom
 
     # Cursor
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
@@ -55,7 +59,12 @@
   # Use of file system and video sharing
   xdg.portal ={
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gnome ];
+    extraPortals = [  pkgs.xdg-desktop-portal 
+                      pkgs.xdg-desktop-portal-gtk 
+                      pkgs.xdg-desktop-portal-kde 
+                      pkgs.xdg-desktop-portal-wlr 
+                      pkgs.xdg-desktop-portal-gnome 
+                      ];
     };
 
   security.polkit.enable = true;
@@ -99,7 +108,7 @@
     SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
     EDITOR = "nvim";
     BROWSER = "firefox";
-    TERMINAL = "alacrity";
+    TERMINAL = "alacritty";
     XDG_MENU_PREFIX = "plasma-";
     HYPRCURSOR_THEME = "rose-pine-hyprcursor";
     HYPRCURSOR_SIZE = "24";

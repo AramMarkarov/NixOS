@@ -33,116 +33,127 @@
         auto-session = {
           enable = true;
           settings = { # settings needed callchat
+          };
         };
-      };
-      presence-nvim = {
+      presence-nvim = { # prescense so that discord knows when im in nvim
         enable = true;
       };
-      conform-nvim = {
-        enable = true;
+      conform-nvim = { # formatter
+       enable = true;
       };
       undotree = { # Undotree settings needed, keybinds
         enable = true;
       };
-      web-devicons = {
+      web-devicons = { # provides nerdfonts icons
         enable = true;
       };
-      neogit = {
+      neogit = { # a git like instance to do git stuff
         enable = true;
       };
-      git-conflict = {
+      gitgutter = { # shows which push the version was a part of of each row/line
         enable = true;
       }; 
-      gitblame = {
-        enable = true;
-      };
-      gitgutter = { 
-        enable = true;
-      }; 
-      headlines = {
-        enable = true;
-      };
       nix = {
         enable = true;
       };
       hmts = {
+        enable = true; # makes different syntax langauges show within a .nix file
+      };
+      image = { # allows images to be viewed in nvim (seems to not work within zellij/tmux)
+        enable = true;
+        ueberzugPackage = pkgs.ueberzugpp;
+        backend = "ueberzug";
+        hijackFilePatterns = [
+          "*.png"
+          "*.jpg"
+          "*.jpeg"
+          "*.gif"
+          "*.webp"
+          "*.JPG"
+          "*.JPEG"
+        ];
+      };
+      vim-css-color = { # css color highlighting
         enable = true;
       };
-      image = { # Image settings needed; its not loading
-      enable = true;
-      ueberzugPackage = pkgs.ueberzug;
-      backend = "ueberzug";
-    };
-    vim-css-color = {
-      enable = true;
-    };
-    neoscroll = {
-      enable = true;
-    };
-    git-worktree = {
-      enable = true;
-    };
-    gitignore = {
-      enable = true;
-    };
-    nvim-surround = {
-      enable = true;
-    };
-    #copilot-vim = { 
-    #  enable = true;
-    #  settings = {
-    #    panel = {
-    #      enabled = true;
-    #      auto_refresh = true;
-    #      keymap = {
-    #        jump_prev = "[[";
-    #        jump_next = "]]";
-    #        accept = "<CR>";
-    #        refresh = "gr";
-    #        open = "<M-CR>";
-    #      };
-    #    };
-    #    suggestion = {
-    #      enabled = true;
-    #      auto_trigger = true;
-    #      hide_during_completion = true;
-    #      debounce = 75;
-    #      keymap = {
-    #        accept = "<A-tab>";
-    #        accept_word = false;
-    #        accept_line = false;
-    #        next = "<M-]>";
-    #        prev = "<M-[>";
-    #        dismiss = "<C-]>";
-    #      };
-    #    };
-    #  };
-    #};
-    copilot-chat = { # Copilot chat settings needed
-      enable = true;
-    };
-    lualine = {
-      enable = true;
-    };
-    nvim-tree = {
-      enable = true;
-      view.width = 35;
-      openOnSetup = true;
-    };
-    treesitter = {
-      enable = true;
-      settings = {
-        auto_install = true;
-        ensure_installed = "all";
-        highlight.enable = true;
+      neoscroll = { # supposed to do smooth scrolling among other things
+        enable = true;
+      };
+      git-worktree = { 
+        enable = true;
+      };
+      gitignore = { # able to generate .gitignore, even offline
+        enable = true;
+      };
+      nvim-surround = { # Can surround ( { [ and complete functions etc. with keybinds
+        enable = true;
+      };
+      #copilot-vim = { 
+      #  enable = true;
+      #  settings = {
+      #    panel = {
+      #      enabled = true;
+      #      auto_refresh = true;
+      #      keymap = {
+      #        jump_prev = "[[";
+      #        jump_next = "]]";
+      #        accept = "<CR>";
+      #        refresh = "gr";
+      #        open = "<M-CR>";
+      #      };
+      #    };
+      #    suggestion = {
+      #      enabled = true;
+      #      auto_trigger = true;
+      #      hide_during_completion = true;
+      #      debounce = 75;
+      #      keymap = {
+      #        accept = "<A-tab>";
+      #        accept_word = false;
+      #        accept_line = false;
+      #        next = "<M-]>";
+      #        prev = "<M-[>";
+      #        dismiss = "<C-]>";
+      #      };
+      #    };
+      #  };
+      #};
+      copilot-chat = { # Copilot chat settings needed
+        enable = true;
+      };
+      lualine = { # the statusline on the bottom, editable
+        enable = true;
+      };
+      nvim-tree = { # file tree explorer
+        enable = true;
+        view.width = 35;
+        openOnSetup = true;
+      };
+      treesitter = { # syntax highlighter and more for many languages
+        enable = true;
+        settings = {
+          auto_install = true;
+          ensure_installed = "all";
+          highlight.enable = true;
+          indent.enable = true;
+        };
+      };
+      telescope = { # search and stuff, current keybind for searching files
+        enable = true;
+        keymaps = { "<C-f>f" = {
+          action = "find_files";
+          options = {
+            desc = "Telescope find files";
+            };
+          };
+        };
+      };
+      harpoon = {
+        enable = true;
+      };
+      zig = { # zig
+        enable = true;
       };
     };
-    telescope = { # Telescope settings needed
-      enable = true;
-    };
-    harpoon = {
-      enable = true;
-    };
   };
-};
 }

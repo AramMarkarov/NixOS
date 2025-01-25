@@ -83,7 +83,6 @@
     mendeley
     libreoffice
     virtualbox
-    davinci-resolve
 
     # IDE's & txteditors
     jetbrains.datagrip

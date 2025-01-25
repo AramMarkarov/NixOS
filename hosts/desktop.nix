@@ -5,7 +5,7 @@
           enable = true;
           enable32Bit = true;
           extraPackages = with pkgs; [
-            amdvlk clinfo mesa libdrm rocmPackages.clr.icd
+            amdvlk clinfo mesa libdrm #rocmPackages.clr.icd Temporarily disabled
           ];
         };
   };

@@ -135,7 +135,7 @@ let
         bind = SUPER, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy
 
         # Monitor setup (adjust as needed)
-        monitor = DP-1, 2560x1440@165, 2160x0, 1, bitdepth, 10
+        monitor = DP-1, 2560x1440@165, 2160x0, 1, bitdepth, 10, vrr, 1
         monitor = DP-2, 3840x2160@60, 0x0, 1, bitdepth, 10, transform, 1
         
 
