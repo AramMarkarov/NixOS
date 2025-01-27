@@ -3,7 +3,6 @@
     ./hyprland
     ./zsh
     ./wofi
-    ./alacritty
     ./nixvim
     #./firefox
     #./hyprpanel #work in progress + it is currently not great
@@ -35,8 +34,8 @@
         "application/vnd.openxmlformats-officedocument.presentationml.presentation" = [ "impress.desktop" ];
         "application/msword" = [ "writer.desktop" ];
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = [ "writer.desktop" ];
-        "application/x-shellscript" = [ "Alacritty.desktop" ];
-        "application/x-executable" = [ "Alacritty.desktop" ];
+        "application/x-shellscript" = [ "wezterm.desktop" ];
+        "application/x-executable" = [ "wezterm.desktop" ];
         "application/x-arduino" = [ "arduino-ide.desktop" ];
         "text/x-java" = [ "idea-ultimate.desktop" ];
         "application/x-python" = [ "idea-ultimate.desktop" ];

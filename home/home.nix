@@ -64,7 +64,15 @@
     rose-pine-cursor
     rose-pine-icon-theme
 
-    # Common applications
+    # Emulators
+    pcsx2
+    snes9x
+    rpcs3
+    desmume
+    simple64
+
+    # Common Apps
+    teamspeak5_client
     gimp-with-plugins
     tor-browser
     discord-canary
@@ -77,12 +85,20 @@
     kdePackages.systemsettings
     obs-studio
     vlc
-    alacritty
     zellij
     spotify
     mendeley
     libreoffice
     virtualbox
+
+    # Terminals
+    wezterm
+    foot
+    alacritty
+    ghostty
+    cool-retro-term
+    terminator
+
 
     # IDE's & txteditors
     jetbrains.datagrip

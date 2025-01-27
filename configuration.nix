@@ -108,7 +108,7 @@
     SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
     EDITOR = "nvim";
     BROWSER = "firefox";
-    TERMINAL = "alacritty";
+    TERMINAL = "wezterm";
     XDG_MENU_PREFIX = "plasma-";
     HYPRCURSOR_THEME = "rose-pine-hyprcursor";
     HYPRCURSOR_SIZE = "24";
