@@ -73,14 +73,14 @@ let
         bindm = SUPER,mouse:272,movewindow
         bindm = SUPER,mouse:273,resizewindow
 
-        bind = SUPER,RETURN,exec,alacritty
+        bind = SUPER,RETURN,exec,wezterm
         bind = SUPER,Q,killactive
         bind = SUPER,M,exit
         bind = SUPER,E,exec,dolphin
         bind = SUPER,S,togglefloating
-        bind = SUPER,space,exec,wofi --show drun -o DP-3
         bind = SUPER,P,pseudo
         bind = SUPER,O,exec,spotify
+        bind = SUPER,B,exec,firefox
 
         bind = SUPER,L,exec,~/.config/hypr/scripts/lock
         bind = SUPER,left,movefocus,l
