@@ -9,7 +9,7 @@
     btrfs.autoScrub = {
         enable = true;
         interval = "weekly";
-        fileSystems = [ "/" ];
+        fileSystems = [ "/" "/mnt/HDD" ];
     };
     blueman.enable = true;
     upower.enable = true;

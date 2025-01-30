@@ -40,7 +40,6 @@
     lutris
 
     # Networking and communication
-    wget
     filezilla
     croc
     networkmanagerapplet
@@ -59,7 +58,7 @@
     pwvucontrol
     argyllcms
 
-    # Spotify tools/rosepine themes
+    # Rosepine themes
     fcitx5-rose-pine
     rose-pine-cursor
     rose-pine-icon-theme
@@ -85,7 +84,6 @@
     kdePackages.systemsettings
     obs-studio
     vlc
-    zellij
     spotify
     mendeley
     libreoffice
@@ -93,18 +91,13 @@
 
     # Terminals
     wezterm
-    foot
-    alacritty
-    ghostty
     cool-retro-term
-    terminator
-
+    kitty
 
     # IDE's & txteditors
     jetbrains.datagrip
     jetbrains.idea-ultimate
     jetbrains.jdk
-    nano
     processing
     arduino-ide
 
@@ -160,7 +153,6 @@
     gnome-bluetooth
     networkmanager
     wlroots
-    kitty
     playerctl
     wl-clipboard
     wl-clip-persist

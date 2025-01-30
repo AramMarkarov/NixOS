@@ -127,7 +127,14 @@
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_DATA_HOME = "$HOME/.local/share";
-    HYPRSHOT_DIR = "/home/aramjonghu/Pictures/Screenshots";
+    HYPRSHOT_DIR = "$HOME/Pictures/Screenshots";
+  };
+
+  # Mount drives
+  fileSystems."/mnt/HDD" = {
+    device = "/dev/sda1";
+    fsType = "btrfs";
+    options = [ "compress=zstd" "noatime" "autodefrag" ];
   };
 
   # Hostname (Change if needed)

@@ -135,8 +135,12 @@
           auto_install = true;
           ensure_installed = "all";
           highlight.enable = true;
+          highlight.additional_vim_regex_highlighting = false;
           indent.enable = true;
         };
+      };
+      rainbow-delimiters = {
+        enable = true;
       };
       telescope = { # search and stuff, current keybind for searching files
         enable = true;
