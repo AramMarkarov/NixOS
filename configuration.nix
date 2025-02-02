@@ -16,14 +16,14 @@
   };
 
   environment.shells = with pkgs; [ zsh ];
-
+  
   environment.systemPackages = with pkgs; [
     # Build tools or languages
     stdenvNoCC gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git 
-    curl wget python3 rustup jdk jdk8 gnumake zig
-
+    curl wget python3 rustup jdk jdk8 gnumake zig rocmPackages.clr
+    
     # Debugging and monitoring
-    ncdu eza killall fastfetch
+    ncdu eza killall fastfetch clinfo yazi vulkan-tools 
 
     # Misc
     ntfs3g efibootmgr mutagen zenity cryptsetup openssl cacert openssh 
