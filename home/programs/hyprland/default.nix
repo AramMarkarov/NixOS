@@ -79,7 +79,7 @@ let
         bindm = SUPER,mouse:272,movewindow
         bindm = SUPER,mouse:273,resizewindow
 
-        bind = SUPER,RETURN,exec,alacritty
+        bind = SUPER,RETURN,exec,wezterm
         bind = SUPER,Q,killactive
         bind = SUPER,M,exit
         bind = SUPER,E,exec,dolphin
@@ -153,25 +153,6 @@ let
         exec-once = fcitx5
         exec-once = wl-paste --type text --watch cliphist store
         exec-once = wl-paste --type image --watch cliphist store
-
-
-        # Environment variables
-        env = XDG_MENU_PREFIX,plasma-
-        env = HYPRCURSOR_THEME,rose-pine-hyprcursor
-        env = HYPRCURSOR_SIZE,28
-        env = XCURSOR_THEME,BreezeX-RosePine-Linux
-        env = XCURSOR_SIZE,28
-        env = ELECTRON_OZONE_PLATFORM_HINT,auto
-        env = QT_QPA_PLATFORMTHEME,qt5ct
-        env = QT_QPA_PLATFORM,wayland;xcb
-        env = QT_WAYLAND_DISABLE_WINDOWDECORATION,1
-        env = XDG_SESSION_DESKTOP,Hyprland
-        env = XDG_SESSION_TYPE,wayland
-        env = CLUTTER_BACKEND,wayland
-        env = GDK_BACKEND,wayland,x11,*
-        env = QT_QPA_PLATFORM,wayland;xcb
-        env = SDL_VIDEODRIVER,wayland
-        env = HYPRSHOT_DIR,Pictures/Screenshots
 
         windowrulev2 = opacity 0.0 override, class:^(xwaylandvideobridge)$
         windowrulev2 = noanim, class:^(xwaylandvideobridge)$

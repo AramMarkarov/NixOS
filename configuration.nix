@@ -19,13 +19,16 @@
 
   environment.systemPackages = with pkgs; [
     # Build tools
-    stdenvNoCC gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git curl wget python3 rustup jdk jdk8 gnumake
+    stdenvNoCC gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git curl
+    wget python3 rustup jdk jdk8 gnumake zig rocmPackages.rocminfo
 
     # Debugging and monitoring
-    htop ncdu eza killall fastfetch
+    ncdu eza killall fastfetch yazi clinfo vulkan-tools
 
     # Misc
-    efibootmgr mutagen zenity cryptsetup openssl cacert openssh firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg
+    ntfs3g efibootmgr mutagen zenity cryptsetup openssl cacert openssh 
+    firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg 
+    nvtopPackages.amd
 
     # Libraries
     libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib fuse fuseiso
@@ -39,14 +42,18 @@
     # SDDM
     (callPackage ./modules/sddm/sddm-rose-pine.nix {})
   ];
-
+  
   programs = {
-      hyprland.enable = true;
-      hyprland.withUWSM  = true;
-      zsh.enable = true;
-      appimage.binfmt = true;
-      appimage.enable = true;
+    hyprland = {
+      enable = true;
+      withUWSM  = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
+    zsh.enable = true;
+    appimage.binfmt = true;
+    appimage.enable = true;
+  };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -58,9 +65,8 @@
         xdg-desktop-portal-wlr
         xdg-desktop-portal-kde
         xdg-desktop-portal-gtk
-        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gnome
     ];
-    wlr.enable = true;
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -71,6 +77,7 @@
     config.allowBroken = true;
     config.allowUnfree = true;
     config.allowUnsupportedSystem = true;
+    config.allowUnfreePredicate = _: true;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -81,13 +88,14 @@
     grub = {
         enable = true;
         device = "nodev";
-        useOSProber = true; # Currently broken
+        useOSProber = true;
         efiSupport = true;
     };
   };
 
   # Time zone
   time.timeZone = "Europe/Amsterdam";
+  time.hardwareClockInLocalTime = true;
 
   # User
   users.users.aramjonghu = {
@@ -100,6 +108,28 @@
   # Env variables
   environment.variables = {
     SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
+    EDITOR = "nvim";
+    BROWSER = "firefox";
+    TERMINAL = "wezterm";
+    XDG_MENU_PREFIX = "plasma-";
+    HYPRCURSOR_THEME = "rose-pine-hyprcursor";
+    HYPRCURSOR_SIZE = "24";
+    XCURSOR_THEME = "BreezeX-RosePine-Linux";
+    XCURSOR_SIZE = "24";
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    QT_QPA_PLATFORMTHEME = "qt6ct";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    QT_QPA_PLATFORM = "wayland";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    XDG_SESSION_TYPE = "wayland";
+    CLUTTER_BACKEND = "wayland";
+    GDK_BACKEND = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_CACHE_HOME = "$HOME/.cache";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    HYPRSHOT_DIR = "$HOME/Pictures/Screenshots";
   };
 
   # Hostname (Change if needed)

@@ -14,6 +14,25 @@
   };
 
   services = {
+    resolved = {
+      enable = true;
+      extraConfig = ''
+        DNS=45.90.28.0#3122c2.dns.nextdns.io
+        DNS=2a07:a8c0::#3122c2.dns.nextdns.io
+        DNS=45.90.30.0#3122c2.dns.nextdns.io
+        DNS=2a07:a8c1::#3122c2.dns.nextdns.io
+        DNSOverTLS=yes
+      '';
+
+};
+    ollama = {
+      enable = true;
+      acceleration = "rocm";
+      environmentVariables = {
+        HCC_AMDGPU_TARGET = "gfx90";
+      };
+      rocmOverrideGfx = "9.0";
+    };
     btrfs.autoScrub = {
         enable = true;
         interval = "weekly";

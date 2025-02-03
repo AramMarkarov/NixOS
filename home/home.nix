@@ -1,9 +1,10 @@
-{config, pkgs, ... }:
+{config, pkgs, inputs, ... }:
 
 {
 
   imports = [
       ./programs
+      inputs.nixvim.homeManagerModules.nixvim
     ];
 
   programs.home-manager.enable = true;
@@ -11,6 +12,8 @@
 
   nixpkgs.config.allowBroken = true;
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnsupportedSystem = true;
+  nixpkgs.config.allowUnfreePredicate = _: true;
 
   home = {
         username = "aramjonghu";
@@ -30,13 +33,12 @@
     steam-run
     dxvk
     protonup
-    gamescope
 
     # Networking and communication
-    wget
     filezilla
     croc
     networkmanagerapplet
+    ventoy-full
 
     # Wine and Wine tools
     wine
@@ -55,6 +57,7 @@
 
     # Common applications
     tor-browser
+    gimp-with-plugins
     ungoogled-chromium
     discord-canary
     vesktop
@@ -64,78 +67,77 @@
     libsForQt5.kdenlive
     obs-studio
     vlc
-    alacritty
     spotify
     mendeley
     libreoffice
-    zellij
-    
+    virtualbox
+
+    # Terminals
+    wezterm
+    cool-retro-term
+    kitty
+
     # IDE's & txteditors
     jetbrains.datagrip
     jetbrains.idea-ultimate
     jetbrains.jdk
-    vscode
-    kate
-    nano
-    neovim
     processing
     arduino-ide
 
     # Plugins & stuff
     arrpc
     nodejs_22
-
+    
     # Desktop Environment requirements (hyprland)
     wofi
     swww
     hyprshot
     kdePackages.dolphin
     hyprlock
+    hyprpicker
     hyprpanel
-    ags
-    udiskie
-    libsForQt5.qt5ct
-    kdePackages.qt6ct
-    kdePackages.breeze
-
-    # Rose Pine
-    vimPlugins.rose-pine
-    rose-pine-cursor
-    fcitx5-rose-pine
+    hyprsunset
 
     # DE requirements
+    btop
+    hyprland-qtutils
+    nwg-look
+    kdePackages.qt6ct
+    kdePackages.kmime
+    kdePackages.qt6gtk2
+    kdePackages.kservice
+    kdePackages.breeze
     libnotify
-    cameractrls
     hyprcursor
     hypridle
-    matugen
     kdePackages.dolphin-plugins
     kdePackages.qtwayland
+    hyprutils
+    hyprsunset
+    hyprlang
+    hyprgraphics
     kdePackages.qtsvg
     kdePackages.kio
     kdePackages.kio-admin
     kdePackages.kio-fuse
     kdePackages.kio-extras
-    xdg-desktop-portal
-    xdg-desktop-portal-wlr
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal-gnome
-    xdg-desktop-portal-gtk
     kdePackages.xdg-desktop-portal-kde
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-gnome
     libgtkflow4
     kdePackages.ark
     brightnessctl
     bluez
     libgtop
+    dart-sass
+    gnome-bluetooth
+    networkmanager
     wlroots
-    kitty
     playerctl
     kdePackages.plasma-workspace
     wl-clipboard
-    wl-clipboard-x11
     wl-clip-persist
     cliphist
-    nwg-look
-    dart-sass
     ];
 }
