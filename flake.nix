@@ -2,8 +2,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixvim = {
-        url = "github:nix-community/nixvim";
-        inputs.nixpkgs.follows = "nixpkgs";
+     url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
       url = "github:hyprwm/Hyprland";
@@ -20,17 +20,17 @@
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
   };
 
-  outputs = inputs @ { home-manager, nixpkgs, self, nixvim, ... }: let
+  outputs = inputs @ { home-manager, nixpkgs, self, ... }: let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
   in {
     nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system; };
-        modules = [
+      specialArgs = { inherit inputs system; };
+      modules = [
         ./configuration.nix
         inputs.home-manager.nixosModules.default
         {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
-      ];
+        ];
     };
   };
 }

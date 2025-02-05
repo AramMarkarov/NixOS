@@ -2,9 +2,9 @@
 
 {
   imports = [
-      ./programs
-      inputs.nixvim.homeManagerModules.nixvim
-    ];
+    ./programs
+    inputs.nixvim.homeManagerModules.nixvim
+  ];
 
   programs.home-manager.enable = true;
   home.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -100,6 +100,8 @@
     jetbrains.jdk
     processing
     arduino-ide
+    arduino-cli
+    drawio
 
     # Plugins & stuff
     arrpc
