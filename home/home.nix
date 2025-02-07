@@ -77,6 +77,8 @@
     discord-canary
     ungoogled-chromium
     vesktop
+    mullvad-browser
+    mullvad-vpn
     firefox #remove when home-manager is functional
     teams-for-linux
     thunderbird

@@ -22,13 +22,6 @@
     };
     initExtra = ''
         fastfetch
-        
-        # (always bottom) zellij
-        if [ "$(ps -o comm= -p $(ps -o ppid= -p $$))" = "alacritty" ]; then
-            if command -v zellij &> /dev/null && [ -z "$ZELLIJ" ]; then
-                zellij attach default || zellij --session default
-            fi
-        fi
         '';
 };
 

@@ -4,8 +4,9 @@
     ./zsh
     ./wofi
     ./nixvim
+    ./wezterm
     #./firefox
-    #./hyprpanel #work in progress + it is currently not great
+    #./hyprpanel
   ];
 
   xdg.mimeApps = {

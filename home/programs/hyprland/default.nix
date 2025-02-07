@@ -159,7 +159,6 @@ let
         windowrulev2 = maxsize 1 1, class:^(xwaylandvideobridge)$
         windowrulev2 = noblur, class:^(xwaylandvideobridge)$
         windowrulev2 = nofocus, class:^(xwaylandvideobridge)$
-
   '';
 in
 {

@@ -41,6 +41,6 @@ systemd.tmpfiles.rules =
 
   boot.kernelParams = [
     "video=DP-1:2560x1440@60"
-    "video=DP-2:2560x1440@60"
+    "video=DP-2:3840x2160@60"
   ];
 }
