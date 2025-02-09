@@ -22,6 +22,7 @@
     };
     initExtra = ''
         fastfetch
+        export TERM=wezterm
         '';
 };
 

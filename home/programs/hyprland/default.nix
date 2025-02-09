@@ -76,7 +76,7 @@ let
         bind = SUPER,RETURN,exec,wezterm
         bind = SUPER,Q,killactive
         bind = SUPER,M,exit
-        bind = SUPER,E,exec,dolphin
+        bind = SUPER,E,exec,nautilus
         bind = SUPER,S,togglefloating
         bind = SUPER,P,pseudo
         bind = SUPER,O,exec,spotify
@@ -159,6 +159,7 @@ let
         windowrulev2 = maxsize 1 1, class:^(xwaylandvideobridge)$
         windowrulev2 = noblur, class:^(xwaylandvideobridge)$
         windowrulev2 = nofocus, class:^(xwaylandvideobridge)$
+        windowrulev2 = noblur, class:^(org.gnome.Nautilus)$
   '';
 in
 {

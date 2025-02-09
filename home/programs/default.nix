@@ -5,23 +5,23 @@
     ./wofi
     ./nixvim
     ./wezterm
-    #./firefox
+    #./floorp
     #./hyprpanel
   ];
 
   xdg.mimeApps = {
       enable = true;
       defaultApplications = {
-        "inode/directory" = [ "org.kde.dolphin.desktop" ];
+        "inode/directory" = [ "org.gnome.Nautilus" ];
         "application/pdf" = [ "draw.desktop" ];
-        "text/plain" = [ "idea-ultimate.desktop" ];
-        "text/html" = [ "idea-ultimate.desktop" ];
-        "x-scheme-handler/http" = [ "firefox.desktop" ];
-        "x-scheme-handler/https" = [ "firefox.desktop" ];
-        "x-scheme-handler/about" = [ "firefox.desktop" ];
-        "x-scheme-handler/unknown" = [ "firefox.desktop" ];
-        "image/jpeg" = [ "firefox.desktop" ];
-        "image/png" = [ "firefox.desktop" ];
+        "text/plain" = [ "nvim.desktop" ];
+        "text/html" = [ "nvim.desktop" ];
+        "x-scheme-handler/http" = [ "floorp.desktop" ];
+        "x-scheme-handler/https" = [ "floorp.desktop" ];
+        "x-scheme-handler/about" = [ "floorp.desktop" ];
+        "x-scheme-handler/unknown" = [ "floorp.desktop" ];
+        "image/jpeg" = [ "floorp.desktop" ];
+        "image/png" = [ "floorp.desktop" ];
         "video/mp4" = [ "vlc.desktop" ];
         "audio/mpeg" = [ "vlc.desktop" ];
         "application/zip" = [ "org.kde.ark.desktop" ];
@@ -38,15 +38,15 @@
         "application/x-shellscript" = [ "wezterm.desktop" ];
         "application/x-executable" = [ "wezterm.desktop" ];
         "application/x-arduino" = [ "arduino-ide.desktop" ];
-        "text/x-java" = [ "idea-ultimate.desktop" ];
-        "application/x-python" = [ "idea-ultimate.desktop" ];
-        "application/x-php" = [ "idea-ultimate.desktop" ];
-        "text/javascript" = [ "idea-ultimate.desktop" ];
-        "application/x-csrc" = [ "idea-ultimate.desktop" ];
-        "application/x-c++src" = [ "idea-ultimate.desktop" ];
-        "application/x-cppsrc" = [ "idea-ultimate.desktop" ];
-        "application/x-csharp" = [ "idea-ultimate.desktop" ];
-        "application/x-zerosize" = [ "idea-ultimate.desktop" ];
+        "text/x-java" = [ "nvim.desktop" ];
+        "application/x-python" = [ "nvim.desktop" ];
+        "application/x-php" = [ "nvim.desktop" ];
+        "text/javascript" = [ "nvim.desktop" ];
+        "application/x-csrc" = [ "nvim.desktop" ];
+        "application/x-c++src" = [ "nvim.desktop" ];
+        "application/x-cppsrc" = [ "nvim.desktop" ];
+        "application/x-csharp" = [ "nvim.desktop" ];
+        "application/x-zerosize" = [ "nvim.desktop" ];
         "application/sql" = [ "datagrip.desktop" ];
       };
     };

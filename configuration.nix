@@ -23,7 +23,7 @@
     curl wget python3 rustup jdk jdk8 gnumake zig rocmPackages.clr
     
     # Debugging and monitoring
-    ncdu eza killall fastfetch clinfo yazi vulkan-tools 
+    ncdu killall fastfetch clinfo yazi vulkan-tools 
 
     # Misc
     ntfs3g efibootmgr mutagen zenity cryptsetup openssl cacert openssh 
@@ -31,8 +31,8 @@
     ffmpeg nvtopPackages.amd
 
     # Libraries
-    libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib fuse fuseiso 
-    opentabletdriver libwacom
+    libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib glibmm fuse 
+    fuseiso opentabletdriver libwacom
 
     # Cursor
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
@@ -107,8 +107,10 @@
   environment.variables = {
     SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
     EDITOR = "nvim";
-    BROWSER = "firefox";
+    BROWSER = "floorp";
+    TERM = "wezterm";
     TERMINAL = "wezterm";
+    VISUAL = "nvim";
     XDG_MENU_PREFIX = "plasma-";
     HYPRCURSOR_THEME = "rose-pine-hyprcursor";
     HYPRCURSOR_SIZE = "24";

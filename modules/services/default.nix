@@ -6,6 +6,7 @@
   hardware.bluetooth.enable = true;
 
   services = {
+    gvfs.enable = true;
     ollama = {
       enable = true;
       acceleration = "rocm";

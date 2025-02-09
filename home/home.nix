@@ -30,7 +30,7 @@
 
   # User-specific development tools
   home.packages = with pkgs; [
-    # Desktop only
+    # Desktop only/wine & proton
     steam-run
     dxvk
     protonup
@@ -52,7 +52,6 @@
 
     # Audio/video tools
     calf
-    cava
     easyeffects
     ffmpeg_7-full
     pwvucontrol
@@ -61,7 +60,6 @@
     # Rosepine themes
     fcitx5-rose-pine
     rose-pine-cursor
-    rose-pine-icon-theme
 
     # Emulators
     pcsx2
@@ -71,19 +69,20 @@
     simple64
 
     # Common Apps
+    qbittorrent
     teamspeak5_client
     gimp-with-plugins
     tor-browser
+    signal-desktop
     discord-canary
     ungoogled-chromium
     vesktop
-    mullvad-browser
     mullvad-vpn
-    firefox #remove when home-manager is functional
+    firefox
+    floorp
     teams-for-linux
     thunderbird
     kdePackages.kdenlive
-    kdePackages.systemsettings
     obs-studio
     vlc
     spotify
@@ -98,8 +97,6 @@
 
     # IDE's & txteditors
     jetbrains.datagrip
-    jetbrains.idea-ultimate
-    jetbrains.jdk
     processing
     arduino-ide
     arduino-cli
@@ -114,8 +111,7 @@
     swww
     hyprshot
     hyprlock
-    kdePackages.dolphin
-    kdePackages.kmime
+    nautilus
     hyprpicker
     hyprpanel
     hyprsunset
@@ -124,6 +120,8 @@
     btop
     hyprland-qtutils
     nwg-look
+    gtk3
+    gtk4
     kdePackages.qt6ct
     kdePackages.qt6gtk2
     kdePackages.qtsvg
@@ -133,17 +131,12 @@
     libnotify
     hyprcursor
     hypridle
-    kdePackages.dolphin-plugins
     kdePackages.qtwayland
     hyprutils
     hyprsunset
     hyprlang
     hyprgraphics
-    kdePackages.qtsvg
-    kdePackages.kio
-    kdePackages.kio-admin
-    kdePackages.kio-fuse
-    kdePackages.kio-extras
+    xdg-desktop-portal-gtk
     kdePackages.xdg-desktop-portal-kde
     xdg-desktop-portal-wlr
     xdg-desktop-portal-gtk
