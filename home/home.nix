@@ -35,9 +35,9 @@
     dxvk
     protonup
     gamescope
-    minecraft
-    steam
-    lutris
+    #minecraft
+    #steam
+    #lutris
 
     # Networking and communication
     filezilla

@@ -5,8 +5,6 @@
     ./wofi
     ./nixvim
     ./wezterm
-    #./floorp
-    #./hyprpanel
   ];
 
   xdg.mimeApps = {
