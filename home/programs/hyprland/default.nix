@@ -1,68 +1,86 @@
 { config, pkgs, ... }:
 
 let
-  # Define the Hyprland configuration as a string, with necessary Nix formatting
   hyprlandConfig = ''
+    # Rose Pine Colors
+    $base	        = 0xff232136
+    $surface        = 0xff2a273f
+    $overlay        = 0xff393552
+    $muted          = 0xff6e6a86
+    $subtle         = 0xff908caa
+    $text           = 0xffe0def4
+    $love           = 0xffeb6f92
+    $gold           = 0xfff6c177
+    $rose           = 0xffea9a97
+    $pine           = 0xff3e8fb0
+    $foam           = 0xff9ccfd8
+    $iris           = 0xffc4a7e7
+    $highlightLow   = 0xff2a283e
+    $highlightMed   = 0xff44415a
+    $highlightHigh  = 0xff56526e
+
     input {
             kb_layout = us
             kb_variant =
             kb_model =
-            kb_options =
+            kb_options = fkeys:basic_13-24
             kb_rules =
             sensitivity = 0
             accel_profile = flat
             follow_mouse = 1
         }
 
-        general {
-            gaps_in = 8
-            gaps_out = 15
-            border_size = 5
-            col.active_border = 0xfff5c2e7
-            col.inactive_border = 0xff45475a
-            apply_sens_to_raw = 0
+    general {
+        gaps_in = 8
+        gaps_out = 15
+        border_size = 3
+        col.active_border = $rose $pine $love $iris 90deg
+        col.inactive_border = $muted
         }
 
-        decoration {
-            drop_shadow = true
-            shadow_range = 100
-            shadow_render_power = 5
-            col.shadow = 0x33000000
-            col.shadow_inactive = 0x22000000
-            rounding = 15
+    decoration {
+        rounding = 15
+        shadow {
+            enabled = true
+            range = 25
+            render_power = 5
+            color = $highlightHigh
+            color_inactive = $highlightLow
+            }
         }
 
-        animations {
-            enabled = 1
-            bezier = overshot,0.13,0.99,0.29,1.1
-            animation = windows,1,4,overshot,slide
-            animation = border,1,10,default
-            animation = fade,1,10,default
-            animation = workspaces,1,6,overshot,slidevert
+    animations {
+        enabled = 1
+        bezier = overshot,0.13,0.99,0.29,1.1
+        animation = windows,1,4,overshot,slide
+        animation = border,1,10,default
+        animation = fade,1,10,default
+        animation = workspaces,1,6,overshot,slidevert
         }
 
-        dwindle {
-            pseudotile = 1
-            force_split = 0
-            preserve_split = true
+    dwindle {
+        pseudotile = 1
+        force_split = 0
+        preserve_split = true
         }
 
-        gestures {
-            workspace_swipe = yes
-            workspace_swipe_fingers = 4
+    gestures {
+        workspace_swipe = yes
+        workspace_swipe_fingers = 4
         }
 
         # Keybinds
         bindm = SUPER,mouse:272,movewindow
         bindm = SUPER,mouse:273,resizewindow
 
-        bind = SUPER,RETURN,exec,alacritty
+        bind = SUPER,RETURN,exec,wezterm
         bind = SUPER,Q,killactive
         bind = SUPER,M,exit
-        bind = SUPER,E,exec,dolphin
+        bind = SUPER,E,exec,nautilus
         bind = SUPER,S,togglefloating
-        bind = SUPER,space,exec,wofi --show drun -o DP-3
         bind = SUPER,P,pseudo
+        bind = SUPER,O,exec,spotify
+        bind = SUPER,B,exec,firefox
 
         bind = SUPER,L,exec,~/.config/hypr/scripts/lock
         bind = SUPER,left,movefocus,l
@@ -99,44 +117,58 @@ let
         bind = ALT,TAB,cyclenext
         bind = SUPER,F,fullscreen
         bind = SUPER,D,exec,wofi --show drun
-        bind = $shiftMod, PRINT, exec, hyprshot -m region
         bindel = , XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
         bindel = , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
-        # Input options for function keys
-        input {
-            kb_options = fkeys:basic_13-24
-        }
+        bindel = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+        bindel = , F14, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+        bindel = , F15, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+        bindel = , F17, exec, wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+
+        bindel = , F16, exec, wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-
 
         # Requires playerctl for media controls
         bindl = , XF86AudioPlay, exec, playerctl play-pause
         bindl = , XF86AudioPrev, exec, playerctl previous
         bindl = , XF86AudioNext, exec, playerctl next
 
-        # Screenshot bind
+        # Screenshot and copy binds
         bind = , PRINT, exec, hyprshot -m region
+        bind = SUPER, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy
 
         # Monitor setup (adjust as needed)
-        monitor = DP-1, 2560x1600@60, 1, bitdepth, 10
+        monitor = DP-1, 2560x1440@165, 2160x0, 1, bitdepth, 10
+        monitor = DP-2, 3840x2160@60, 0x0, 1, bitdepth, 10, transform, 1
+        # monitor = eDP-1, 2560x1600@60, 1, bitdepth, 10 (for laptop)
+
 
         # Exec-once for startup programs
+        exec-once = hyprpanel
         exec-once = arrpc
         exec-once = teams-for-linux
         exec-once = vesktop
         exec-once = spotify
         exec-once = steam
-        exec-once = $HOME/.config/hypr/autostart
-        exec-once = swww-daemon
+        exec-once = thunderbird
+        exec-once = dispwin -d1 /home/aramjonghu/.color/icc/1440p.icm
+        exec-once = dispwin -d2 /home/aramjonghu/.color/icc/2160p.icm
         exec-once = fcitx5
-        exec-once = waybar
-        exec-once = dunst
-        env = XDG_MENU_PREFIX,plasma-
+        exec-once = wl-paste --type text --watch cliphist store
+        exec-once = wl-paste --type image --watch cliphist store
 
+        windowrulev2 = opacity 0.0 override, class:^(xwaylandvideobridge)$
+        windowrulev2 = noanim, class:^(xwaylandvideobridge)$
+        windowrulev2 = noinitialfocus, class:^(xwaylandvideobridge)$
+        windowrulev2 = maxsize 1 1, class:^(xwaylandvideobridge)$
+        windowrulev2 = noblur, class:^(xwaylandvideobridge)$
+        windowrulev2 = nofocus, class:^(xwaylandvideobridge)$
+        windowrulev2 = noblur, class:^(org.gnome.Nautilus)$
   '';
 in
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    systemdIntegration = true;
+    systemd.enable = false;
+    package = pkgs.hyprland;
+    xwayland.enable = true;
     extraConfig = hyprlandConfig;
   };
 }

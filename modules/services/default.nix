@@ -3,15 +3,41 @@
 {
   # bluetooth
   hardware.bluetooth.powerOnBoot = true;
-  services.blueman.enable = true;
   hardware.bluetooth.enable = true;
+
+  services = {
+    gvfs.enable = true;
+    ollama = {
+      enable = true;
+      acceleration = "rocm";
+      environmentVariables = {
+        HCC_AMDGPU_TARGET = "gfx1031";
+      };
+      rocmOverrideGfx = "10.3.1";
+    };
+    btrfs.autoScrub = {
+        enable = true;
+        interval = "weekly";
+        fileSystems = [ "/" "/mnt/HDD" ];
+    };
+    blueman.enable = true;
+    upower.enable = true;
+    udisks2.enable = true;
+    fwupd.enable = true;
+    tailscale.enable = false; # only enable when streaming or viewing stream
+    xserver.enable = true;
+    displayManager.sddm.enable = true;
+    displayManager.sddm.theme = "rose-pine";
+    flatpak.enable = true;
+  };
 
   # Garbage collection
   nix.gc = {
     automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
+    dates = "daily";
+    options = "--delete-older-than 3d";
   };
+  nix.settings.auto-optimise-store = true;
 
   # Network
   networking.networkmanager.enable = true;
@@ -20,4 +46,5 @@
       DNSOverTLS = "yes";
     };
   };
+  
 }

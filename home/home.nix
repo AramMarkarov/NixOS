@@ -1,23 +1,25 @@
-{config, pkgs, ... }:
+{config, pkgs, inputs, ... }:
 
 {
-
   imports = [
-      ./programs
-    ];
+    ./programs
+    inputs.nixvim.homeManagerModules.nixvim
+  ];
 
   programs.home-manager.enable = true;
-  wayland.windowManager.hyprland.enable = true;
-  wayland.windowManager.hyprland.systemd.variables = ["--all"];
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  nixpkgs.config.allowBroken = true;
-  nixpkgs.config.allowUnfree = true;
-
+  nixpkgs.config = {
+    allowBroken = true;
+    allowUnfree = true;
+    allowUnsupportedSystem = true;    
+    allowUnfreePredicate = _: true;
+  };
+  
   home = {
         username = "aramjonghu";
         homeDirectory = "/home/aramjonghu";
-        stateVersion = "24.05";
+        stateVersion = "25.05";
       };
 
   programs.git = {
@@ -28,7 +30,7 @@
 
   # User-specific development tools
   home.packages = with pkgs; [
-    # Desktop only
+    # Desktop only/wine & proton
     steam-run
     dxvk
     protonup
@@ -38,9 +40,10 @@
     #lutris
 
     # Networking and communication
-    wget
     filezilla
     croc
+    networkmanagerapplet
+    ventoy-full
 
     # Wine and Wine tools
     wine
@@ -52,35 +55,54 @@
     easyeffects
     ffmpeg_7-full
     pwvucontrol
+    argyllcms
 
-    # Common applications
-    discord
+    # Rosepine themes
+    fcitx5-rose-pine
+    rose-pine-cursor
+
+    # Emulators
+    pcsx2
+    snes9x
+    rpcs3
+    desmume
+    simple64
+
+    # Common Apps
+    qbittorrent
+    teamspeak5_client
+    gimp-with-plugins
+    tor-browser
+    signal-desktop
+    discord-canary
+    ungoogled-chromium
     vesktop
-    mullvad-browser
-    brave
+    mullvad-vpn
     firefox
+    floorp
     teams-for-linux
     thunderbird
-    libsForQt5.kdenlive
+    kdePackages.kdenlive
     obs-studio
     vlc
-    alacritty
     spotify
     mendeley
     libreoffice
-    
+    virtualbox
+
+    # Terminals
+    wezterm
+    cool-retro-term
+    kitty
+
     # IDE's & txteditors
     jetbrains.datagrip
-    jetbrains.idea-ultimate
-    vscode
-    kate
-    nano
-    neovim
     processing
     arduino-ide
+    arduino-cli
+    drawio
 
     # Plugins & stuff
-    obs-studio-plugins.obs-pipewire-audio-capture
     arrpc
     nodejs_22
 
@@ -88,31 +110,49 @@
     wofi
     swww
     hyprshot
-    kdePackages.dolphin
     hyprlock
-    kdePackages.systemsettings # Remove if virtual keyboard is fixed (fcitx)
-    waybar
+    nautilus
+    hyprpicker
+    hyprpanel
+    hyprsunset
 
     # DE requirements
-    libnotify
-    dunst
-    upower
-    kdePackages.dolphin-plugins
-    kdePackages.qtwayland
+    btop
+    hyprland-qtutils
+    nwg-look
+    gtk3
+    gtk4
+    kdePackages.qt6ct
+    kdePackages.qt6gtk2
     kdePackages.qtsvg
-    kdePackages.kio
-    kdePackages.kio-admin
-    kdePackages.kio-fuse
-    kdePackages.kio-extras
+    kdePackages.plasma-workspace
+    kdePackages.breeze
+    kdePackages.kservice
+    libnotify
+    hyprcursor
+    hypridle
+    kdePackages.qtwayland
+    hyprutils
+    hyprsunset
+    hyprlang
+    hyprgraphics
+    xdg-desktop-portal-gtk
+    kdePackages.xdg-desktop-portal-kde
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-gnome
     libgtkflow4
     kdePackages.ark
     brightnessctl
     bluez
     libgtop
+    dart-sass
+    gnome-bluetooth
     networkmanager
     wlroots
-    kitty
     playerctl
-    kdePackages.plasma-workspace
+    wl-clipboard
+    wl-clip-persist
+    cliphist
     ];
 }
