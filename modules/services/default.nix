@@ -24,7 +24,6 @@
     upower.enable = true;
     udisks2.enable = true;
     fwupd.enable = true;
-    tailscale.enable = false; # only enable when streaming or viewing stream
     xserver.enable = true;
     displayManager.sddm.enable = true;
     displayManager.sddm.theme = "rose-pine";
