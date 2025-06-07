@@ -71,9 +71,9 @@
     TERMINAL = "wezterm";
     VISUAL = "nvim";
     EDITOR = "nvim";
-    HYPRCURSOR_THEME = "catppuccin-cursor.macchiatoSapphire";
+    HYPRCURSOR_THEME = "catppuccin-cursor.macchiatoLavender";
     HYPRCURSOR_SIZE = "24";
-    XCURSOR_THEME = "catppuccin-cursor.macchiatoSapphire";
+    XCURSOR_THEME = "catppuccin-cursor.macchiatoLavender";
     XCURSOR_SIZE = "24";
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     QT_QPA_PLATFORMTHEME = "qt6ct";

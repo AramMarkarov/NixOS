@@ -19,6 +19,15 @@
         kdePackages.qtsvg kdePackages.kio-fuse kdePackages.kio-extras
         kdePackages.sddm-kcm kdePackages.kservice
 
+    # Cursors
+        catppuccin-cursors.macchiatoMauve catppuccin-cursors.macchiatoSapphire
+        catppuccin-cursors.macchiatoGreen catppuccin-cursors.macchiatoPink
+        catppuccin-cursors.macchiatoLavender
+    
+    # Icons
+        kdePackages.breeze-icons kdePackages.oxygen-icons rose-pine-icon-theme
+        catppuccin-papirus-folders adwaita-icon-theme
+
     # Libraries
         libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib glibmm fuse 
         fuseiso opentabletdriver libwacom
