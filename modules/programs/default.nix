@@ -7,7 +7,7 @@
         curl wget gnumake rocmPackages.clr icu
 
     # Langauges
-        python3 zig rustup jdk jdk24 jdk8 nodejs_24
+        python3 zig rustup jdk jdk24 jdk8 nodejs_24 mariadb_114 go perl
 
     # Debugging and monitoring
         ncdu killall fastfetch clinfo yazi vulkan-tools 
@@ -30,7 +30,7 @@
 
     # Libraries
         libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib glibmm fuse 
-        fuseiso opentabletdriver libwacom
+        fuseiso opentabletdriver libwacom libmysqlclient
 
     # Hyprland stuff
         swww hyprpanel hyprshot fuzzel hyprland-workspaces hyprlock hyprpaper
