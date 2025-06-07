@@ -4,7 +4,6 @@
     ./input-method
     ./services
     ./audio
-    ./sddm
     ./programs
   ];
   }

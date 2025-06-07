@@ -18,16 +18,18 @@
     btrfs.autoScrub = {
         enable = true;
         interval = "weekly";
-        fileSystems = [ "/" "/mnt/HDD" ];
+        fileSystems = [ "/mnt/HDD" ];
     };
     blueman.enable = true;
     upower.enable = true;
     udisks2.enable = true;
     fwupd.enable = true;
     xserver.enable = true;
-    displayManager.sddm.enable = true;
-    displayManager.sddm.theme = "rose-pine";
-    flatpak.enable = true;
+    displayManager.sddm = {
+        enable = true;
+        theme = "rose-pine";
+    };
+    printing.enable = true; 
   };
 
   # Garbage collection

@@ -1,19 +1,54 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, libs, inputs,  ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    ./modules
-    ./hosts/desktop.nix
-  ];
-  environment.shells = with pkgs; [ zsh ];
+  imports =
+    [
+      ./hardware-configuration.nix
+      ./modules
+    ];
 
+  # Bootloader
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+      grub = {
+          enable = true;
+          devices = [ "nodev" ];
+          efiSupport = true;
+          useOSProber = true;
+          };
+  };
+  
+  qt = {
+      enable = true;
+      style = "breeze";
+  };
+
+  # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-# Use of file system and video sharing
+  networking.hostName = "nixos"; # Define your hostname.
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Set your time zone.
+  time.timeZone = "Europe/Amsterdam";
+  time.hardwareClockInLocalTime = true;
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.aramjonghu = {
+    isNormalUser = true;
+    description = "aramjonghu";
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
+
+  users.defaultUserShell = pkgs.zsh; 
+
+  # Use of file system and video sharing
   xdg.portal ={
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal ];
+      extraPortals = [ pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-gtk
+                       pkgs.kdePackages.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-wlr 
+                       pkgs.xdg-desktop-portal-hyprland];
   };
 
   security.polkit.enable = true;
@@ -27,44 +62,18 @@
       allowUnfreePredicate = _: true;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-# Bootloader
-  boot.loader = {
-      efi.canTouchEfiVariables = true;
-      grub = {
-          enable = true;
-          devices = [ "nodev" ];
-          efiSupport = true;
-          useOSProber = true;
-      };
-  };
-
-# Time zone
-  time.timeZone = "Europe/Amsterdam";
-  time.hardwareClockInLocalTime = true;
-
-# User
-  users.users.aramjonghu = {
-      isNormalUser = true;
-      description = "Aram";
-      extraGroups = [ "networkmanager" "wheel" ];
-      shell = pkgs.zsh;
-  };
-
-# Env variables
+  # Env variables
   environment.variables = {
+    DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = "1";
     SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
-    EDITOR = "nvim";
-    BROWSER = "floorp";
+    BROWSER = "firefox";
     TERM = "wezterm";
     TERMINAL = "wezterm";
     VISUAL = "nvim";
     EDITOR = "nvim";
-    XDG_MENU_PREFIX = "arch-";
-    HYPRCURSOR_THEME = "rose-pine-hyprcursor";
+    HYPRCURSOR_THEME = "catppuccin-cursor.macchiatoSapphire";
     HYPRCURSOR_SIZE = "24";
-    XCURSOR_THEME = "BreezeX-RosePine-Linux";
+    XCURSOR_THEME = "catppuccin-cursor.macchiatoSapphire";
     XCURSOR_SIZE = "24";
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     QT_QPA_PLATFORMTHEME = "qt6ct";
@@ -90,8 +99,6 @@
     options = [ "compress=zstd" "noatime" "autodefrag" ];
   };
 
-  # Hostname (Change if needed)
-  networking.hostName = "nixos";
+  system.stateVersion = "25.05"; # Did you read the comment?
 
-  system.stateVersion = "25.05";
 }
