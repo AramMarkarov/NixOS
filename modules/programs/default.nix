@@ -47,7 +47,7 @@
         wine-staging nwg-look colord gamemode networkmanagerapplet
 
     # ZSH stuff
-        oh-my-zsh oh-my-posh fzf fzf-zsh
+        oh-my-posh fzf fzf-zsh
 
     # sddm
     #   (callPackage ./sddm-rose-pine.nix {})
@@ -62,6 +62,13 @@
         };
         zsh = {
             enable = true;
+            autosuggestions.enable = true;
+            ohMyZsh = {
+                enable = true;
+                plugins = [ "sudo" "extract" "sudo" "dirhistory" 
+                    "cp" "colorize" ];
+            };
+            syntaxHighlighting.enable = true;
         };
         appimage.binfmt = true;
         appimage.enable = true;
