@@ -20,13 +20,10 @@
         kdePackages.sddm-kcm kdePackages.kservice
 
     # Cursors
-        catppuccin-cursors.macchiatoMauve catppuccin-cursors.macchiatoSapphire
-        catppuccin-cursors.macchiatoGreen catppuccin-cursors.macchiatoPink
         catppuccin-cursors.macchiatoLavender
     
     # Icons
-        kdePackages.breeze-icons kdePackages.oxygen-icons rose-pine-icon-theme
-        catppuccin-papirus-folders adwaita-icon-theme
+        kdePackages.breeze-icons catppuccin-papirus-folders
 
     # Libraries
         libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib glibmm fuse 
@@ -41,16 +38,17 @@
         kdePackages.xdg-desktop-portal-kde power-profiles-daemon
 
     # Programs
-        chromium signal-desktop telegram-desktop vesktop teams-for-linux kdePackages.kdenlive
-        bolt-launcher drawio libreoffice-still hunspell hunspellDicts.nl_NL
-        hunspellDicts.en_US hunspellDicts.en_GB-ise jetbrains.datagrip youtube-music
-        gimp3-with-plugins mendeley qbittorrent protonvpn-gui vlc obs-studio
+        chromium signal-desktop telegram-desktop vesktop teams-for-linux 
+        kdePackages.kdenlive bolt-launcher drawio libreoffice-still hunspell
+        hunspellDicts.nl_NL hunspellDicts.en_US hunspellDicts.en_GB-ise
+        jetbrains.datagrip gimp3-with-plugins mendeley qbittorrent 
+        protonvpn-gui vlc obs-studio
 
     # Games
         minecraft lutris steam-run heroic pcsx2 snes9x
 
     # Settings & Utils
-        kdePackages.qt6ct solaar kdePackages.dolphin libsForQt5.qt5ct
+        kdePackages.qt6ct kdePackages.dolphin libsForQt5.qt5ct
         pavucontrol gparted wezterm btop-rocm arduino-cli arduino-ide
         kdePackages.ark easyeffects protonup-ng mullvad-vpn yazi
         wine-staging nwg-look colord gamemode networkmanagerapplet
