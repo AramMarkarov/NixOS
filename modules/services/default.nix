@@ -53,11 +53,13 @@
     nix.settings.auto-optimise-store = true;
 
 # Network
-    networking.networkmanager.enable = true;
+    networking = {
+        networkmanager.enable = true;
+        nameservers = [ "45.90.28.137" "45.90.30.137" ]}
+    };
     systemd.services.resolved = {
         environment = {
             DNSOverTLS = "yes";
         };
     };
-
 }
