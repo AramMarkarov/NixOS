@@ -1,62 +1,63 @@
 { config, lib, pkgs, ... }:
 
 {
-  # bluetooth
-  hardware.bluetooth.powerOnBoot = true;
-  services.blueman.enable = true;
-  hardware.bluetooth.enable = true;
+    # bluetooth
+    hardware.bluetooth.powerOnBoot = true;
+    hardware.bluetooth.enable = true;
 
-  # Garbage collection
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
-
-  services = {
-    resolved = {
-      enable = true;
-      extraConfig = ''
-        DNS=45.90.28.0#3122c2.dns.nextdns.io
-        DNS=2a07:a8c0::#3122c2.dns.nextdns.io
-        DNS=45.90.30.0#3122c2.dns.nextdns.io
-        DNS=2a07:a8c1::#3122c2.dns.nextdns.io
-        DNSOverTLS=yes
-      '';
-
-};
-    ollama = {
-      enable = true;
-      acceleration = "rocm";
-      environmentVariables = {
-        HCC_AMDGPU_TARGET = "gfx90";
-      };
-      rocmOverrideGfx = "9.0";
-    };
-    btrfs.autoScrub = {
-        enable = true;
-        interval = "weekly";
-        fileSystems = [ "/" ];
-    };
-    upower.enable = true;
-    udisks2.enable = true;
-    fwupd.enable = true;
-    tailscale.enable = false;
-    printing.enable = true;
-    xserver = {
-        enable = true;
+    services = {
+        solaar = {
+            enable = true;
+            package = pkgs.solaar;
+            window = "hide";
+            batteryIcons = "regular";
+            extraArgs = "";
         };
-    displayManager.sddm.theme = "rose-pine";
-    displayManager.sddm.enable = true;
-    flatpak.enable = true;
-  };
-  # Network
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.powersave = true;
+        gvfs.enable = true;
+        blueman.enable = true;
+        upower.enable = true;
+        udisks2.enable = true;
+        fwupd.enable = true;
+        xserver.enable = true;
+        displayManager.sddm = {
+            enable = true;
+            theme = "rose-pine";
+        };
+        printing.enable = true;
+        tlp = {
+            enable = true;
+            settings = {
+                CPU_SCALING_GOVERNOR_ON_AC = "performance";
+                CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-  systemd.services.resolved = {
-    environment = {
-      DNSOverTLS = "yes";
+                CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+                CPU_ENERGY_PERF_POLICY_ON_AC = "default";
+
+                CPU_MIN_PERF_ON_AC = 0;
+                CPU_MAX_PERF_ON_AC = 90;
+                CPU_MIN_PERF_ON_BAT = 0;
+                CPU_MAX_PERF_ON_BAT = 80;
+
+                START_CHARGE_THRESH_BAT0 = 30;
+                STOP_CHARGE_THRESH_BAT0 = 90;
+            };
+        };
     };
-  };
+
+# Garbage collection
+    nix.gc = {
+        automatic = true;
+        dates = "daily";
+        options = "--delete-older-than 3d";
+    };
+    nix.settings.auto-optimise-store = true;
+
+# Network
+    networking.networkmanager.enable = true;
+    systemd.services.resolved = {
+        environment = {
+            DNSOverTLS = "yes";
+        };
+    };
+
 }

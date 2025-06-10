@@ -1,36 +1,24 @@
 {
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixvim = {
-        url = "github:nix-community/nixvim";
-        inputs.nixpkgs.follows = "nixpkgs";
+    inputs = {
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+        hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+        solaar.url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
     };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };  
-    hyprpanel= {
-        url = "github:Jas-SinghFSU/HyprPanel";
-        inputs.nixpkgs.follows = "nixpkgs";
-    };
-    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
-  };
 
-  outputs = inputs @ { home-manager, nixpkgs, self, nixvim, ... }: let
-    system = "x86_64-linux";
+    outputs = inputs @ { nixpkgs, self, solaar, ... }: let
+        system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
-  in {
-    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs system; };
-        modules = [
-        ./configuration.nix
-        inputs.home-manager.nixosModules.default
-        {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
-      ];
+    in {
+        nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+            specialArgs = {
+                inherit inputs;
+                inherit system;
+            };
+            modules = [
+                ./configuration.nix
+                { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
+                solaar.nixosModules.default
+            ];
+        };
     };
-  };
 }

@@ -1,120 +1,79 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, libs, inputs,  ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    ./modules
-    ./hosts/laptop.nix # Change to correct host
-    inputs.home-manager.nixosModules.home-manager
-  ];
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users.aramjonghu = import ./home/home.nix;
-    useGlobalPkgs = true;
-    backupFileExtension = "backup";
-  };
-
-  environment.shells = with pkgs; [ zsh ];
-
-  environment.systemPackages = with pkgs; [
-    # Build tools
-    stdenvNoCC gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git curl
-    wget python3 rustup jdk jdk8 gnumake zig rocmPackages.rocminfo
-
-    # Debugging and monitoring
-    ncdu eza killall fastfetch yazi clinfo vulkan-tools
-
-    # Misc
-    ntfs3g efibootmgr mutagen zenity cryptsetup openssl cacert openssh 
-    firewalld pkg-config appimage-run home-manager fwupd lact polkit ffmpeg 
-    nvtopPackages.amd
-
-    # Libraries
-    libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib fuse fuseiso
-
-    # Cursor
-    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-
-    # Audio
-    alsa-utils pipewire wireplumber
-
-    # SDDM
-    (callPackage ./modules/sddm/sddm-rose-pine.nix {})
-  ];
-  
-  programs = {
-    hyprland = {
-      enable = true;
-      withUWSM  = true;
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-    };
-    zsh.enable = true;
-    appimage.binfmt = true;
-    appimage.enable = true;
-  };
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # Use of file system and video sharing
-  xdg.portal ={
-    enable = true;
-    extraPortals = with pkgs; [
-        xdg-desktop-portal
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-kde
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-gnome
+  imports =
+    [
+      ./hardware-configuration.nix
+      ./modules
     ];
-  };
-
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  security.polkit.enable = true;
-
-  nixpkgs = {
-    config.allowBroken = true;
-    config.allowUnfree = true;
-    config.allowUnsupportedSystem = true;
-    config.allowUnfreePredicate = _: true;
-  };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader
   boot.loader = {
     efi.canTouchEfiVariables = true;
-    grub = {
-        enable = true;
-        device = "nodev";
-        useOSProber = true;
-        efiSupport = true;
-    };
+      grub = {
+          enable = true;
+          devices = [ "nodev" ];
+          efiSupport = true;
+          useOSProber = true;
+          };
+  };
+  
+  qt = {
+      enable = true;
+      style = "breeze";
   };
 
-  # Time zone
+  # Use latest kernel.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  networking.hostName = "nixos"; # Define your hostname.
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
   time.hardwareClockInLocalTime = true;
 
-  # User
+  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.aramjonghu = {
     isNormalUser = true;
-    description = "Aram";
+    description = "aramjonghu";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
+  };
+
+  users.defaultUserShell = pkgs.zsh; 
+
+  # Use of file system and video sharing
+  xdg.portal ={
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-gtk
+                       pkgs.kdePackages.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-wlr 
+                       pkgs.xdg-desktop-portal-hyprland];
+  };
+
+  security.polkit.enable = true;
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
+
+  nixpkgs.config = {
+      allowBroken = true;
+      allowUnfree = true;
+      allowUnsupportedSystem = true;    
+      allowUnfreePredicate = _: true;
   };
 
   # Env variables
   environment.variables = {
+    DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = "1";
     SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
-    EDITOR = "nvim";
     BROWSER = "firefox";
+    TERM = "wezterm";
     TERMINAL = "wezterm";
-    XDG_MENU_PREFIX = "plasma-";
-    HYPRCURSOR_THEME = "rose-pine-hyprcursor";
+    VISUAL = "nvim";
+    EDITOR = "nvim";
+    HYPRCURSOR_THEME = "catppuccin-cursor.macchiatoLavender";
     HYPRCURSOR_SIZE = "24";
-    XCURSOR_THEME = "BreezeX-RosePine-Linux";
+    XCURSOR_THEME = "catppuccin-cursor.macchiatoLavender";
     XCURSOR_SIZE = "24";
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
     QT_QPA_PLATFORMTHEME = "qt6ct";
@@ -124,16 +83,22 @@
     XDG_SESSION_DESKTOP = "Hyprland";
     XDG_SESSION_TYPE = "wayland";
     CLUTTER_BACKEND = "wayland";
-    GDK_BACKEND = "wayland";
-    SDL_VIDEODRIVER = "wayland";
+    GDK_BACKEND = "wayland,x11,*";
+    SDL_VIDEODRIVER = "wayland,x11";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_PICTRES_HOME = "$HOME/Pictures";
     HYPRSHOT_DIR = "$HOME/Pictures/Screenshots";
   };
 
-  # Hostname (Change if needed)
-  networking.hostName = "nixos";
+  # Mount drives
+  fileSystems."/mnt/HDD" = {
+    device = "/dev/sda1";
+    fsType = "btrfs";
+    options = [ "compress=zstd" "noatime" "autodefrag" ];
+  };
 
-  system.stateVersion = "unstable";
+  system.stateVersion = "25.05"; # Did you read the comment?
+
 }

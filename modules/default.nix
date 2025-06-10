@@ -4,5 +4,6 @@
     ./input-method
     ./services
     ./audio
+    ./programs
   ];
   }
