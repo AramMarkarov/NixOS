@@ -34,14 +34,35 @@
   time.timeZone = "Europe/Amsterdam";
   time.hardwareClockInLocalTime = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.aramjonghu = {
-    isNormalUser = true;
-    description = "aramjonghu";
-    extraGroups = [ "networkmanager" "wheel" ];
+  virtualisation = {
+      spiceUSBRedirection.enable = true;
+      libvirtd = {
+        enable = true;
+        qemu = {
+            vhostUserPackages = [ pkgs.virtiofsd ];
+            package = pkgs.qemu_kvm;
+            runAsRoot = true;
+            swtpm.enable = true;
+            ovmf = {
+                enable = true;
+                packages = [(pkgs.OVMF.override {
+                      secureBoot = true;
+                      tpmSupport = true;
+                      }).fd];
+            };
+        };
+    };
   };
 
-  users.defaultUserShell = pkgs.zsh; 
+  users.groups.libvirtd.members = [ "aram" ];
+
+  users.users.aram = {
+    isNormalUser = true;
+    description = "aram";
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+  };
+
+  users.defaultUserShell = pkgs.zsh;
 
   # Use of file system and video sharing
   xdg.portal ={
@@ -90,13 +111,6 @@
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_PICTRES_HOME = "$HOME/Pictures";
     HYPRSHOT_DIR = "$HOME/Pictures/Screenshots";
-  };
-
-  # Mount drives
-  fileSystems."/mnt/HDD" = {
-    device = "/dev/sda1";
-    fsType = "btrfs";
-    options = [ "compress=zstd" "noatime" "autodefrag" ];
   };
 
   system.stateVersion = "25.05"; # Did you read the comment?

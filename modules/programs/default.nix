@@ -34,15 +34,16 @@
         wl-clipboard cliphist hyprpicker hyprgraphics hyprsysteminfo
         hyprland-qtutils hyprlang hypridle hyprsunset hyprcursor hyprpolkitagent
         hyprwayland-scanner hyprland-qt-support astal.hyprland playerctl
-        xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-hyprland 
-        kdePackages.xdg-desktop-portal-kde power-profiles-daemon
+        brightnessctl xdg-desktop-portal xdg-desktop-portal-gtk
+        xdg-desktop-portal-hyprland kdePackages.xdg-desktop-portal-kde
+        power-profiles-daemon
 
     # Programs
         chromium signal-desktop telegram-desktop vesktop teams-for-linux 
         kdePackages.kdenlive bolt-launcher drawio libreoffice-still hunspell
         hunspellDicts.nl_NL hunspellDicts.en_US hunspellDicts.en_GB-ise
         jetbrains.datagrip gimp3-with-plugins mendeley qbittorrent 
-        protonvpn-gui vlc obs-studio ladybird
+        protonvpn-gui vlc obs-studio ladybird virt-manager
 
     # Settings & Utils
         kdePackages.qt6ct kdePackages.dolphin libsForQt5.qt5ct
@@ -59,7 +60,6 @@
     ];
 
     programs = {
-        steam.gamescopeSession.enable = true;
         hyprland = {
             enable = true;
             withUWSM  = true;
@@ -78,7 +78,6 @@
         appimage.enable = true;
         firefox.enable = true;
         thunderbird.enable = true;
-        steam.enable = true;
         neovim = {
             enable = true;
             defaultEditor = true;
