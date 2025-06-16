@@ -4,10 +4,10 @@
     environment.systemPackages = with pkgs; [
     # Build tools 
         stdenvNoCC gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git 
-        curl wget gnumake rocmPackages.clr icu
+        curl wget gnumake rocmPackages.clr icu python313Packages.pip
 
     # Langauges
-        python3 zig rustup jdk jdk24 jdk8 nodejs_24 mariadb_114 go perl
+        python314 zig rustup jdk jdk24 jdk8 nodejs_24 mariadb_114 go perl
 
     # Debugging and monitoring
         ncdu killall fastfetch clinfo yazi vulkan-tools 
@@ -17,7 +17,7 @@
         firewalld pkg-config appimage-run home-manager fwupd lact polkit 
         ffmpeg nvtopPackages.amd unzip kdePackages.plasma-workspace 
         kdePackages.qtsvg kdePackages.kio-fuse kdePackages.kio-extras
-        kdePackages.sddm-kcm kdePackages.kservice
+        kdePackages.sddm-kcm kdePackages.kservice libvirt-glib
 
     # Cursors
         catppuccin-cursors.macchiatoLavender
@@ -55,7 +55,7 @@
         oh-my-posh fzf fzf-zsh
 
     # sddm
-    #   (callPackage ./sddm-rose-pine.nix {})
+        (callPackage ./sddm-rose-pine.nix {})
 
     ];
 
