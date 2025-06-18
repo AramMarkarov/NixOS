@@ -18,7 +18,6 @@
         ffmpeg nvtopPackages.amd unzip kdePackages.plasma-workspace 
         kdePackages.qtsvg kdePackages.kio-fuse kdePackages.kio-extras
         kdePackages.sddm-kcm kdePackages.kservice
-
     # Cursors
         catppuccin-cursors.macchiatoLavender
     
@@ -43,7 +42,7 @@
         kdePackages.kdenlive bolt-launcher drawio libreoffice-still hunspell
         hunspellDicts.nl_NL hunspellDicts.en_US hunspellDicts.en_GB-ise
         jetbrains.datagrip gimp3-with-plugins mendeley qbittorrent 
-        protonvpn-gui vlc obs-studio ladybird
+        protonvpn-gui vlc obs-studio ladybird tor-browser
 
     # Games
         prismlauncher lutris steam-run heroic pcsx2 snes9x
@@ -52,7 +51,8 @@
         kdePackages.qt6ct kdePackages.dolphin libsForQt5.qt5ct
         pavucontrol gparted wezterm btop-rocm arduino-cli arduino-ide
         kdePackages.ark easyeffects protonup-ng mullvad-vpn yazi
-        wine-staging nwg-look colord gamemode networkmanagerapplet
+        wine-staging nwg-look colord gamemode networkmanagerapplet alsa-utils
+
 
     # ZSH stuff
         oh-my-posh fzf fzf-zsh
