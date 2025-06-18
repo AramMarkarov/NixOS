@@ -27,7 +27,7 @@ systemd.tmpfiles.rules =
         };
   };
 
-  services.xserver.videoDrivers = ["amdgpu"]; # Change for Nvidia/Intel
+  services.xserver.videoDrivers = ["amdgpu"];
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   services.pipewire.extraConfig.pipewire."92-low-latency" = {

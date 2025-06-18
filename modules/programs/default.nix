@@ -4,10 +4,10 @@
     environment.systemPackages = with pkgs; [
     # Build tools 
         stdenvNoCC gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git 
-        curl wget gnumake rocmPackages.clr icu
+        curl wget gnumake rocmPackages.clr icu python313Packages.pip
 
     # Langauges
-        python3 zig rustup jdk jdk24 jdk8 nodejs_24 mariadb_114 go perl
+        python314 zig rustup jdk jdk24 jdk8 nodejs_24 mariadb_114 go perl
 
     # Debugging and monitoring
         ncdu killall fastfetch clinfo yazi vulkan-tools 
@@ -35,17 +35,18 @@
         hyprland-qtutils hyprlang hypridle hyprsunset hyprcursor hyprpolkitagent
         hyprwayland-scanner hyprland-qt-support astal.hyprland playerctl
         xdg-desktop-portal xdg-desktop-portal-gtk xdg-desktop-portal-hyprland 
-        kdePackages.xdg-desktop-portal-kde power-profiles-daemon
+        kdePackages.xdg-desktop-portal-kde power-profiles-daemon pywal16 
+        imagemagick
 
     # Programs
         chromium signal-desktop telegram-desktop vesktop teams-for-linux 
         kdePackages.kdenlive bolt-launcher drawio libreoffice-still hunspell
         hunspellDicts.nl_NL hunspellDicts.en_US hunspellDicts.en_GB-ise
         jetbrains.datagrip gimp3-with-plugins mendeley qbittorrent 
-        protonvpn-gui vlc obs-studio
+        protonvpn-gui vlc obs-studio ladybird
 
     # Games
-        minecraft lutris steam-run heroic pcsx2 snes9x
+        prismlauncher lutris steam-run heroic pcsx2 snes9x
 
     # Settings & Utils
         kdePackages.qt6ct kdePackages.dolphin libsForQt5.qt5ct
@@ -57,7 +58,9 @@
         oh-my-posh fzf fzf-zsh
 
     # sddm
-    #   (callPackage ./sddm-rose-pine.nix {})
+       (callPackage ./sddm-rose-pine.nix {})
+    
+    # Temp
 
     ];
 
