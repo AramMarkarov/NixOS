@@ -15,9 +15,10 @@
     # Misc
         ntfs3g efibootmgr mutagen zenity cryptsetup openssl cacert openssh 
         firewalld pkg-config appimage-run home-manager fwupd lact polkit 
-        ffmpeg nvtopPackages.amd unzip kdePackages.plasma-workspace 
+        ffmpeg nvtopPackages.amd unzip kdePackages.plasma-workspace electron
         kdePackages.qtsvg kdePackages.kio-fuse kdePackages.kio-extras
-        kdePackages.sddm-kcm kdePackages.kservice
+        kdePackages.sddm-kcm kdePackages.kservice catppuccin-grub
+
     # Cursors
         catppuccin-cursors.macchiatoLavender
     
