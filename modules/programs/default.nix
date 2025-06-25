@@ -39,7 +39,9 @@
         imagemagick
 
     # Programs
-        chromium signal-desktop telegram-desktop vesktop teams-for-linux 
+        chromium 
+        #signal-desktop Currently broken 
+        telegram-desktop vesktop teams-for-linux 
         kdePackages.kdenlive bolt-launcher drawio libreoffice-still hunspell
         hunspellDicts.nl_NL hunspellDicts.en_US hunspellDicts.en_GB-ise
         jetbrains.datagrip gimp3-with-plugins mendeley qbittorrent 
