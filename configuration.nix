@@ -38,7 +38,7 @@
   users.users.aramjonghu = {
     isNormalUser = true;
     description = "aramjonghu";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" ];
   };
 
   users.defaultUserShell = pkgs.zsh; 
