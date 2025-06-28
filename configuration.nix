@@ -34,11 +34,33 @@
   time.timeZone = "Europe/Amsterdam";
   time.hardwareClockInLocalTime = true;
 
+  virtualisation = {
+      spiceUSBRedirection.enable = true;
+      libvirtd = {
+        enable = true;
+        qemu = {
+            vhostUserPackages = [ pkgs.virtiofsd ];
+            package = pkgs.qemu_kvm;
+            runAsRoot = true;
+            swtpm.enable = true;
+            ovmf = {
+                enable = true;
+                packages = [(pkgs.OVMF.override {
+                      secureBoot = true;
+                      tpmSupport = true;
+                      }).fd];
+            };
+        };
+    };
+  };
+
+  users.groups.libvirtd.members = [ "aramjonghu" ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.aramjonghu = {
     isNormalUser = true;
     description = "aramjonghu";
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "libvirtd"];
   };
 
   users.defaultUserShell = pkgs.zsh; 
