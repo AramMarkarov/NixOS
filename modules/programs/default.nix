@@ -17,7 +17,7 @@
         firewalld pkg-config appimage-run home-manager fwupd lact polkit 
         ffmpeg nvtopPackages.amd unzip kdePackages.plasma-workspace electron
         kdePackages.qtsvg kdePackages.kio-fuse kdePackages.kio-extras
-        kdePackages.sddm-kcm kdePackages.kservice catppuccin-grub
+        kdePackages.sddm-kcm kdePackages.kservice catppuccin-grub libvirt-glib
 
     # Cursors
         catppuccin-cursors.macchiatoLavender
@@ -43,7 +43,7 @@
         kdePackages.kdenlive bolt-launcher drawio libreoffice-still hunspell
         hunspellDicts.nl_NL hunspellDicts.en_US hunspellDicts.en_GB-ise
         jetbrains.datagrip gimp3-with-plugins mendeley qbittorrent 
-        protonvpn-gui vlc obs-studio ladybird tor-browser
+        protonvpn-gui vlc obs-studio ladybird tor-browser virt-manager
 
     # Games
         prismlauncher lutris steam-run heroic pcsx2 snes9x
