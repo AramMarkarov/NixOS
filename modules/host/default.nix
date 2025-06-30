@@ -21,13 +21,13 @@ systemd.tmpfiles.rules =
           enable = true;
           enable32Bit = true;
           extraPackages = with pkgs; [
-            amdvlk clinfo mesa libdrm  
+            amdvlk clinfo mesa libdrm mesa-demos
             rocmPackages.clr.icd rocmPackages.rocm-runtime
           ];
         };
   };
 
-  services.xserver.videoDrivers = ["amdgpu"];
+  services.xserver.videoDrivers = ["amdgpu"]; # Change for Nvidia/Intel
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   services.pipewire.extraConfig.pipewire."92-low-latency" = {

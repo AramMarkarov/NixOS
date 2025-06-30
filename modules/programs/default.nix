@@ -62,6 +62,7 @@
        (callPackage ./sddm-rose-pine.nix {})
     
     # Temp
+    mesa-demos
 
     ];
 
