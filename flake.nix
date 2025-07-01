@@ -3,6 +3,7 @@
         nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
         hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
         solaar.url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
+        swww.url = "github:LGFae/swww";
     };
 
     outputs = inputs @ { nixpkgs, self, solaar, ... }: let

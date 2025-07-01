@@ -30,7 +30,7 @@
         fuseiso opentabletdriver libwacom libmysqlclient
 
     # Hyprland stuff
-        swww hyprpanel hyprshot fuzzel hyprland-workspaces hyprlock hyprpaper
+        inputs.swww.packages.${pkgs.system}.swww hyprpanel hyprshot fuzzel hyprland-workspaces hyprlock hyprpaper
         wl-clipboard cliphist hyprpicker hyprgraphics hyprsysteminfo
         hyprland-qtutils hyprlang hypridle hyprsunset hyprcursor hyprpolkitagent
         hyprwayland-scanner hyprland-qt-support astal.hyprland playerctl
