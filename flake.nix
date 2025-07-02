@@ -1,7 +1,6 @@
 {
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-        hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
         solaar.url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
     };
 
@@ -16,7 +15,6 @@
             };
             modules = [
                 ./configuration.nix
-                { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
                 solaar.nixosModules.default
             ];
         };
