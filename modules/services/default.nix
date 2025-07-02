@@ -34,7 +34,7 @@
                 CPU_ENERGY_PERF_POLICY_ON_AC = "default";
 
                 CPU_MIN_PERF_ON_AC = 0;
-                CPU_MAX_PERF_ON_AC = 92;
+                CPU_MAX_PERF_ON_AC = 90;
                 CPU_MIN_PERF_ON_BAT = 0;
                 CPU_MAX_PERF_ON_BAT = 85;
 
