@@ -40,7 +40,7 @@
         enable = true;
         qemu = {
             vhostUserPackages = [ pkgs.virtiofsd ];
-            package = pkgs.qemu_kvm;
+            package = pkgs.qemu_full;
             runAsRoot = true;
             swtpm.enable = true;
             ovmf = {
