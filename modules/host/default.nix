@@ -2,7 +2,7 @@
 
 {
 
-systemd.tmpfiles.rules = 
+  systemd.tmpfiles.rules = 
   let
     rocmEnv = pkgs.symlinkJoin {
       name = "rocm-combined";
@@ -21,8 +21,7 @@ systemd.tmpfiles.rules =
           enable = true;
           enable32Bit = true;
           extraPackages = with pkgs; [
-            amdvlk clinfo mesa libdrm mesa-demos
-            rocmPackages.clr.icd rocmPackages.rocm-runtime
+            rocmPackages.clr.icd amdvlk driversi686Linux.amdvlk
           ];
         };
   };

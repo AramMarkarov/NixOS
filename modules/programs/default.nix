@@ -10,7 +10,7 @@
         python314 zig rustup jdk jdk24 jdk8 nodejs_24 mariadb_114 go perl
 
     # Debugging and monitoring
-        ncdu killall fastfetch clinfo yazi vulkan-tools 
+        ncdu killall fastfetch clinfo yazi vulkan-tools mesa-demos
 
     # Misc
         ntfs3g efibootmgr mutagen zenity cryptsetup openssl cacert openssh 
@@ -61,9 +61,6 @@
 
     # sddm
        (callPackage ./sddm-rose-pine.nix {})
-    
-    # Temp
-    mesa-demos
 
     ];
 

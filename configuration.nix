@@ -112,6 +112,7 @@
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_PICTRES_HOME = "$HOME/Pictures";
     HYPRSHOT_DIR = "$HOME/Pictures/Screenshots";
+    AMD_VULKAN_ICD = "RADV";
   };
 
   # Mount drives
