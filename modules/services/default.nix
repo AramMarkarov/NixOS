@@ -17,6 +17,11 @@
         ollama = {
             enable = true;
             acceleration = "rocm";
+            openFirewall = true;
+            environmentVariables = {
+                HCC_AMDGPU_TARGET = "gfx1031";
+            };
+            rocmOverrideGfx = "10.3.1";
         };
         btrfs.autoScrub = {
             enable = true;
