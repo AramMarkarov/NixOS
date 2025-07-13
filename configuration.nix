@@ -59,7 +59,7 @@
   users.users.aram = {
     isNormalUser = true;
     description = "aram";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "dialout" ];
   };
 
   users.defaultUserShell = pkgs.zsh;
