@@ -15,6 +15,7 @@
           devices = [ "nodev" ];
           efiSupport = true;
           useOSProber = true;
+          theme = pkgs.catppuccin-grub;
           };
   };
   
