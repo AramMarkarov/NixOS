@@ -61,7 +61,7 @@
 
     # sddm
        (callPackage ./sddm-rose-pine.nix {})
-
+        catppuccin-sddm 
     ];
 
     programs = {

@@ -31,7 +31,7 @@
         xserver.enable = true;
         displayManager.sddm = {
             enable = true;
-            theme = "rose-pine";
+            theme = "catppuccin-macchiato";
         };
         printing.enable = true; 
     };
