@@ -27,7 +27,7 @@
 
     # Libraries
         libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib glibmm fuse 
-        fuseiso opentabletdriver libwacom libmysqlclient libGL SDL2 SDL
+        fuseiso opentabletdriver libwacom libmysqlclient libGL SDL2 SDL zlib
 
     # Hyprland stuff
         inputs.swww.packages.${pkgs.system}.swww hyprpanel hyprshot fuzzel 
