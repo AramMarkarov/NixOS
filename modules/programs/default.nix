@@ -27,13 +27,13 @@
 
     # Libraries
         libxkbcommon libavif dotnet-sdk dotnet-runtime icu glibc glib glibmm fuse 
-        fuseiso opentabletdriver libwacom libmysqlclient libGL SDL2 SDL zlib
+        fuseiso opentabletdriver libwacom libmysqlclient libGL SDL2 SDL
 
     # Hyprland stuff
         inputs.swww.packages.${pkgs.system}.swww hyprpanel hyprshot fuzzel 
         hyprland-workspaces hyprlock hyprpaper wl-clipboard cliphist hyprpicker 
-        hyprgraphics hyprsysteminfo hyprland-qtutils hyprlang hypridle 
-        hyprsunset hyprcursor hyprpolkitagent hyprwayland-scanner 
+        hyprgraphics hyprsysteminfo hyprland-qtutils hyprlang hyprsunset 
+        hyprcursor hyprpolkitagent hyprwayland-scanner 
         hyprland-qt-support astal.hyprland playerctl xdg-desktop-portal 
         xdg-desktop-portal-gtk xdg-desktop-portal-hyprland 
         kdePackages.xdg-desktop-portal-kde power-profiles-daemon pywal16 

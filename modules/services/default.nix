@@ -6,6 +6,7 @@
     hardware.bluetooth.enable = true;
 
     services = {
+        hypridle.enable = true;
         solaar = {
             enable = true;
             package = pkgs.solaar;
