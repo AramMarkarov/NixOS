@@ -32,7 +32,7 @@
     # Hyprland stuff
         swww hyprpanel hyprshot fuzzel hyprland-workspaces hyprlock hyprpaper
         wl-clipboard cliphist hyprpicker hyprgraphics hyprsysteminfo
-        hyprland-qtutils hyprlang hypridle hyprsunset hyprcursor hyprpolkitagent
+        hyprland-qtutils hyprlang hyprsunset hyprcursor hyprpolkitagent
         hyprwayland-scanner hyprland-qt-support astal.hyprland playerctl
         brightnessctl xdg-desktop-portal xdg-desktop-portal-gtk
         xdg-desktop-portal-hyprland kdePackages.xdg-desktop-portal-kde
