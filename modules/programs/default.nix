@@ -54,7 +54,7 @@
         pavucontrol gparted wezterm btop-rocm arduino-cli arduino-ide
         kdePackages.ark easyeffects protonup-ng mullvad-vpn yazi
         wine-staging nwg-look colord gamemode networkmanagerapplet alsa-utils
-        openrgb-with-all-plugins
+        openrgb-with-all-plugins usbutils
 
     # ZSH stuff
         oh-my-posh fzf fzf-zsh
