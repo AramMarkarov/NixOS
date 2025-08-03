@@ -51,7 +51,7 @@
 
     # Settings & Utils
         kdePackages.qt6ct kdePackages.dolphin libsForQt5.qt5ct
-        pavucontrol gparted wezterm btop-rocm arduino-cli arduino-ide
+        pwvucontrol gparted wezterm btop-rocm arduino-cli arduino-ide
         kdePackages.ark easyeffects protonup-ng mullvad-vpn yazi
         wine-staging nwg-look colord gamemode networkmanagerapplet alsa-utils
         openrgb-with-all-plugins usbutils argyllcms 
