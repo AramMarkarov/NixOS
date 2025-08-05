@@ -67,12 +67,12 @@
   users.defaultUserShell = pkgs.zsh; 
 
   # Use of file system and video sharing
-  xdg.portal ={
+  xdg.portal = {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal pkgs.xdg-desktop-portal-gtk
-                       pkgs.kdePackages.xdg-desktop-portal-kde pkgs.xdg-desktop-portal-wlr 
-                       pkgs.xdg-desktop-portal-hyprland];
-  };
+      wlr.enable = true;
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+      };
 
   security.polkit.enable = true;
   systemd.packages = with pkgs; [ lact ];
@@ -98,7 +98,7 @@
     HYPRCURSOR_SIZE = "24";
     XCURSOR_THEME = "catppuccin-cursor.macchiatoLavender";
     XCURSOR_SIZE = "24";
-    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    NIXOS_OZONE_WL = "1";
     QT_QPA_PLATFORMTHEME = "qt6ct";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     QT_QPA_PLATFORM = "wayland";
