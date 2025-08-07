@@ -5,9 +5,13 @@
     # Build tools 
         stdenvNoCC gcc cmake meson ninja pkg-config scdoc git nix-prefetch-git 
         curl wget gnumake rocmPackages.clr icu python313Packages.pip
+        python313Packages.beautifulsoup4 python312Packages.beautifulsoup4
+        python313Packages.types-beautifulsoup4 
+        python312Packages.types-beautifulsoup4
 
     # Langauges
-        python314 zig rustup jdk jdk24 jdk8 nodejs_24 mariadb_114 go perl
+        python314 python313 python3Full zig rustup jdk jdk24 jdk8 nodejs_24 
+        mariadb_114 go perl
 
     # Debugging and monitoring
         ncdu killall fastfetch clinfo yazi vulkan-tools mesa-demos
