@@ -44,6 +44,7 @@
         hunspellDicts.nl_NL hunspellDicts.en_US hunspellDicts.en_GB-ise
         jetbrains.datagrip gimp3-with-plugins mendeley qbittorrent 
         protonvpn-gui vlc obs-studio ladybird virt-manager
+        qutebrowser nextcloud-client
 
     # Settings & Utils
         kdePackages.qt6ct kdePackages.dolphin libsForQt5.qt5ct
