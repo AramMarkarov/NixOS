@@ -89,7 +89,7 @@
   environment.variables = {
     DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = "1";
     SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
-    BROWSER = "firefox";
+    BROWSER = "qutebrowser";
     TERM = "wezterm";
     TERMINAL = "wezterm";
     VISUAL = "nvim";
