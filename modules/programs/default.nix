@@ -22,6 +22,7 @@
         ffmpeg nvtopPackages.amd unzip kdePackages.plasma-workspace electron
         kdePackages.qtsvg kdePackages.kio-fuse kdePackages.kio-extras
         kdePackages.sddm-kcm kdePackages.kservice catppuccin-grub libvirt-glib
+        widevine-cdm
 
     # Cursors
         catppuccin-cursors.macchiatoLavender
@@ -69,6 +70,10 @@
         catppuccin-sddm 
     ];
 
+    nixpkgs.overlays = [
+        (final: prev: { qutebrowser = prev.qutebrowser.override { enableWideVine = true; }; })
+    ];
+    
     programs = {
         steam.gamescopeSession.enable = true;
         hyprland = {
