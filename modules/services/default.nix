@@ -6,6 +6,8 @@
     hardware.bluetooth.enable = true;
 
     services = {
+        logind.lidSwitch= "hibernate";
+        logind.lidSwitchExternalPower = "ignore";
         hypridle.enable = true;
         solaar = {
             enable = true;
