@@ -49,7 +49,7 @@
         kdePackages.kdenlive bolt-launcher drawio libreoffice-still hunspell
         hunspellDicts.nl_NL hunspellDicts.en_US hunspellDicts.en_GB-ise
         jetbrains.datagrip gimp3-with-plugins mendeley qbittorrent 
-        protonvpn-gui vlc obs-studio ladybird tor-browser virt-manager
+        protonvpn-gui vlc mpv obs-studio ladybird tor-browser virt-manager
         nextcloud-client qutebrowser
 
     # Games
