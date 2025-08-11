@@ -50,7 +50,7 @@
         hunspellDicts.nl_NL hunspellDicts.en_US hunspellDicts.en_GB-ise
         jetbrains.datagrip gimp3-with-plugins mendeley qbittorrent 
         protonvpn-gui vlc mpv obs-studio ladybird tor-browser virt-manager
-        nextcloud-client qutebrowser
+        nextcloud-client qutebrowser organicmaps
 
     # Games
         prismlauncher lutris steam-run heroic pcsx2 snes9x
